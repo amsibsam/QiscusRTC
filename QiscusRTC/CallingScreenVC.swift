@@ -79,7 +79,7 @@ class CallingScreenVC: UIViewController {
         mandatoryConstraints: [
 //            RTCPair(key: "OfferToReceiveAudio", value: "true"),
 //            RTCPair(key: "OfferToReceiveVideo", value: "true")
-        ],
+            :],
         optionalConstraints: nil)
     
     override func viewDidLoad() {
@@ -208,24 +208,36 @@ extension CallingScreenVC: CallingPresenterDelegate {
 
 //peer connection delegate
 extension CallingScreenVC: RTCPeerConnectionDelegate {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
+        //
+    }
+
     func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
         //
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didChange stateChanged: RTCSignalingState) {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         print("[HUB-RTC] Signaling state: \(stateChanged.rawValue)")
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, iceConnectionChanged newState: RTCICEConnectionState) {
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, iceGatheringChanged newState: RTCICEGatheringState) {
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, gotICECandidate candidate: RTCICECandidate!) {
-        if (candidate != nil) {
-            sendCandidate(candidate: candidate)
-        }
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection!, addedStream stream: RTCMediaStream!) {
@@ -238,7 +250,7 @@ extension CallingScreenVC: RTCPeerConnectionDelegate {
         }
         if (stream.videoTracks.count == 1) {
             remoteVideoTrack = stream.videoTracks[0] as! RTCVideoTrack
-            remoteVideoTrack.setEnabled(true)
+            remoteVideoTrack.isEnabled = true
             remoteVideoTrack.add(self.remoteVideo);
             self.viewRemoteVideo.addSubview(self.remoteVideo)
         }
@@ -258,31 +270,31 @@ extension CallingScreenVC: RTCPeerConnectionDelegate {
 }
 
 //session description delegate
-extension CallingScreenVC: RTCSessionDescriptionDelegate {
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
-        if (error == nil) {
-            DispatchQueue.main.async {
-                self.presenter.startTimer()
-                self.player?.stop()
-                try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
-            }
-            
-            peerConnection.setLocalDescriptionWith(self, sessionDescription: sdp)
-            print("[RTC-HUB] Got local offer/answer")
-            
-            if (sdp.type == "offer") {
-                self.sendOffer(sdp: sdp)
-            } else {
-                self.sendAnswer(sdp: sdp)
-            }
-        } else {
-            print("[HUB-RTC] SDP creation error: " + error.localizedDescription)
-        }
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didSetSessionDescriptionWithError error: Error!) {
-    }
-}
+//extension CallingScreenVC: RTCSessionDescriptionDelegate {
+//    func peerConnection(_ peerConnection: RTCPeerConnection!, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
+//        if (error == nil) {
+//            DispatchQueue.main.async {
+//                self.presenter.startTimer()
+//                self.player?.stop()
+//                try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+//            }
+//
+//            peerConnection.setLocalDescriptionWith(self, sessionDescription: sdp)
+//            print("[RTC-HUB] Got local offer/answer")
+//
+//            if (sdp.type == "offer") {
+//                self.sendOffer(sdp: sdp)
+//            } else {
+//                self.sendAnswer(sdp: sdp)
+//            }
+//        } else {
+//            print("[HUB-RTC] SDP creation error: " + error.localizedDescription)
+//        }
+//    }
+//
+//    func peerConnection(_ peerConnection: RTCPeerConnection!, didSetSessionDescriptionWithError error: Error!) {
+//    }
+//}
 
 //function collection
 extension CallingScreenVC {
@@ -446,7 +458,9 @@ extension CallingScreenVC {
                                     self.playSound()
                                 } else if dataEvt == "call_accept" {
                                     // Set state to connecting
-                                    self.peerConnection.createOffer(with: self, constraints: self.mediaConstraints)
+                                    self.peerConnection.offer(for: self.mediaConstraints, completionHandler: { (sessionDescription, error) in
+                                        //
+                                    })
                                 } else if dataEvt == "call_reject" {
                                     self.navigationController?.popViewController(animated: true)
                                     // Rejected
@@ -461,16 +475,22 @@ extension CallingScreenVC {
                                 let dataCandidate = dataObj?.value(forKey: "candidate") as? String
                                 
                                 if dataType == "offer" {
-                                    let sdpSet = RTCSessionDescription(type: dataType, sdp: dataSDP)
-                                    self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
-                                    self.peerConnection.createAnswer(with: self, constraints: self.mediaConstraints)
+                                    let sdpSet = RTCSessionDescription(type: RTCSdpType.offer, sdp: dataSDP!)
+                                    self.peerConnection.setRemoteDescription(sdpSet, completionHandler: { (error) in
+                                        //
+                                    })
+                                    self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescription, error) in
+                                        //
+                                    })
                                     print("[RTC-HUB] Got remote offer")
                                 } else if dataType == "answer" {
-                                    let sdpSet = RTCSessionDescription(type: dataType, sdp: dataSDP)
-                                    self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
+                                    let sdpSet = RTCSessionDescription(type: RTCSdpType.answer, sdp: dataSDP!)
+                                    self.peerConnection.setRemoteDescription(sdpSet, completionHandler: { (error) in
+                                        //
+                                    })
                                     print("[RTC-HUB] Got remote answer")
                                 } else if dataType == "candidate" {
-                                    let iceSet = RTCICECandidate(mid: dataMid, index: dataIndex!, sdp: dataCandidate)
+                                    let iceSet = RTCIceCandidate(sdp: dataCandidate!, sdpMLineIndex: Int32(dataIndex!), sdpMid: dataMid)
                                     self.peerConnection.add(iceSet)
                                     print("[RTC-HUB] Got remote candidate")
                                 }
@@ -525,7 +545,7 @@ extension CallingScreenVC {
         }
     }
     
-    fileprivate func sendCandidate(candidate: RTCICECandidate) {
+    fileprivate func sendCandidate(candidate: RTCIceCandidate) {
         do {
             let jsonDic = [
                 "request": "room_data",
@@ -543,12 +563,12 @@ extension CallingScreenVC {
     }
     
     fileprivate func setupRippleEffect() {
-        let rippleLayer = RippleLayer()
-        print("ripple x: \(viewRipple.frame.origin.x) y: \(viewRipple.frame.origin.y)")
-        rippleLayer.position = CGPoint(x: CGFloat.screenWidth/2, y: self.viewRipple.frame.origin.y - 60)
-        
-        self.viewRipple.layer.insertSublayer(rippleLayer, at: 1)
-        rippleLayer.startAnimation()
+//        let rippleLayer = RippleLayer()
+//        print("ripple x: \(viewRipple.frame.origin.x) y: \(viewRipple.frame.origin.y)")
+//        rippleLayer.position = CGPoint(x: CGFloat.screenWidth/2, y: self.viewRipple.frame.origin.y - 60)
+//
+//        self.viewRipple.layer.insertSublayer(rippleLayer, at: 1)
+//        rippleLayer.startAnimation()
     }
     
     fileprivate func setupGradient() -> CAGradientLayer {
@@ -557,18 +577,18 @@ extension CallingScreenVC {
         gradient.locations  = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint   = CGPoint(x: 0.0, y: 0.85)
-        gradient.frame      = CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight)
+//        gradient.frame      = CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight)
         
         return gradient
     }
     
     fileprivate func setupBackground() {
         // Set background with callee avatar
-        self.backgroundGradient = UIImageView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
+//        self.backgroundGradient = UIImageView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
         self.backgroundGradient.contentMode   = .scaleToFill
         self.backgroundGradient.layer.insertSublayer(setupGradient(), at: 0)
         self.view.addSubview(backgroundGradient)
-        self.view.backgroundColor = UIColor.baseNavigateColor
+//        self.view.backgroundColor = UIColor.baseNavigateColor
     }
     
     fileprivate func playSound() {
@@ -595,8 +615,8 @@ extension CallingScreenVC {
     fileprivate func captureDevice() {
         var device: AVCaptureDevice! = nil
         
-        for captureDevice in AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) {
-            if ((captureDevice as AnyObject).position == AVCaptureDevicePosition.front) {
+        for captureDevice in AVCaptureDevice.devices(for: AVMediaType.video) {
+            if ((captureDevice as AnyObject).position == AVCaptureDevice.Position.front) {
                 device = captureDevice as! AVCaptureDevice
             }
         }
@@ -604,17 +624,16 @@ extension CallingScreenVC {
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
         if (device != nil) {
-            let capturer = RTCVideoCapturer(deviceName: device.localizedName)
+            let capturer = RTCVideoCapturer(delegate: self)
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
             
-            let videoSource = peerConnectionFactory.videoSource(with: capturer, constraints: videoConstraints)
-            
+            let videoSource = peerConnectionFactory.videoSource()
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-            self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
-            self.localVideoTrack = peerConnectionFactory.videoTrack(withID: VIDEO_TRACK_ID, source: videoSource)
+            self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+//            self.localVideoTrack = peerConnectionFactory.videoTrack(with: VIDEO_TRACK_ID, trackId: videoSource)
             self.localVideoTrack.add(self.localVideo)
-            self.localAudioTrack = peerConnectionFactory.audioTrack(withID: AUDIO_TRACK_ID)
-            self.mediaStream = peerConnectionFactory.mediaStream(withLabel: LOCAL_MEDIA_STREAM_ID)
+            self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
+            self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
             
@@ -626,16 +645,16 @@ extension CallingScreenVC {
         let googleStunUrl: NSURL = NSURL(string: "stun:stun.l.google.com:19302")!
         let qiscusStunUrl: NSURL = NSURL(string: "stun:139.59.110.14:3478")!
         let qiscusTurnUrl: NSURL = NSURL(string: "turn:139.59.110.14:3478")!
-        let icsServers: [RTCICEServer] = [
-            RTCICEServer.init(uri: googleStunUrl as URL!, username: "", password: ""),
-            RTCICEServer.init(uri: qiscusStunUrl as URL!, username: "", password: ""),
-            RTCICEServer.init(uri: qiscusTurnUrl as URL!, username: "sangkil", password: "qiscuslova")
+        let icsServers: [RTCIceServer] = [
+            RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302", "stun:139.59.110.14:3478"], username: "", credential: ""),
+            RTCIceServer.init(urlStrings: ["turn:139.59.110.14:3478"], username: "sangkil", credential: "qiscuslova")
         ]
         var pcConstraints: RTCMediaConstraints! = nil
-        let optionalConstraints:NSArray = [RTCPair(key: "DtlsSrtpKeyAgreement", value: "true")]
-        pcConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: optionalConstraints as [AnyObject])
-        
-        self.peerConnection = self.peerConnectionFactory.peerConnection(withICEServers: icsServers, constraints: pcConstraints, delegate: self)
+        pcConstraints = RTCMediaConstraints(mandatoryConstraints: nil
+            , optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
+        let config = RTCConfiguration()
+        config.iceServers = icsServers
+        self.peerConnection = self.peerConnectionFactory.peerConnection(with: config, constraints: pcConstraints, delegate: self)
         
         self.peerConnection.add(self.mediaStream)
     }
@@ -643,5 +662,11 @@ extension CallingScreenVC {
     func present(vc: UIViewController, transitionMode: UIModalTransitionStyle) {
         self.modalTransitionStyle = transitionMode
         vc.present(self, animated: true, completion: nil)
+    }
+}
+
+extension CallingScreenVC : RTCVideoCapturerDelegate {
+    func capturer(_ capturer: RTCVideoCapturer, didCapture frame: RTCVideoFrame) {
+        //
     }
 }
