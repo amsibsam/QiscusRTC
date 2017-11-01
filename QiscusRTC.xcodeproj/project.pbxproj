@@ -8,12 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		0457BC421FA9DB95008D3866 /* QiscusRTC.h in Headers */ = {isa = PBXBuildFile; fileRef = 0457BC401FA9DB95008D3866 /* QiscusRTC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0457BC4F1FA9DBAA008D3866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */; };
+		0457BC511FA9DBAA008D3866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457BC501FA9DBAA008D3866 /* ViewController.swift */; };
+		0457BC541FA9DBAA008D3866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC521FA9DBAA008D3866 /* Main.storyboard */; };
+		0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC551FA9DBAA008D3866 /* Assets.xcassets */; };
+		0457BC591FA9DBAA008D3866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */; };
+		0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */; };
+		3166296DF06919FA5F916916 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */; };
+		6B44CCBDBCE6E27237534CB9 /* Pods_QiscusRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0457BC3D1FA9DB95008D3866 /* QiscusRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QiscusRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0457BC401FA9DB95008D3866 /* QiscusRTC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiscusRTC.h; sourceTree = "<group>"; };
 		0457BC411FA9DB95008D3866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0457BC4C1FA9DBAA008D3866 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0457BC501FA9DBAA008D3866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0457BC531FA9DBAA008D3866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0457BC551FA9DBAA008D3866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0457BC581FA9DBAA008D3866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0457BC5A1FA9DBAA008D3866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRTC.podspec; sourceTree = "<group>"; };
+		1BA5040EA95BEC56BE2D16E5 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.debug.xcconfig"; sourceTree = "<group>"; };
+		76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.release.xcconfig"; sourceTree = "<group>"; };
+		C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiscusRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F38A0AC6495B7A680E7076A5 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +43,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B44CCBDBCE6E27237534CB9 /* Pods_QiscusRTC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0457BC491FA9DBAA008D3866 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3166296DF06919FA5F916916 /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,8 +61,12 @@
 		0457BC331FA9DB95008D3866 = {
 			isa = PBXGroup;
 			children = (
+				0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */,
 				0457BC3F1FA9DB95008D3866 /* QiscusRTC */,
+				0457BC4D1FA9DBAA008D3866 /* Example */,
 				0457BC3E1FA9DB95008D3866 /* Products */,
+				AA00650A30C4457AAAD9A673 /* Pods */,
+				50F8B1B483E7F20F2EB00081 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -39,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0457BC3D1FA9DB95008D3866 /* QiscusRTC.framework */,
+				0457BC4C1FA9DBAA008D3866 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,6 +86,39 @@
 				0457BC411FA9DB95008D3866 /* Info.plist */,
 			);
 			path = QiscusRTC;
+			sourceTree = "<group>";
+		};
+		0457BC4D1FA9DBAA008D3866 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */,
+				0457BC501FA9DBAA008D3866 /* ViewController.swift */,
+				0457BC521FA9DBAA008D3866 /* Main.storyboard */,
+				0457BC551FA9DBAA008D3866 /* Assets.xcassets */,
+				0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */,
+				0457BC5A1FA9DBAA008D3866 /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		50F8B1B483E7F20F2EB00081 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */,
+				C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA00650A30C4457AAAD9A673 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1BA5040EA95BEC56BE2D16E5 /* Pods-Example.debug.xcconfig */,
+				F38A0AC6495B7A680E7076A5 /* Pods-Example.release.xcconfig */,
+				23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */,
+				76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,10 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0457BC451FA9DB95008D3866 /* Build configuration list for PBXNativeTarget "QiscusRTC" */;
 			buildPhases = (
+				7B5A671C94909C0258D88416 /* [CP] Check Pods Manifest.lock */,
 				0457BC381FA9DB95008D3866 /* Sources */,
 				0457BC391FA9DB95008D3866 /* Frameworks */,
 				0457BC3A1FA9DB95008D3866 /* Headers */,
 				0457BC3B1FA9DB95008D3866 /* Resources */,
+				54B537756E603EE221773B9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -84,18 +155,43 @@
 			productReference = 0457BC3D1FA9DB95008D3866 /* QiscusRTC.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		0457BC4B1FA9DBAA008D3866 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0457BC5B1FA9DBAA008D3866 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				2E6653AADCC28050DB831F02 /* [CP] Check Pods Manifest.lock */,
+				0457BC481FA9DBAA008D3866 /* Sources */,
+				0457BC491FA9DBAA008D3866 /* Frameworks */,
+				0457BC4A1FA9DBAA008D3866 /* Resources */,
+				C118EAD8364267E689FED417 /* [CP] Embed Pods Frameworks */,
+				C3F16C40405B3D89B9FAC846 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = 0457BC4C1FA9DBAA008D3866 /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0457BC341FA9DB95008D3866 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = qiscus;
 				TargetAttributes = {
 					0457BC3C1FA9DB95008D3866 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+					};
+					0457BC4B1FA9DBAA008D3866 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -105,6 +201,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 0457BC331FA9DB95008D3866;
 			productRefGroup = 0457BC3E1FA9DB95008D3866 /* Products */;
@@ -112,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				0457BC3C1FA9DB95008D3866 /* QiscusRTC */,
+				0457BC4B1FA9DBAA008D3866 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -121,10 +219,99 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0457BC4A1FA9DBAA008D3866 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0457BC591FA9DBAA008D3866 /* LaunchScreen.storyboard in Resources */,
+				0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */,
+				0457BC541FA9DBAA008D3866 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E6653AADCC28050DB831F02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		54B537756E603EE221773B9D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B5A671C94909C0258D88416 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C118EAD8364267E689FED417 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3F16C40405B3D89B9FAC846 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0457BC381FA9DB95008D3866 /* Sources */ = {
@@ -134,7 +321,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0457BC481FA9DBAA008D3866 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0457BC511FA9DBAA008D3866 /* ViewController.swift in Sources */,
+				0457BC4F1FA9DBAA008D3866 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0457BC521FA9DBAA008D3866 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0457BC531FA9DBAA008D3866 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0457BC581FA9DBAA008D3866 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0457BC431FA9DB95008D3866 /* Debug */ = {
@@ -252,6 +467,7 @@
 		};
 		0457BC461FA9DB95008D3866 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -273,6 +489,7 @@
 		};
 		0457BC471FA9DB95008D3866 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -288,6 +505,44 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0457BC5C1FA9DBAA008D3866 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BA5040EA95BEC56BE2D16E5 /* Pods-Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = QG8KA4P8TE;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.rtc.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91b0ad3a-dbca-4d1e-bc15-b6be9b1aff09";
+				PROVISIONING_PROFILE_SPECIFIER = QiscusDev;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0457BC5D1FA9DBAA008D3866 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F38A0AC6495B7A680E7076A5 /* Pods-Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = QG8KA4P8TE;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.rtc.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91b0ad3a-dbca-4d1e-bc15-b6be9b1aff09";
+				PROVISIONING_PROFILE_SPECIFIER = QiscusDev;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -309,6 +564,15 @@
 			buildConfigurations = (
 				0457BC461FA9DB95008D3866 /* Debug */,
 				0457BC471FA9DB95008D3866 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0457BC5B1FA9DBAA008D3866 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0457BC5C1FA9DBAA008D3866 /* Debug */,
+				0457BC5D1FA9DBAA008D3866 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
