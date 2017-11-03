@@ -651,7 +651,8 @@ extension CallingScreenVC {
             let videoSource = peerConnectionFactory.videoSource()
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-//            self.localVideoTrack = peerConnectionFactory.videoTrack(with: VIDEO_TRACK_ID, trackId: videoSource)
+            self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
+            
             self.localVideoTrack.add(self.localVideo)
             self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
             self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
