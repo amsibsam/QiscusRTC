@@ -10,11 +10,11 @@
 		0457BC421FA9DB95008D3866 /* QiscusRTC.h in Headers */ = {isa = PBXBuildFile; fileRef = 0457BC401FA9DB95008D3866 /* QiscusRTC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0457BC4F1FA9DBAA008D3866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */; };
 		0457BC511FA9DBAA008D3866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0457BC501FA9DBAA008D3866 /* ViewController.swift */; };
-		0457BC541FA9DBAA008D3866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC521FA9DBAA008D3866 /* Main.storyboard */; };
 		0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC551FA9DBAA008D3866 /* Assets.xcassets */; };
-		0457BC591FA9DBAA008D3866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */; };
 		0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */; };
 		3166296DF06919FA5F916916 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */; };
+		3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */; };
+		3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BC1FAACA25004EE86F /* Main.storyboard */; };
 		6B44CCBDBCE6E27237534CB9 /* Pods_QiscusRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,13 +25,13 @@
 		0457BC4C1FA9DBAA008D3866 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0457BC501FA9DBAA008D3866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0457BC531FA9DBAA008D3866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0457BC551FA9DBAA008D3866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0457BC581FA9DBAA008D3866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0457BC5A1FA9DBAA008D3866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRTC.podspec; sourceTree = "<group>"; };
 		1BA5040EA95BEC56BE2D16E5 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.debug.xcconfig"; sourceTree = "<group>"; };
+		3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D7199BC1FAACA25004EE86F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.release.xcconfig"; sourceTree = "<group>"; };
 		C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiscusRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +93,10 @@
 			children = (
 				0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */,
 				0457BC501FA9DBAA008D3866 /* ViewController.swift */,
-				0457BC521FA9DBAA008D3866 /* Main.storyboard */,
+				3D7199BC1FAACA25004EE86F /* Main.storyboard */,
 				0457BC551FA9DBAA008D3866 /* Assets.xcassets */,
-				0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */,
 				0457BC5A1FA9DBAA008D3866 /* Info.plist */,
+				3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -227,9 +227,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0457BC591FA9DBAA008D3866 /* LaunchScreen.storyboard in Resources */,
+				3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */,
+				3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */,
 				0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */,
-				0457BC541FA9DBAA008D3866 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,13 +242,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		54B537756E603EE221773B9D /* [CP] Copy Pods Resources */ = {
@@ -272,13 +275,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QiscusRTC-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C118EAD8364267E689FED417 /* [CP] Embed Pods Frameworks */ = {
@@ -287,9 +293,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/QiscusRTC/QiscusRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${PODS_ROOT}/WebRTC/WebRTC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,25 +348,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0457BC521FA9DBAA008D3866 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0457BC531FA9DBAA008D3866 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0457BC571FA9DBAA008D3866 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0457BC581FA9DBAA008D3866 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0457BC431FA9DB95008D3866 /* Debug */ = {

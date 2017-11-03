@@ -261,7 +261,7 @@ extension CallingScreenVC: RTCPeerConnectionDelegate {
 //        stream.videoTracks[0].dispose();
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didOpen dataChannel: RTCDataChannel!) {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
         print("peer connection open")
     }
     
@@ -615,11 +615,11 @@ extension CallingScreenVC {
     fileprivate func captureDevice() {
         var device: AVCaptureDevice! = nil
         
-        for captureDevice in AVCaptureDevice.devices(for: AVMediaType.video) {
-            if ((captureDevice as AnyObject).position == AVCaptureDevice.Position.front) {
-                device = captureDevice as! AVCaptureDevice
-            }
-        }
+//        for captureDevice in AVCaptureDevice.devices() {
+//            if ((captureDevice as AnyObject).position == AVCaptureDevice.position.front) {
+//                device = captureDevice as! AVCaptureDevice
+//            }
+//        }
         
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
