@@ -382,7 +382,7 @@ extension CallingScreenVC {
         }
         self.socket.onDisconnect = { (error: Error?) in
             print("[Hub] Websocket is disconnected: \(error?.localizedDescription)")
-            
+            self.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         }
         self.socket.onText = { (text: String) in
@@ -640,8 +640,18 @@ extension CallingScreenVC {
     }
     
     fileprivate func captureDevice() {
-        var device: AVCaptureDevice! = defaultCamera()
-
+        let videoDevices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+        var device : AVCaptureDevice? = nil
+        
+        for devices in videoDevices!{
+            let camera = devices as! AVCaptureDevice
+            if camera.position == AVCaptureDevicePosition.front {
+                device = camera
+                break
+            }
+        }
+        
+        
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
         if (device != nil) {
@@ -660,13 +670,12 @@ extension CallingScreenVC {
             self.mediaStream.addVideoTrack(self.localVideoTrack)
             
             self.viewLocalVideo.addSubview(self.localVideo)
+        }else {
+            // you don't have camera
         }
     }
     
     fileprivate func preparePeerConnection() {
-        let googleStunUrl: NSURL = NSURL(string: "stun:stun.l.google.com:19302")!
-        let qiscusStunUrl: NSURL = NSURL(string: "stun:139.59.110.14:3478")!
-        let qiscusTurnUrl: NSURL = NSURL(string: "turn:139.59.110.14:3478")!
         let icsServers: [RTCIceServer] = [
             RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302", "stun:139.59.110.14:3478"], username: "", credential: ""),
             RTCIceServer.init(urlStrings: ["turn:139.59.110.14:3478"], username: "sangkil", credential: "qiscuslova")

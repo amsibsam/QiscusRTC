@@ -7,7 +7,7 @@ s.homepage     = "http://qiscus.com"
 # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 s.license      = "BSD"
 s.author       = { "juang@qiscus.co" => "juang@qiscus.co" }
-s.platform     = :ios, "9.0"
+s.platform     = :ios, "10.0"
 s.source       = { :git => 'https://gitlab.devops.mhealth.tech/asharijuang/QiscusRTC.git', :tag => s.version.to_s }
 s.source_files  = "QiscusRTC", "QiscusRTC/**/*.{h,m,swift,xib}"
 s.resources = "QiscusRTC/**/*.xcassets"

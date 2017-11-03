@@ -92,16 +92,23 @@ class ViewController: UIViewController {
     
     func startCall() {
         let username = fieldUsername.text
-
-        QiscusRTC.startCall(WithtargetUsername: username!) { (target, error) in
+        let roomName = fieldRoomID.text
+        
+//        QiscusRTC.startCall(WithtargetUsername: username!) { (target, error) in
+//            if error != nil {
+//                self.present(target, animated: true, completion: nil)
+//                return
+//            }
+//            self.present(target, animated: true, completion: nil)
+//        }
+        QiscusRTC.startCall(withRoomId: roomName!, WithtargetUsername: username!) { (target, error) in
             if error != nil {
                 self.present(target, animated: true, completion: nil)
                 return
             }
-            
             self.present(target, animated: true, completion: nil)
-            
         }
+        
     }
     
     func incomingCall() {

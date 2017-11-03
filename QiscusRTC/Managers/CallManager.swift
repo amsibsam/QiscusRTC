@@ -55,7 +55,7 @@ class CallManager: NSObject {
         data.targetName     = targetDisplayName
         data.targetAvatar   = targetDisplayAvatar
         data.myEmailQiscus  = "juang@qiscus.co"
-        
+        target.isVideoCall  = true
         target.callData     = data
         
         completionHandler(target, nil)
