@@ -19,8 +19,7 @@ s.requires_arc = false
 s.libraries    = "c++", "z"
 s.requires_arc = true
 
-s.pod_target_xcconfig = {"OTHER_LDFLAGS" => "'-read_only_relocs' 'suppress'"}
-
+s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
 s.dependency "Alamofire"
 s.dependency "WebRTC"
 s.dependency "Starscream"

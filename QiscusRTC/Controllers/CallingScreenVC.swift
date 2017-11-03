@@ -619,15 +619,29 @@ extension CallingScreenVC {
 //        }
     }
     
+    
+    func defaultCamera() -> AVCaptureDevice? {
+        if #available(iOS 10.0, *) {
+            if let device = AVCaptureDevice.defaultDevice(withDeviceType: .builtInDuoCamera,
+                                                          mediaType: AVMediaTypeVideo,
+                                                          position: .back) {
+                return device
+            } else if let device = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera,
+                                                                 mediaType: AVMediaTypeVideo,
+                                                                 position: .back) {
+                return device
+            } else {
+                return nil
+            }
+        } else {
+            // Fallback on earlier versions
+            return nil
+        }
+    }
+    
     fileprivate func captureDevice() {
-        var device: AVCaptureDevice! = nil
-        
-//        for captureDevice in AVCaptureDevice.devices() {
-//            if ((captureDevice as AnyObject).position == AVCaptureDevice.position.front) {
-//                device = captureDevice as! AVCaptureDevice
-//            }
-//        }
-        
+        var device: AVCaptureDevice! = defaultCamera()
+
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
         if (device != nil) {
