@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
+        self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
         QiscusRTC.register(username: "juang", displayName: "juang")
         setupAuth()
     }
@@ -81,13 +83,29 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-        
-        
     }
     
     func logout() {
         QiscusRTC.logout()
         setupAuth()
+    }
+    
+    func startCall() {
+        let username = fieldUsername.text
+
+        QiscusRTC.startCall(WithtargetUsername: username!) { (target, error) in
+            if error != nil {
+                self.present(target, animated: true, completion: nil)
+                return
+            }
+            
+            self.present(target, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func incomingCall() {
+        
     }
     
 }

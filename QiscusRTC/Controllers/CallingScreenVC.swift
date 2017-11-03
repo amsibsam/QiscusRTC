@@ -82,6 +82,13 @@ class CallingScreenVC: UIViewController {
             :],
         optionalConstraints: nil)
     
+    public init() {
+        super.init(nibName: "CallingScreenVC", bundle: QiscusRTC.bundle)
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -332,7 +339,7 @@ extension CallingScreenVC {
         self.lbName.text = fullname
         self.lbNameVideo.text = fullname
         //configure avatar to imageView using alamofireImage
-        let placeHolderImage: UIImage   = UIImage(named: "avatar")!
+        let placeHolderImage: UIImage   = UIImage(named: "avatar", in: QiscusRTC.bundle, compatibleWith: nil)!
         
         //setup af_image filter
         let cellImageLayer: CALayer?    = ivAvatar.layer
@@ -584,7 +591,7 @@ extension CallingScreenVC {
     
     fileprivate func setupBackground() {
         // Set background with callee avatar
-//        self.backgroundGradient = UIImageView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
+        self.backgroundGradient = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         self.backgroundGradient.contentMode   = .scaleToFill
         self.backgroundGradient.layer.insertSublayer(setupGradient(), at: 0)
         self.view.addSubview(backgroundGradient)
@@ -592,24 +599,24 @@ extension CallingScreenVC {
     }
     
     fileprivate func playSound() {
-        var url = Bundle.main.url(forResource: self.isReceiving ? "phone_ring" : "phone_waiting", withExtension: "mp3")
-        
-        if self.player != nil {
-            player?.stop()
-            url = Bundle.main.url(forResource: "phone_ring", withExtension: "mp3")
-        }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            self.player = try AVAudioPlayer(contentsOf: url!)
-            self.player?.numberOfLoops = -1
-            guard let player = player else { return }
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
+//        var url = Bundle.main.url(forResource: self.isReceiving ? "phone_ring" : "phone_waiting", withExtension: "mp3")
+//        
+//        if self.player != nil {
+//            player?.stop()
+//            url = Bundle.main.url(forResource: "phone_ring", withExtension: "mp3")
+//        }
+//        
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            
+//            self.player = try AVAudioPlayer(contentsOf: url!)
+//            self.player?.numberOfLoops = -1
+//            guard let player = player else { return }
+//            player.play()
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
     }
     
     fileprivate func captureDevice() {
