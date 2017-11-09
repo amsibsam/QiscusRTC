@@ -74,12 +74,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.505014"
+                  timestampString = "531637924.544288"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
                   endingLineNumber = "65"
-                  offsetFromSymbolStart = "168">
+                  offsetFromSymbolStart = "182">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +89,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.50767"
+                  timestampString = "531637924.548287"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
                   endingLineNumber = "64"
-                  offsetFromSymbolStart = "8">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -104,12 +104,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.510198"
+                  timestampString = "531637924.554166"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
                   endingLineNumber = "64"
-                  offsetFromSymbolStart = "8">
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -137,12 +137,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.513758"
+                  timestampString = "531637924.559342"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
                   endingLineNumber = "65"
-                  offsetFromSymbolStart = "168">
+                  offsetFromSymbolStart = "182">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -152,12 +152,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.516338"
+                  timestampString = "531637924.562988"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
                   endingLineNumber = "66"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -185,12 +185,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.519934"
+                  timestampString = "531637924.567252"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
                   endingLineNumber = "85"
-                  offsetFromSymbolStart = "148">
+                  offsetFromSymbolStart = "149">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -200,12 +200,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "531394265.522596"
+                  timestampString = "531637924.570126"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
                   endingLineNumber = "86"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -233,11 +233,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393752.234212"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -245,46 +245,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393753.962155"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "QiscusRTC.CallingScreenVC.(setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()"
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.532978"
+                  timestampString = "531395269.85648"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "383"
-                  endingLineNumber = "383"
+                  startingLineNumber = "384"
+                  endingLineNumber = "384"
                   offsetFromSymbolStart = "564">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #2)"
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.535642"
+                  timestampString = "531395269.859241"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "384"
-                  endingLineNumber = "384"
+                  startingLineNumber = "385"
+                  endingLineNumber = "385"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -297,23 +297,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393757.41831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
-            landmarkName = "setupWebsocket()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393757.762358"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
@@ -329,11 +313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393791.77976"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -341,47 +325,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531393793.708305"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "setupWebsocket()"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "preparePeerConnection()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394066.069928"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "setupWebsocket()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394156.641187"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "690"
-            endingLineNumber = "690"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
             landmarkName = "preparePeerConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -393,27 +361,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394157.849223"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
-            landmarkName = "preparePeerConnection()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394193.314515"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
             <Locations>
@@ -425,12 +377,12 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.573055"
+                  timestampString = "531637924.601693"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "470"
-                  endingLineNumber = "470"
-                  offsetFromSymbolStart = "24192">
+                  startingLineNumber = "471"
+                  endingLineNumber = "471"
+                  offsetFromSymbolStart = "26056">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -440,107 +392,11 @@
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.576463"
+                  timestampString = "531637924.605374"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "470"
-                  endingLineNumber = "470"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394215.403251"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
-            landmarkName = "setupWebsocket()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3)"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.581425"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "491"
-                  endingLineNumber = "491"
-                  offsetFromSymbolStart = "30548">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3).(closure #3)"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.58483"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "491"
-                  endingLineNumber = "491"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394216.035322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
-            landmarkName = "setupWebsocket()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3)"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.589847"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "486"
-                  endingLineNumber = "486"
-                  offsetFromSymbolStart = "29636">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3).(closure #2)"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
-                  timestampString = "531394265.593965"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "488"
-                  endingLineNumber = "488"
+                  startingLineNumber = "471"
+                  endingLineNumber = "471"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -553,11 +409,107 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394216.635494"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
+            landmarkName = "setupWebsocket()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3)"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
+                  timestampString = "531637924.609827"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "492"
+                  endingLineNumber = "492"
+                  offsetFromSymbolStart = "32161">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3).(closure #3)"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
+                  timestampString = "531637924.613357"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "492"
+                  endingLineNumber = "492"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395267.284331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
+            landmarkName = "setupWebsocket()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3)"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
+                  timestampString = "531637924.617381"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "487"
+                  endingLineNumber = "487"
+                  offsetFromSymbolStart = "31223">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QiscusRTC.CallingScreenVC.((setupWebsocket in _A76F68D23EEC8D8D3F70130C72F576AC) () -&gt; ()).(closure #3).(closure #2)"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/Controllers/CallingScreenVC.swift"
+                  timestampString = "531637924.620755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "489"
+                  endingLineNumber = "489"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395267.284331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -569,11 +521,219 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
-            timestampString = "531394218.707578"
+            timestampString = "531395267.284331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
+            landmarkName = "setupWebsocket()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395188.566545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "peerConnection(_:addedStream:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395191.342303"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "peerConnection(_:removedStream:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395192.270429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "peerConnection(_:didOpen:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395199.96674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "peerConnection(onRenegotiationNeeded:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395201.478812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "peerConnection(_:didChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395206.662935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "peerConnection(_:didChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395207.495028"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "peerConnection(_:didChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395208.542954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "peerConnection(_:didAdd:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395209.479084"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "peerConnection(_:didRemove:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395210.223031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "peerConnection(_:didGenerate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395211.431143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "peerConnection(_:didRemove:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395212.103125"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "peerConnectionShouldNegotiate(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/Controllers/CallingScreenVC.swift"
+            timestampString = "531395297.402152"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "setupWebsocket()"
             landmarkType = "7">
          </BreakpointContent>

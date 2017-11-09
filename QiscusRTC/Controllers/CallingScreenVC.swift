@@ -273,6 +273,7 @@ extension CallingScreenVC: RTCPeerConnectionDelegate {
     }
     
     func peerConnection(onRenegotiationNeeded peerConnection: RTCPeerConnection!) {
+        //
     }
 }
 
@@ -387,7 +388,7 @@ extension CallingScreenVC {
         }
         self.socket.onText = { (text: String) in
             print("[Hub] Got some text: \(text)")
-            print("[]")
+
             let message = text.data(using: String.Encoding.utf8)
             
             do {
@@ -650,8 +651,7 @@ extension CallingScreenVC {
                 break
             }
         }
-        
-        
+
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
         if (device != nil) {
@@ -672,6 +672,7 @@ extension CallingScreenVC {
             self.viewLocalVideo.addSubview(self.localVideo)
         }else {
             // you don't have camera
+            
         }
     }
     
