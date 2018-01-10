@@ -59,8 +59,8 @@ class CallingPresenter: CallingPresenterInteraction {
     }
     
     func setActive(isActive: Bool) {
-        let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
-        callManager?.isCallActive = isActive
+        //let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
+        //callManager?.isCallActive = isActive
     }
     
     func startCalling() {
@@ -76,11 +76,11 @@ class CallingPresenter: CallingPresenterInteraction {
     }
     
     func acceptCall(userEmail: String, callRoomId: String) {
-        let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
-        // do the rtc implementation
-        callManager?.initializeCall(userEmail: userEmail, userType: "caller", callRoomId: callRoomId, isVideo: false, callEvent: "accept") { (response) in
-            self.delegate.onAcceptCall()
-        }
+//        let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
+//        // do the rtc implementation
+//        callManager?.initializeCall(userEmail: userEmail, userType: "caller", callRoomId: callRoomId, isVideo: false, callEvent: "accept") { (response) in
+//            self.delegate.onAcceptCall()
+//        }
     }
     
     func endCall() {
