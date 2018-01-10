@@ -26,6 +26,10 @@ struct CallData {
     var callRoomId: String = ""
 }
 
+let STUNServer  = ["stun:stun.l.google.com:19302", "stun:139.59.110.14:3478"]
+let TURNServer  = ["turn:139.59.110.14:3478"]
+let WSServer    = "wss://rtc.qiscus.com/signal"
+
 class CallingScreenVC: UIViewController {
     //ui element
     @IBOutlet weak var lbName: UILabel!
@@ -365,12 +369,14 @@ extension CallingScreenVC {
     }
     
     fileprivate func setupWebsocket() {
-        self.socket = WebSocket(url: URL(string: "wss://rtc.qiscus.com/signal")!)
+        self.socket = WebSocket(url: URL(string: WSServer)!)
         self.socket.onConnect = {
             print("[Hub] Websocket is connected")
             let jsonDic = [
                 "request": "register",
                 "data": "{\"username\": \"\(self.callData.myEmailQiscus)\"}"
+                
+                //MARK TODO add app id app secret
             ] as [String : Any]
 
             do {
@@ -400,12 +406,14 @@ extension CallingScreenVC {
                         
                         if response == "register" {
                             if let success = dataObj?.value(forKey: "success") as? Bool {
+                                //MARK: get token
                                 if (!self.isReceiving) {
                                     let jsonDic = [
                                         "request": "room_create",
                                         "room": self.callData.callRoomId,
                                         "data": "{\"max_participant\": 2}"
                                         ] as [String : Any]
+                                    //MARK: send token
                                     let jsonObj = try JSONSerialization.data(withJSONObject: jsonDic, options: .prettyPrinted)
                                     let jsonStr = String(data: jsonObj, encoding: String.Encoding.utf8)
                                     self.socket.write(string: jsonStr!)
@@ -482,6 +490,7 @@ extension CallingScreenVC {
                                 let dataIndex = dataObj?.value(forKey: "sdpMLineIndex") as? Int
                                 let dataCandidate = dataObj?.value(forKey: "candidate") as? String
                                 
+                                // callee send offer
                                 if dataType == "offer" {
                                     let sdpSet = RTCSessionDescription(type: RTCSdpType.offer, sdp: dataSDP!)
                                     self.peerConnection.setRemoteDescription(sdpSet, completionHandler: { (error) in
@@ -678,8 +687,8 @@ extension CallingScreenVC {
     
     fileprivate func preparePeerConnection() {
         let icsServers: [RTCIceServer] = [
-            RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302", "stun:139.59.110.14:3478"], username: "", credential: ""),
-            RTCIceServer.init(urlStrings: ["turn:139.59.110.14:3478"], username: "sangkil", credential: "qiscuslova")
+            RTCIceServer.init(urlStrings: STUNServer, username: "", credential: ""),
+            RTCIceServer.init(urlStrings: TURNServer, username: "sangkil", credential: "qiscuslova")
         ]
         var pcConstraints: RTCMediaConstraints! = nil
         pcConstraints = RTCMediaConstraints(mandatoryConstraints: nil

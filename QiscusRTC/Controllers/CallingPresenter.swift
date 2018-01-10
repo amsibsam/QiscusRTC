@@ -40,6 +40,11 @@ protocol CallingPresenterInteraction {
     
     /// Funciton to end call
     func endCall()
+    
+    /// set condition of call state
+    ///
+    /// - Parameter isActive: call state
+    func setActive(isActive: Bool)
 }
 
 class CallingPresenter: CallingPresenterInteraction {
@@ -53,8 +58,13 @@ class CallingPresenter: CallingPresenterInteraction {
         self.delegate = delegate
     }
     
+    func setActive(isActive: Bool) {
+        let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
+        callManager?.isCallActive = isActive
+    }
+    
     func startCalling() {
-//        self.startTimer()
+        //        self.startTimer()
     }
     
     func toggleMic(isOn: Bool) {
@@ -66,11 +76,11 @@ class CallingPresenter: CallingPresenterInteraction {
     }
     
     func acceptCall(userEmail: String, callRoomId: String) {
-//     let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
-//        // do the rtc implementation
-//        callManager?.initializeCall(userEmail: userEmail, userType: "caller", callRoomId: callRoomId, isVideo: false, callEvent: "accept") { (response) in
-//            self.delegate.onAcceptCall()
-//        }
+        let callManager = (UIApplication.shared.delegate as! AppDelegate).qismeApp?.callManager
+        // do the rtc implementation
+        callManager?.initializeCall(userEmail: userEmail, userType: "caller", callRoomId: callRoomId, isVideo: false, callEvent: "accept") { (response) in
+            self.delegate.onAcceptCall()
+        }
     }
     
     func endCall() {
@@ -108,3 +118,5 @@ class CallingPresenter: CallingPresenterInteraction {
         self.delegate.onTimerTic(duration: timerString)
     }
 }
+
+
