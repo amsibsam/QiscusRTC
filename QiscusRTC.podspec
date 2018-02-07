@@ -24,4 +24,5 @@ s.dependency "Alamofire"
 s.dependency "WebRTC"
 s.dependency "Starscream"
 s.dependency "AlamofireImage"
+s.dependency "SwiftyJSON"
 end
