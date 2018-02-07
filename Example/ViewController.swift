@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
         self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
+        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
         QiscusRTC.register(username: "juang", displayName: "juang")
         setupAuth()
     }
@@ -112,7 +113,17 @@ class ViewController: UIViewController {
     }
     
     func incomingCall() {
-        
+        let username = fieldUsername.text
+        let roomName = fieldRoomID.text
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            QiscusRTC.incomingCall(withRoomId: roomName!, targetUsername: username!) { (target, error) in
+//                if error != nil {
+//                    self.present(target, animated: true, completion: nil)
+//                    return
+//                }
+//                self.present(target, animated: true, completion: nil)
+            }
+//        })
     }
     
 }

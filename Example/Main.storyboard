@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Itp-G1-wSu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Itp-G1-wSu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-xV-KEl">
-                                <rect key="frame" x="94" y="269" width="132" height="30"/>
+                                <rect key="frame" x="94" y="228" width="132" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start Call">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,7 +61,7 @@
                                 <state key="normal" title="Login"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBF-cO-MZh">
-                                <rect key="frame" x="94" y="307" width="132" height="30"/>
+                                <rect key="frame" x="94" y="266" width="132" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Incoming Call">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,11 +80,11 @@
                             <constraint firstItem="Aak-6c-7Vc" firstAttribute="leading" secondItem="9Vc-4F-rDC" secondAttribute="leadingMargin" id="PTd-df-sTD"/>
                             <constraint firstItem="Aak-6c-7Vc" firstAttribute="top" secondItem="EQB-cA-D0w" secondAttribute="bottom" id="SQB-aa-2sJ"/>
                             <constraint firstItem="Att-BV-LiB" firstAttribute="top" secondItem="yUk-Ai-xt9" secondAttribute="bottom" constant="8" symbolic="YES" id="U1U-Ss-H87"/>
-                            <constraint firstItem="Jf8-xV-KEl" firstAttribute="centerY" secondItem="9Vc-4F-rDC" secondAttribute="centerY" id="bvK-Eg-PvB"/>
                             <constraint firstItem="s6Q-0R-Vfa" firstAttribute="top" secondItem="Att-BV-LiB" secondAttribute="bottom" constant="8" symbolic="YES" id="ddN-wN-Htd"/>
                             <constraint firstItem="eBm-qc-yUD" firstAttribute="trailing" secondItem="Jf8-xV-KEl" secondAttribute="trailing" id="eXe-O8-kS0"/>
                             <constraint firstItem="yUk-Ai-xt9" firstAttribute="leading" secondItem="9Vc-4F-rDC" secondAttribute="leadingMargin" constant="45" id="eq7-C4-ALk"/>
                             <constraint firstItem="eBm-qc-yUD" firstAttribute="centerX" secondItem="Att-BV-LiB" secondAttribute="centerX" id="go9-cD-v56"/>
+                            <constraint firstItem="Jf8-xV-KEl" firstAttribute="top" secondItem="s6Q-0R-Vfa" secondAttribute="bottom" constant="8" symbolic="YES" id="gzW-wL-jlY"/>
                             <constraint firstItem="eBm-qc-yUD" firstAttribute="top" secondItem="Aak-6c-7Vc" secondAttribute="bottom" constant="8" symbolic="YES" id="qxS-v3-fsz"/>
                             <constraint firstItem="yUk-Ai-xt9" firstAttribute="top" secondItem="eBm-qc-yUD" secondAttribute="bottom" constant="44" id="rTa-Np-lGK"/>
                             <constraint firstItem="Aak-6c-7Vc" firstAttribute="centerX" secondItem="eBm-qc-yUD" secondAttribute="centerX" id="syl-ez-Bzi"/>

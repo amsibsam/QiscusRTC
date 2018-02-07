@@ -13,6 +13,7 @@
 		0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC551FA9DBAA008D3866 /* Assets.xcassets */; };
 		0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */; };
 		3166296DF06919FA5F916916 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */; };
+		3D50DA86202AF36C00643BB1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D50DA85202AF36C00643BB1 /* README.md */; };
 		3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */; };
 		3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BC1FAACA25004EE86F /* Main.storyboard */; };
 		6B44CCBDBCE6E27237534CB9 /* Pods_QiscusRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */; };
@@ -30,6 +31,7 @@
 		0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRTC.podspec; sourceTree = "<group>"; };
 		1BA5040EA95BEC56BE2D16E5 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.debug.xcconfig"; sourceTree = "<group>"; };
+		3D50DA85202AF36C00643BB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D7199BC1FAACA25004EE86F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				0457BC5E1FA9E18C008D3866 /* QiscusRTC.podspec */,
+				3D50DA85202AF36C00643BB1 /* README.md */,
 				0457BC3F1FA9DB95008D3866 /* QiscusRTC */,
 				0457BC4D1FA9DBAA008D3866 /* Example */,
 				0457BC3E1FA9DB95008D3866 /* Products */,
@@ -219,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D50DA86202AF36C00643BB1 /* README.md in Resources */,
 				0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

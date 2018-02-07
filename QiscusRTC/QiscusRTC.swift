@@ -34,8 +34,8 @@ public class QiscusRTC: NSObject {
     }
     
     // initiate
-    public class func setup(appId: String, appSecret : String, signalUrl: URL, username: String, delegate: QiscusCallDelegate? = nil) {
-        let config              = CallConfig(signalUrl: signalUrl, appID: appId, secretKey: appSecret, username: username)
+    public class func setup(appId: String, appSecret : String, signalUrl: URL, delegate: QiscusCallDelegate? = nil) {
+        let config              = CallConfig(signalUrl: signalUrl, appID: appId, secretKey: appSecret)
         shared.manager.config   = config
     }
     
@@ -52,14 +52,14 @@ public class QiscusRTC: NSObject {
     }
     
     public class func register(username: String, displayName: String, avatarUrl: String = "http://") {
-//        shared.manager.client   = QiscusCallClient(username: username, displayName: displayName, avatarUrl: avatarUrl)
+        shared.manager.client   = QiscusCallClient(username: username, displayName: displayName, avatarUrl: avatarUrl)
     }
     
-    public class func call(withRoomId id: String, callType type: CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
-        shared.manager.call(withRoomId: id, callType: type, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
-            completionHandler(target, error)
-        }
-    }
+//    public class func call(withRoomId id: String, callType type: CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+//        shared.manager.call(withRoomId: id, callType: type, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
+//            completionHandler(target, error)
+//        }
+//    }
     
     public class func startCall(withRoomId id: String = "", WithtargetUsername username: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
         if id.isEmpty {

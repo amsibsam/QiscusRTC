@@ -83,7 +83,7 @@ class CallManager {
     func start() {
         if let config = self.config {
             // WSS
-            self.callSignal?.setup(url: config.signalUrl , appID: config.appID, secret: config.secretKey, username: config.username)
+            self.callSignal?.setup(url: config.signalUrl , appID: config.appID, secret: config.secretKey, username: (client?.username)!)
             // RTC
             self.callEnggine?.setup()
         }
