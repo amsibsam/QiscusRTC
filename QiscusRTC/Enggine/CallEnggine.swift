@@ -172,12 +172,15 @@ class CallEnggine: NSObject {
     
     func setOffer(dataType: String, sdp: String) {
         self.setSessionDescription(dataType: .offer, sdp: sdp)
-        self.peerConnection.createOffer(with: self, constraints: self.mediaConstraints)
+//        self.peerConnection.createOffer(with: self, constraints: self.mediaConstraints)
+        self.peerConnection.offer(for: self.mediaConstraints) { (sessionDescriptoin, error) in
+            //
+        }
     }
     
     func setAnswer(dataType: String, sdp: String) {
         self.setSessionDescription(dataType: .answer, sdp: sdp)
-        self.peerConnection.createAnswer(with: self, constraints: self.mediaConstraints)
+//        self.peerConnection.createAnswer(with: self, constraints: self.mediaConstraints)
         self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
             //
         })
@@ -191,7 +194,10 @@ class CallEnggine: NSObject {
     // RTC
     func setSessionDescription(dataType: RTCSdpType, sdp: String) {
         let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
-        self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
+//        self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
+        self.peerConnection.setRemoteDescription(sdpSet) { (error) in
+            //
+        }
     }
     
     fileprivate func preparePeerConnection() {

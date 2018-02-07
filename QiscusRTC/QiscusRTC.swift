@@ -19,7 +19,7 @@ public enum CallType {
 
 public class QiscusRTC: NSObject {
     public static let shared = QiscusRTC()
-    private var manager : CallManager   = CallManager()
+    internal var manager : CallManager   = CallManager()
     
     class var bundle:Bundle{
         get{
@@ -40,16 +40,15 @@ public class QiscusRTC: NSObject {
     }
     
     public class func isRegister() -> Bool {
-        return false
-//        return shared.manager.isRegister()
+        return shared.manager.isRegister()
     }
     
     public class func logout() {
-//        shared.manager.clearClient()
+        shared.manager.clearClient()
     }
     
     public class func whoami() -> CallUser? {
-//        return shared.manager.whoami()
+        return shared.manager.whoami()
     }
     
     public class func register(username: String, displayName: String, avatarUrl: String = "http://") {

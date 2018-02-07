@@ -6,158 +6,93 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531382000.132786"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "isRegister()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386790.526758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "isRegister()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386805.391562"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386806.159391"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "QiscusRTC"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 3 of static QiscusRTC.QiscusRTC.call(withRoomId: Swift.String, callType: QiscusRTC.CallType, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.814238"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 4 of static QiscusRTC.QiscusRTC.call(withRoomId: Swift.String, callType: QiscusRTC.CallType, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.818886"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static QiscusRTC.QiscusRTC.call(withRoomId: Swift.String, callType: QiscusRTC.CallType, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.822139"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "184">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386806.735481"
+            timestampString = "539681272.511757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/QiscusRTC.swift"
+            timestampString = "539681272.51515"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static QiscusRTC.QiscusRTC.call(withRoomId: Swift.String, callType: QiscusRTC.CallType, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "default argument 0 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.826812"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.949078"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 2 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.954008"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 3 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.9599119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.966186"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
                   endingLineNumber = "65"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in static QiscusRTC.QiscusRTC.call(withRoomId: Swift.String, callType: QiscusRTC.CallType, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QiscusRTC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.83164"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "26">
+                  offsetFromSymbolStart = "100">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -169,41 +104,73 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386808.247477"
+            timestampString = "539681272.51563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85">
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static QiscusRTC.QiscusRTC.incomingCall(withRoomId: Swift.String, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "default argument 0 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.8359441"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.975358"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "145">
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in static QiscusRTC.QiscusRTC.incomingCall(withRoomId: Swift.String, targetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "default argument 2 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "QiscusRTC"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qiscus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
-                  timestampString = "537264019.838997"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.980844"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "26">
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 3 of static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.98542"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static QiscusRTC.QiscusRTC.startCall(withRoomId: Swift.String, WithtargetUsername: Swift.String, targetDisplayName: Swift.String, targetDisplayAvatar: Swift.String, completionHandler: (__ObjC.UIViewController, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QiscusRTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qicus/iOS/QiscusRTC/QiscusRTC/QiscusRTC.swift"
+                  timestampString = "539681284.992274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "100">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -215,11 +182,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiscusRTC/QiscusRTC.swift"
-            timestampString = "531386808.687608"
+            timestampString = "539681272.516039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86">
+            startingLineNumber = "84"
+            endingLineNumber = "84">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiscusRTC/QiscusRTC.swift"
+            timestampString = "539681272.516364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

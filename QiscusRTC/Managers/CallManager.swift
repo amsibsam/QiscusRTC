@@ -29,6 +29,7 @@ class CallManager {
     var callSignal  : CallSignal?
     var config       : CallConfig?   = nil
     var startTime   : Date? = nil
+    var client      : QiscusCallClient?  = nil
     var isAudioMute : Bool {
         get {
             return (self.callEnggine?.isAudioMute)!
@@ -52,8 +53,31 @@ class CallManager {
         self.callEnggine        = CallEnggine(delegate: self)
     }
     
+    func isRegister() -> Bool {
+        return self.client != nil ? true : false
+    }
+    
+    func whoami() -> CallUser? {
+        return client
+    }
+    
+    func clearClient() {
+        client = nil
+    }
+    
     func setup(withConfig config: CallConfig) {
         self.config              = config
+    }
+    
+    func call(withRoomId id: String, callType : CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+        let target = self.getCall()
+        completionHandler(target, nil)
+        
+        if callType == .incoming {
+            self.incomingCall(name: targetDisplayName, userID: targetUsername, roomID: id, isAudio: false, callAvatar: URL(string: targetDisplayAvatar)!)
+        }else {
+            
+        }
     }
     
     func start() {
@@ -89,23 +113,7 @@ class CallManager {
         // change handle callkit
     }
     
-    func outgoing(data: CallData) {
-//        let callingVc = CallingScreenVC()
-//        callingVc.callData      = data
-//        callingVc.isReceiving   = false
-//
-//        let callingNav = UINavigationController(rootViewController: callingVc)
-//
-//        UIApplication.currentViewController()?.navigationController?.present(callingNav, animated: true, completion: {
-//            self.initializeCall(userEmail: data.targetEmail, userType: "callee", callRoomId: data.callRoomId, isVideo: false, callEvent: "incoming") { (result) in
-//
-//            }
-//        })
-        
-        // self.callKit.startCall(name: name, videoEnabled: false)
-    }
-    
-    func incomingCall(name: String, userID: String, roomID: String, isAudio: Bool, callAvatar : URL) {
+    private func incomingCall(name: String, userID: String, roomID: String, isAudio: Bool, callAvatar : URL) {
         self.callSignal?.roomID = roomID
         self.callSignal?.targetUser = userID
         self.callSession = Call(uuid: UUID(), outgoing: false, name: name, room: roomID, isAudio: isAudio, callAvatar: callAvatar)
@@ -143,6 +151,24 @@ class CallManager {
         }else {
             return nil
         }
+    }
+    
+    func createRoomID(length:Int) -> String {
+        
+        let randomString:NSMutableString = NSMutableString(capacity: length)
+        
+        let letters:NSMutableString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        var i: Int = 0
+        
+        while i < length {
+            
+            let randomIndex:Int = Int(arc4random_uniform(UInt32(letters.length)))
+            randomString.append("\(Character( UnicodeScalar( letters.character(at: randomIndex))!))")
+            i += 1
+        }
+        
+        return String(randomString)
     }
 }
 
