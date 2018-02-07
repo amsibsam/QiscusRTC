@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CallUI: UIViewController {
 
@@ -22,6 +23,13 @@ class CallUI: UIViewController {
     var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
+    
+    public init() {
+        super.init(nibName: "CallUI", bundle: QiscusRTC.bundle)
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

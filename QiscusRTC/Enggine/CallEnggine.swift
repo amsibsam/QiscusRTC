@@ -10,6 +10,7 @@
 
 import Foundation
 import AVFoundation
+import WebRTC
 
 enum CallConnectionState: String {
     case new        = "NEW"
@@ -28,6 +29,14 @@ protocol CallEnggineDelegate {
     func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String)
     func callEnggine(createSession type: String, description: String)
 }
+
+let VIDEO_TRACK_ID = "VIDEO0"
+let AUDIO_TRACK_ID = "AUDIO0"
+let LOCAL_MEDIA_STREAM_ID = "STREAM0"
+
+let STUNServer  = ["stun:stun.l.google.com:19302", "stun:139.59.110.14:3478"]
+let TURNServer  = ["turn:139.59.110.14:3478"]
+let WSServer    = "wss://rtc.qiscus.com/signal"
 
 class CallEnggine: NSObject {
     // public
@@ -48,11 +57,9 @@ class CallEnggine: NSObject {
     var localAudioTrack         : RTCAudioTrack!
     var remoteVideoTrack        : RTCVideoTrack!
     var remoteAudioTrack        : RTCAudioTrack!
-    var mediaConstraints        = RTCMediaConstraints (
-        mandatoryConstraints: [
-            RTCPair(key: "OfferToReceiveAudio", value: "true"),
-            RTCPair(key: "OfferToReceiveVideo", value: "true")
-        ],optionalConstraints: nil)
+    var mediaConstraints = RTCMediaConstraints(mandatoryConstraints: [
+        "OfferToReceiveAudio" : "true", "OfferToReceiveVideo" : "true"
+        ], optionalConstraints: nil)
     
     internal var delegate : CallEnggineDelegate
     private var isMuted : Bool  = false
@@ -164,40 +171,41 @@ class CallEnggine: NSObject {
     }
     
     func setOffer(dataType: String, sdp: String) {
-        self.setSessionDescription(dataType: dataType, sdp: sdp)
+        self.setSessionDescription(dataType: .offer, sdp: sdp)
         self.peerConnection.createOffer(with: self, constraints: self.mediaConstraints)
     }
     
     func setAnswer(dataType: String, sdp: String) {
-        self.setSessionDescription(dataType: dataType, sdp: sdp)
+        self.setSessionDescription(dataType: .answer, sdp: sdp)
         self.peerConnection.createAnswer(with: self, constraints: self.mediaConstraints)
+        self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
+            //
+        })
     }
     
     func setCandidate(dataMid: String, dataIndex: Int, dataCandidate: String) {
-        let iceSet = RTCICECandidate(mid: dataMid, index: dataIndex, sdp: dataCandidate)
+        let iceSet = RTCIceCandidate(sdp: dataCandidate, sdpMLineIndex: Int32(dataIndex), sdpMid: dataMid)
         self.peerConnection.add(iceSet)
     }
     
     // RTC
-    func setSessionDescription(dataType: String, sdp: String) {
+    func setSessionDescription(dataType: RTCSdpType, sdp: String) {
         let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
         self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
     }
     
     fileprivate func preparePeerConnection() {
-        let googleStunUrl: URL = URL(string: "stun:stun.l.google.com:19302")!
-        let qiscusStunUrl: URL = URL(string: "stun:139.59.110.14:3478")!
-        let qiscusTurnUrl: URL = URL(string: "turn:139.59.110.14:3478")!
-        let icsServers: [RTCICEServer] = [
-            RTCICEServer.init(uri: googleStunUrl, username: "", password: ""),
-            RTCICEServer.init(uri: qiscusStunUrl, username: "", password: ""),
-            RTCICEServer.init(uri: qiscusTurnUrl, username: "sangkil", password: "qiscuslova")
+        let icsServers: [RTCIceServer] = [
+            RTCIceServer.init(urlStrings: STUNServer, username: "", credential: ""),
+            RTCIceServer.init(urlStrings: TURNServer, username: "sangkil", credential: "qiscuslova")
         ]
         var pcConstraints: RTCMediaConstraints! = nil
-        let optionalConstraints:NSArray = [RTCPair(key: "DtlsSrtpKeyAgreement", value: "true")]
-        pcConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: optionalConstraints as [AnyObject])
+        pcConstraints = RTCMediaConstraints(mandatoryConstraints: nil
+            , optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
+        let config = RTCConfiguration()
+        config.iceServers = icsServers
+        self.peerConnection = self.peerConnectionFactory.peerConnection(with: config, constraints: pcConstraints, delegate: self)
         
-        self.peerConnection = self.peerConnectionFactory.peerConnection(withICEServers: icsServers, constraints: pcConstraints, delegate: self)
         self.peerConnection.add(self.mediaStream)
     }
     
@@ -210,36 +218,28 @@ class CallEnggine: NSObject {
             }
         }
         
+        self.peerConnectionFactory = RTCPeerConnectionFactory()
+        
         if (device != nil) {
-            let capturer = RTCVideoCapturer(deviceName: device.localizedName)
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
+            self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
+            let videoSource  = peerConnectionFactory.videoSource()
             
-            let videoSource = peerConnectionFactory.videoSource(with: capturer, constraints: videoConstraints)
-            
-            self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
-            self.localVideo.tag = self.localVideoTAG
-            self.localVideo.delegate = self
-            
-            self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: CGFloat.screenWidth, height: CGFloat.screenHeight))
-            self.remoteVideo.tag = self.remoteVideoTAG
-            self.remoteVideo.delegate = self
-            
-            self.localVideoTrack = peerConnectionFactory.videoTrack(withID: VIDEO_TRACK_ID, source: videoSource)
+            self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+            self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+            self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
             self.localVideoTrack.add(self.localVideo)
-            self.localAudioTrack = peerConnectionFactory.audioTrack(withID: AUDIO_TRACK_ID)
-            self.mediaStream = peerConnectionFactory.mediaStream(withLabel: LOCAL_MEDIA_STREAM_ID)
+            self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
+            self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
             
-            /*
-            self.viewLocalVideo.insertSubview(self.localVideo, at: 0)
-            self.viewLocalVideo.clipsToBounds = true
+            //self.viewLocalVideo.insertSubview(self.localVideo, at: 0)
             // hide local video container when calling
-            self.viewLocalVideo.isHidden = true
+            //self.viewLocalVideo.isHidden = true
+            
             // add local video to remote video when calling
-            self.viewRemoteVideo.insertSubview(self.localVideo, at: 0)
-            self.viewRemoteVideo.clipsToBounds = true
-            */
+            //self.viewRemoteVideo.insertSubview(self.localVideo, at: 0)
         }
     }
 }
@@ -270,33 +270,38 @@ extension CallEnggine: RTCEAGLVideoViewDelegate {
 
 // MARK: after call preparePeerConnection()
 extension CallEnggine: RTCPeerConnectionDelegate {
-    func peerConnection(_ peerConnection: RTCPeerConnection!, signalingStateChanged stateChanged: RTCSignalingState) {
+    func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
+        //
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
+        if (newState == .new) {
+            self.delegate.callEnggine(connectionChanged: CallConnectionState.new)
+        } else if (newState == .connected) {
+            self.delegate.callEnggine(connectionChanged: CallConnectionState.connected)
+        } else if (newState == .failed) {
+            self.delegate.callEnggine(connectionChanged: CallConnectionState.failed)
+        }
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         print("[RTC-HUB] Signaling state: \(stateChanged.rawValue)")
         if stateChanged.rawValue == 0 {
             
         }
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, iceConnectionChanged newState: RTCICEConnectionState) {
-        if (newState == RTCICEConnectionNew) {
-            self.delegate.callEnggine(connectionChanged: CallConnectionState.new)
-        } else if (newState == RTCICEConnectionConnected) {
-            self.delegate.callEnggine(connectionChanged: CallConnectionState.connected)
-        } else if (newState == RTCICEConnectionFailed) {
-            self.delegate.callEnggine(connectionChanged: CallConnectionState.failed)
-        }
+    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
+        //
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, iceGatheringChanged newState: RTCICEGatheringState) {
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, gotICECandidate candidate: RTCICECandidate!) {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         if (candidate != nil) {
-            self.delegate.callEnggine(gotCandidate: candidate.sdpMid, dataIndex: candidate.sdpMLineIndex, dataSdp: candidate.sdp)
+            self.delegate.callEnggine(gotCandidate: candidate.sdpMid!, dataIndex: Int(candidate.sdpMLineIndex), dataSdp: candidate.sdp)
         }
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, addedStream stream: RTCMediaStream!) {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
         if (peerConnection == nil) {
             return
         }
@@ -305,38 +310,39 @@ extension CallEnggine: RTCPeerConnectionDelegate {
             return
         }
         if (stream.videoTracks.count == 1) {
-            remoteVideoTrack = stream.videoTracks[0] as! RTCVideoTrack
-            remoteVideoTrack.setEnabled(true)
-            remoteVideoTrack.add(self.remoteVideo);
+            remoteVideoTrack            = stream.videoTracks[0] as! RTCVideoTrack
+            remoteVideoTrack.isEnabled  = true;
+            remoteVideoTrack.add(self.remoteVideo)
         }
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, removedStream stream: RTCMediaStream!) {
-        // remoteVideoTrack = nil
-        // stream.videoTracks[0].dispose();
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
+        remoteVideoTrack = nil
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didOpen dataChannel: RTCDataChannel!) {
-        print("peer connection open")
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
+        //
     }
     
-    func peerConnection(onRenegotiationNeeded peerConnection: RTCPeerConnection!) {
+    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
+        //
     }
 }
 
-extension CallEnggine: RTCSessionDescriptionDelegate {
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
-        if (error == nil) {
-            //self.player?.stop()
-            peerConnection.setLocalDescriptionWith(self, sessionDescription: sdp)
-            print("[RTC-HUB] Got local offer/answer")
-            self.delegate.callEnggine(createSession: sdp.type, description: sdp.description)
-            
-        } else {
-            print("[RTC-HUB] SDP creation error: " + error.localizedDescription)
-        }
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection!, didSetSessionDescriptionWithError error: Error!) {
-    }
-}
+//extension CallEnggine: RTCSessionDescriptionDelegate {
+//    func peerConnection(_ peerConnection: RTCPeerConnection!, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
+//        if (error == nil) {
+//            //self.player?.stop()
+//            peerConnection.setLocalDescriptionWith(self, sessionDescription: sdp)
+//            print("[RTC-HUB] Got local offer/answer")
+//            self.delegate.callEnggine(createSession: sdp.type, description: sdp.description)
+//
+//        } else {
+//            print("[RTC-HUB] SDP creation error: " + error.localizedDescription)
+//        }
+//    }
+//
+//    func peerConnection(_ peerConnection: RTCPeerConnection!, didSetSessionDescriptionWithError error: Error!) {
+//    }
+//}
+

@@ -12,12 +12,6 @@ public protocol QiscusCallDelegate {
     func callConnected()
 }
 
-public struct QiscusCallConfig {
-    public var appId       : String                = ""
-    public var appSecret   : String                = ""
-    public var delegate    : QiscusCallDelegate?   = nil
-}
-
 public enum CallType {
     case incoming
     case outgoing
@@ -40,25 +34,26 @@ public class QiscusRTC: NSObject {
     }
     
     // initiate
-    public class func setup(appId: String, appSecret : String, delegate: QiscusCallDelegate? = nil) {
-        let callconfig          = QiscusCallConfig(appId: appId, appSecret: appSecret, delegate: delegate)
-        shared.manager.config   = callconfig
+    public class func setup(appId: String, appSecret : String, signalUrl: URL, username: String, delegate: QiscusCallDelegate? = nil) {
+        let config              = CallConfig(signalUrl: signalUrl, appID: appId, secretKey: appSecret, username: username)
+        shared.manager.config   = config
     }
     
     public class func isRegister() -> Bool {
-        return shared.manager.isRegister()
+        return false
+//        return shared.manager.isRegister()
     }
     
     public class func logout() {
-        shared.manager.clearClient()
+//        shared.manager.clearClient()
     }
     
     public class func whoami() -> CallUser? {
-        return shared.manager.whoami()
+//        return shared.manager.whoami()
     }
     
     public class func register(username: String, displayName: String, avatarUrl: String = "http://") {
-        shared.manager.client   = QiscusCallClient(username: username, displayName: displayName, avatarUrl: avatarUrl)
+//        shared.manager.client   = QiscusCallClient(username: username, displayName: displayName, avatarUrl: avatarUrl)
     }
     
     public class func call(withRoomId id: String, callType type: CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {

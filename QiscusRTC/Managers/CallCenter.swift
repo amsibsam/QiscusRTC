@@ -27,7 +27,7 @@ class CallCenter: NSObject {
     private let provider = CXProvider(configuration: CallCenter.providerConfiguration)
     
     private static var providerConfiguration: CXProviderConfiguration {
-        let appName = Helper.APP_NAME
+        let appName = "Qiscus Call"
         let providerConfiguration = CXProviderConfiguration(localizedName: appName)
         providerConfiguration.supportsVideo = false
         providerConfiguration.maximumCallsPerCallGroup = 1

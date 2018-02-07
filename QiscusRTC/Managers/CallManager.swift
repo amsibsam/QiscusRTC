@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import SwiftyTimer
 
 struct CallData {
     var targetName: String = ""
@@ -20,22 +19,9 @@ struct CallData {
     var isVideoCall: Bool = false
 }
 
-class CallConfig {
-    var signalUrl   : URL
-    var appID       : String
-    var secretKey   : String
-    var username    : String
-    
-    init(signalUrl : URL, appID: String, secretKey: String, username: String) {
-        self.signalUrl  = signalUrl
-        self.appID      = appID
-        self.secretKey  = secretKey
-        self.username   = username
-    }
-}
+
 
 class CallManager {
-    static let shared = CallManager()
     private lazy var callCenter = CallCenter(delegate: self)
     var callsChangedHandler: (() -> Void)?
     var callSession : Call? // handle only single call
@@ -59,16 +45,8 @@ class CallManager {
             self.callEnggine?.isLoadSpeaker = newValue
         }
     }
-    var callVc: CallingScreenVC? {
-        didSet {
-            callVc?.endCallAction = {
-                self.finishCall()
-            }
-        }
-    }
     
-    
-    private init() {
+    init() {
         self.callCenter.delegate    = self
         self.callSignal         = CallSignal(delegate: self)
         self.callEnggine        = CallEnggine(delegate: self)
@@ -112,17 +90,17 @@ class CallManager {
     }
     
     func outgoing(data: CallData) {
-        let callingVc = CallingScreenVC()
-        callingVc.callData      = data
-        callingVc.isReceiving   = false
-        
-        let callingNav = UINavigationController(rootViewController: callingVc)
-        
-        UIApplication.currentViewController()?.navigationController?.present(callingNav, animated: true, completion: {
-            self.initializeCall(userEmail: data.targetEmail, userType: "callee", callRoomId: data.callRoomId, isVideo: false, callEvent: "incoming") { (result) in
-
-            }
-        })
+//        let callingVc = CallingScreenVC()
+//        callingVc.callData      = data
+//        callingVc.isReceiving   = false
+//
+//        let callingNav = UINavigationController(rootViewController: callingVc)
+//
+//        UIApplication.currentViewController()?.navigationController?.present(callingNav, animated: true, completion: {
+//            self.initializeCall(userEmail: data.targetEmail, userType: "callee", callRoomId: data.callRoomId, isVideo: false, callEvent: "incoming") { (result) in
+//
+//            }
+//        })
         
         // self.callKit.startCall(name: name, videoEnabled: false)
     }
@@ -224,7 +202,11 @@ extension CallManager : CallSignalDelegate {
     
     func signalReceiveEventData(TypeAnswer value: String, SDP: String) {
         // setSessionDescription
-        self.callEnggine?.setSessionDescription(dataType: value, sdp: SDP)
+        if value == "answer" {
+            self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
+        }else if value == "offer" {
+            self.callEnggine?.setSessionDescription(dataType: .offer, sdp: SDP)
+        }
     }
 }
 

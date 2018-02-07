@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "setup(appId:appSecret:delegate:)"
+            landmarkName = "isRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "setup(appId:appSecret:delegate:)"
+            landmarkName = "isRegister()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "call(withRoomId:callType:targetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
+            landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,8 +63,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "call(withRoomId:callType:targetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
-            landmarkType = "7">
+            landmarkName = "QiscusRTC"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -126,7 +126,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "call(withRoomId:callType:targetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
+            landmarkName = "startCall(withRoomId:WithtargetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -173,9 +173,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "incomingCall(withRoomId:targetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
-            landmarkType = "7">
+            endingLineNumber = "85">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -221,9 +219,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "incomingCall(withRoomId:targetUsername:targetDisplayName:targetDisplayAvatar:completionHandler:)"
-            landmarkType = "7">
+            endingLineNumber = "86">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
