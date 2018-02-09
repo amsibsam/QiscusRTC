@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
         self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
-        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
-        QiscusRTC.register(username: "juang", displayName: "juang")
+        QiscusRTC.setup(appId: "velox-bx", appSecret: "SRKoqmpWDg", signalUrl: URL(string: "wss://gochat.velox.id:8001/mobile")!)
+        QiscusRTC.register(username: "userid_232_628681212212@garuda-stag.com", displayName: "userid_232_628681212212@garuda-stag.com")
         setupAuth()
     }
 
@@ -95,13 +95,6 @@ class ViewController: UIViewController {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
         
-//        QiscusRTC.startCall(WithtargetUsername: username!) { (target, error) in
-//            if error != nil {
-//                self.present(target, animated: true, completion: nil)
-//                return
-//            }
-//            self.present(target, animated: true, completion: nil)
-//        }
         QiscusRTC.startCall(withRoomId: roomName!, WithtargetUsername: username!) { (target, error) in
             if error != nil {
                 self.present(target, animated: true, completion: nil)
@@ -115,15 +108,13 @@ class ViewController: UIViewController {
     func incomingCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
             QiscusRTC.incomingCall(withRoomId: roomName!, targetUsername: username!) { (target, error) in
-//                if error != nil {
-//                    self.present(target, animated: true, completion: nil)
-//                    return
-//                }
-//                self.present(target, animated: true, completion: nil)
+                if error != nil {
+                    self.present(target, animated: true, completion: nil)
+                    return
+                }
+                self.present(target, animated: true, completion: nil)
             }
-//        })
     }
     
 }

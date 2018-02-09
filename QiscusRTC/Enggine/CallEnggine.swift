@@ -18,6 +18,11 @@ enum CallConnectionState: String {
     case failed     = "FAILED"
 }
 
+enum CallSDPType : String {
+    case answer = "answer"
+    case offer  = "offer"
+}
+
 class CallEngineView : UIView {
     
 }
@@ -27,7 +32,7 @@ protocol CallEnggineDelegate {
     func didReceiveLocalVideo(view: UIView)
     func callEnggine(connectionChanged newState: CallConnectionState)
     func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String)
-    func callEnggine(createSession type: String, description: String)
+    func callEnggine(createSession type: CallSDPType, description: String)
 }
 
 let VIDEO_TRACK_ID = "VIDEO0"
@@ -48,15 +53,15 @@ class CallEnggine: NSObject {
     var peerConnectionFactory   : RTCPeerConnectionFactory! = RTCPeerConnectionFactory()
     var peerConnection          : RTCPeerConnection!    = nil
     var mediaStream             : RTCMediaStream!       = nil
-    var localVideo              : RTCEAGLVideoView!
+    var localVideo              : RTCEAGLVideoView!     = nil
     let localVideoTAG           : Int = 1
-    var localVideoRenderer      : RTCVideoRenderer!
-    var remoteVideo             : RTCEAGLVideoView!
+    var localVideoRenderer      : RTCVideoRenderer!     = nil
+    var remoteVideo             : RTCEAGLVideoView!     = nil
     let remoteVideoTAG          : Int = 2
-    var localVideoTrack         : RTCVideoTrack!
-    var localAudioTrack         : RTCAudioTrack!
-    var remoteVideoTrack        : RTCVideoTrack!
-    var remoteAudioTrack        : RTCAudioTrack!
+    var localVideoTrack         : RTCVideoTrack!    = nil
+    var localAudioTrack         : RTCAudioTrack!    = nil
+    var remoteVideoTrack        : RTCVideoTrack!    = nil
+    var remoteAudioTrack        : RTCAudioTrack!    = nil
     var mediaConstraints = RTCMediaConstraints(mandatoryConstraints: [
         "OfferToReceiveAudio" : "true", "OfferToReceiveVideo" : "true"
         ], optionalConstraints: nil)
@@ -96,6 +101,7 @@ class CallEnggine: NSObject {
     
     init(delegate del: CallEnggineDelegate) {
         self.delegate   = del
+        RTCInitializeSSL()
     }
     
     func end() {
@@ -171,19 +177,20 @@ class CallEnggine: NSObject {
     }
     
     func setOffer(dataType: String, sdp: String) {
-        self.setSessionDescription(dataType: .offer, sdp: sdp)
-//        self.peerConnection.createOffer(with: self, constraints: self.mediaConstraints)
         self.peerConnection.offer(for: self.mediaConstraints) { (sessionDescriptoin, error) in
-            //
+            self.setSessionDescription(dataType: .offer, sdp: sdp)
         }
     }
     
     func setAnswer(dataType: String, sdp: String) {
-        self.setSessionDescription(dataType: .answer, sdp: sdp)
-//        self.peerConnection.createAnswer(with: self, constraints: self.mediaConstraints)
-        self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
-            //
-        })
+        inputRemoteOffer(sdp: sdp)
+//        self.setSessionDescription(dataType: .offer, sdp: sdp)
+        // MARK : TODO 2
+//        self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
+//            print("session desc \(String(describing: sessionDescriptoin))")
+//            print("error: \(String(describing: error?.localizedDescription))")
+//            
+//        })
     }
     
     func setCandidate(dataMid: String, dataIndex: Int, dataCandidate: String) {
@@ -192,11 +199,58 @@ class CallEnggine: NSObject {
     }
     
     // RTC
+    
+    func inputRemoteOffer(sdp: String) {
+        let d = RTCSessionDescription(type: .offer, sdp: sdp)
+        
+        
+            self.peerConnection.setRemoteDescription(d) { (err) in
+                if let err = err {
+                    print("failed to set remote offer", err)
+                } else {
+                    self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (description, err) in
+                        if let e = err {
+                            print("failed to create offer", e)
+                        }
+                        
+                        if let d = description {
+                            self.peerConnection.setLocalDescription(d, completionHandler: { (error) in
+                                // nothing todo
+                                if error != nil {
+                                    print("error set local description \(String(describing: error?.localizedDescription))")
+                                    return
+                                }
+                                self.delegate.callEnggine(createSession: .answer, description: d.sdp)
+                            })
+                        }
+                    })
+                }
+            }
+        
+        
+    }
     func setSessionDescription(dataType: RTCSdpType, sdp: String) {
+        if dataType == .answer {
+            self.delegate.callEnggine(createSession: .answer, description: sdp)
+        }else if dataType == .offer {
+            self.delegate.callEnggine(createSession: .offer, description: sdp)
+        }
         let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
-//        self.peerConnection.setRemoteDescriptionWith(self, sessionDescription: sdpSet)
+        
+        // MARK : TODO 1 error
         self.peerConnection.setRemoteDescription(sdpSet) { (error) in
-            //
+            if error != nil {
+                print("error set remote description \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            self.peerConnection.setLocalDescription(sdpSet, completionHandler: { (error) in
+                // nothing todo
+                if error != nil {
+                    print("error set local description \(String(describing: error?.localizedDescription))")
+                    return
+                }
+            })
         }
     }
     
@@ -233,9 +287,13 @@ class CallEnggine: NSObject {
             
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-            self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
-            self.localVideoTrack.add(self.localVideo)
-            self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
+            if self.localVideoTrack == nil {
+                self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
+                self.localVideoTrack.add(self.localVideo)
+            }
+            if self.localAudioTrack == nil {
+                self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
+            }
             self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)

@@ -228,11 +228,7 @@ extension CallManager : CallSignalDelegate {
     
     func signalReceiveEventData(TypeAnswer value: String, SDP: String) {
         // setSessionDescription
-        if value == "answer" {
-            self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
-        }else if value == "offer" {
-            self.callEnggine?.setSessionDescription(dataType: .offer, sdp: SDP)
-        }
+        self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
     }
 }
 
@@ -254,15 +250,17 @@ extension CallManager : CallEnggineDelegate {
         self.callSignal?.sendCandidat(dataMid: dataMid, dataIndex: dataIndex, dataSdp: dataSdp)
     }
     
-    func callEnggine(createSession type: String, description: String) {
-        if (type == "offer") {
+    func callEnggine(createSession type: CallSDPType, description: String) {
+        var value : String = ""
+        if (type == .offer) {
             // Tell Call Signal to Send offer and notify local Offer
             self.callSignal?.sendOffer(sdp: description)
-            self.callSignal?.sendNotify(state: type, value: "LOCAL_OFFER")
-        }else if (type == "answer") {
+            value = "LOCAL_OFFER"
+        }else if (type == .answer) {
             // Send Signal answer and notify local answer
             self.callSignal?.sendAnswer(sdp: description)
-            self.callSignal?.sendNotify(state: type, value: "LOCAL_ANSWER")
+            value = "LOCAL_ANSWER"
         }
+        self.callSignal?.sendNotify(state: type.rawValue, value: value)
     }
 }
