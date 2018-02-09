@@ -177,13 +177,37 @@ class CallEnggine: NSObject {
     }
     
     func setOffer(dataType: String, sdp: String) {
-        self.peerConnection.offer(for: self.mediaConstraints) { (sessionDescriptoin, error) in
-            self.setSessionDescription(dataType: .offer, sdp: sdp)
+        let d = RTCSessionDescription(type: .offer, sdp: sdp)
+        self.peerConnection.setRemoteDescription(d) { (err) in
+            if let err = err {
+                print("failed to set remote offer", err)
+            } else {
+                self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (description, err) in
+                    if let e = err {
+                        print("failed to create offer", e)
+                    }
+                    
+                    if let d = description {
+                        self.peerConnection.setLocalDescription(d, completionHandler: { (error) in
+                            // nothing todo
+                            if error != nil {
+                                print("error set local description \(String(describing: error?.localizedDescription))")
+                                return
+                            }
+                            self.delegate.callEnggine(createSession: .answer, description: d.sdp)
+                        })
+                    }
+                })
+            }
         }
+        
+        
+//        self.peerConnection.offer(for: self.mediaConstraints) { (sessionDescriptoin, error) in
+//            self.setSessionDescription(dataType: .offer, sdp: sdp)
+//        }
     }
     
     func setAnswer(dataType: String, sdp: String) {
-        inputRemoteOffer(sdp: sdp)
 //        self.setSessionDescription(dataType: .offer, sdp: sdp)
         // MARK : TODO 2
 //        self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
@@ -199,59 +223,29 @@ class CallEnggine: NSObject {
     }
     
     // RTC
-    
-    func inputRemoteOffer(sdp: String) {
-        let d = RTCSessionDescription(type: .offer, sdp: sdp)
-        
-        
-            self.peerConnection.setRemoteDescription(d) { (err) in
-                if let err = err {
-                    print("failed to set remote offer", err)
-                } else {
-                    self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (description, err) in
-                        if let e = err {
-                            print("failed to create offer", e)
-                        }
-                        
-                        if let d = description {
-                            self.peerConnection.setLocalDescription(d, completionHandler: { (error) in
-                                // nothing todo
-                                if error != nil {
-                                    print("error set local description \(String(describing: error?.localizedDescription))")
-                                    return
-                                }
-                                self.delegate.callEnggine(createSession: .answer, description: d.sdp)
-                            })
-                        }
-                    })
-                }
-            }
-        
-        
-    }
     func setSessionDescription(dataType: RTCSdpType, sdp: String) {
-        if dataType == .answer {
-            self.delegate.callEnggine(createSession: .answer, description: sdp)
-        }else if dataType == .offer {
-            self.delegate.callEnggine(createSession: .offer, description: sdp)
-        }
-        let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
-        
-        // MARK : TODO 1 error
-        self.peerConnection.setRemoteDescription(sdpSet) { (error) in
-            if error != nil {
-                print("error set remote description \(String(describing: error?.localizedDescription))")
-                return
-            }
-            
-            self.peerConnection.setLocalDescription(sdpSet, completionHandler: { (error) in
-                // nothing todo
-                if error != nil {
-                    print("error set local description \(String(describing: error?.localizedDescription))")
-                    return
-                }
-            })
-        }
+//        if dataType == .answer {
+//            self.delegate.callEnggine(createSession: .answer, description: sdp)
+//        }else if dataType == .offer {
+//            self.delegate.callEnggine(createSession: .offer, description: sdp)
+//        }
+//        let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
+//        
+//        // MARK : TODO 1 error
+//        self.peerConnection.setRemoteDescription(sdpSet) { (error) in
+//            if error != nil {
+//                print("error set remote description \(String(describing: error?.localizedDescription))")
+//                return
+//            }
+//            
+//            self.peerConnection.setLocalDescription(sdpSet, completionHandler: { (error) in
+//                // nothing todo
+//                if error != nil {
+//                    print("error set local description \(String(describing: error?.localizedDescription))")
+//                    return
+//                }
+//            })
+//        }
     }
     
     fileprivate func preparePeerConnection() {

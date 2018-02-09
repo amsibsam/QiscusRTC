@@ -71,17 +71,26 @@ class CallUI: UIViewController {
     }
     
     func setupUI() {
-        // set circle
-        imageAvatar.layer.cornerRadius = imageAvatar.frame.height/2
-        imageAvatar.clipsToBounds = true
-        buttonEndcall.layer.cornerRadius = buttonEndcall.frame.height/2
-        buttonEndcall.clipsToBounds = true
-        buttonMuted.layer.cornerRadius = buttonMuted.frame.height/2
-        buttonMuted.clipsToBounds = true
-        buttonMessage.layer.cornerRadius = buttonMessage.frame.height/2
-        buttonMessage.clipsToBounds = true
-        buttonSpeaker.layer.cornerRadius = buttonSpeaker.frame.height/2
-        buttonSpeaker.clipsToBounds = true
+        let borderWidth : CGFloat   = 2
+        let borderColor             = UIColor.init(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
+        // set Border
+        buttonMuted.layer.borderWidth     = borderWidth
+        buttonMuted.layer.borderColor     = borderColor
+        buttonMessage.layer.borderWidth   = borderWidth
+        buttonMessage.layer.borderColor   = borderColor
+        buttonSpeaker.layer.borderWidth   = borderWidth
+        buttonSpeaker.layer.borderColor   = borderColor
+        // set Circle
+        imageAvatar.layer.cornerRadius      = imageAvatar.frame.height/2
+        imageAvatar.clipsToBounds           = true
+        buttonEndcall.layer.cornerRadius    = buttonEndcall.frame.height/2
+        buttonEndcall.clipsToBounds         = true
+        buttonMuted.layer.cornerRadius      = buttonMuted.frame.height/2
+        buttonMuted.clipsToBounds           = true
+        buttonMessage.layer.cornerRadius    = buttonMessage.frame.height/2
+        buttonMessage.clipsToBounds         = true
+        buttonSpeaker.layer.cornerRadius    = buttonSpeaker.frame.height/2
+        buttonSpeaker.clipsToBounds         = true
     }
     
     func setupCallTime(currentDuration: Int) {

@@ -222,13 +222,13 @@ extension CallManager : CallSignalDelegate {
     }
     
     func signalReceiveEventData(TypeOffer value: String, SDP: String) {
-        // set peerconnection answer
-        self.callEnggine?.setAnswer(dataType: value, sdp: SDP)
+        // set peerconnection offer
+        self.callEnggine?.setOffer(dataType: value, sdp: SDP)
     }
     
     func signalReceiveEventData(TypeAnswer value: String, SDP: String) {
         // setSessionDescription
-        self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
+//        self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
     }
 }
 
