@@ -18,11 +18,13 @@ class CallConfig {
     }
 }
 
-enum CallState {
-    case connecting
-    case active
-    case held
-    case ended
+enum CallState : String {
+    case connecting = "Connecting"
+    case active     = "Active"
+    case held       = "Hold"
+    case ended      = "Hangup"
+    case ringing    = "Ringing"
+    case calling    = "Calling"
 }
 
 enum ConnectedState {

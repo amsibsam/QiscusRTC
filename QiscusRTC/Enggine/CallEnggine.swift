@@ -227,29 +227,16 @@ class CallEnggine: NSObject {
     }
     
     // RTC
-    func setSessionDescription(dataType: RTCSdpType, sdp: String) {
-//        if dataType == .answer {
-//            self.delegate.callEnggine(createSession: .answer, description: sdp)
-//        }else if dataType == .offer {
-//            self.delegate.callEnggine(createSession: .offer, description: sdp)
-//        }
-//        let sdpSet = RTCSessionDescription(type: dataType, sdp: sdp)
-//        
-//        // MARK : TODO 1 error
-//        self.peerConnection.setRemoteDescription(sdpSet) { (error) in
-//            if error != nil {
-//                print("error set remote description \(String(describing: error?.localizedDescription))")
-//                return
-//            }
-//            
-//            self.peerConnection.setLocalDescription(sdpSet, completionHandler: { (error) in
-//                // nothing todo
-//                if error != nil {
-//                    print("error set local description \(String(describing: error?.localizedDescription))")
-//                    return
-//                }
-//            })
-//        }
+    func setRemoteDescription(sdp: String) {
+        let d = RTCSessionDescription(type: .answer, sdp: sdp)
+        self.peerConnection.setRemoteDescription(d) { (err) in
+            if let err = err {
+                print("failed to set remote offer", err)
+            } else {
+                // Start Call timer
+                self.delegate.callEnggine(connectionChanged: CallConnectionState.connected)
+            }
+        }
     }
     
     fileprivate func preparePeerConnection() {

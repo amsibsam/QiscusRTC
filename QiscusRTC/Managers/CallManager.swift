@@ -239,7 +239,7 @@ extension CallManager : CallSignalDelegate {
     
     func signalReceiveEventData(TypeAnswer value: String, SDP: String) {
         // setSessionDescription
-//        self.callEnggine?.setSessionDescription(dataType: .answer, sdp: SDP)
+        self.callEnggine?.setRemoteDescription(sdp: SDP)
     }
 }
 
