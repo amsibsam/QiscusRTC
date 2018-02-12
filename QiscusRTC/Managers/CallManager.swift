@@ -74,15 +74,26 @@ class CallManager {
         completionHandler(target, nil)
         
         if callType == .incoming {
-            self.incomingCall(name: targetDisplayName, userID: targetUsername, roomID: id, isAudio: false, callAvatar: URL(string: targetDisplayAvatar)!)
+            self.start(room: id, isIncoming: true, targetUser: targetUsername)
+            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: false, name: targetDisplayName, room: id, isAudio: true, callAvatar: URL(string: targetDisplayAvatar)!)
+            // display incoming call UI when receiving incoming voip notification
+            self.callCenter.showIncomingCall(of: targetDisplayName)
         }else {
-            
+            self.start(room: id, isIncoming: false, targetUser: targetUsername)
+            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: true, name: targetDisplayName, room: id, isAudio: true, callAvatar: URL(string: targetDisplayAvatar)!)
+            // display incoming call UI when receiving incoming voip notification
+            self.callCenter.startOutgoingCall(of: targetDisplayName)
+            self.callEnggine?.configureAudioSession()
+            self.callEnggine?.start()
         }
     }
     
-    func start() {
+    func start(room: String, isIncoming: Bool, targetUser: String) {
         if let config = self.config {
             // WSS
+            self.callSignal?.roomID = room
+            self.callSignal?.targetUser = targetUser
+            self.callSignal?.isIncoming = isIncoming
             self.callSignal?.setup(url: config.signalUrl , appID: config.appID, secret: config.secretKey, username: (client?.username)!)
             // RTC
             self.callEnggine?.setup()
@@ -111,15 +122,6 @@ class CallManager {
     func didReceiveIncomingCall(userInfo: [AnyHashable: Any]) {
         // MARK : before handle payload from pushkit
         // change handle callkit
-    }
-    
-    private func incomingCall(name: String, userID: String, roomID: String, isAudio: Bool, callAvatar : URL) {
-        self.callSignal?.roomID = roomID
-        self.callSignal?.targetUser = userID
-        self.callSession = Call(uuid: UUID(), outgoing: false, name: name, room: roomID, isAudio: isAudio, callAvatar: callAvatar)
-        // display incoming call UI when receiving incoming voip notification
-        self.callCenter.showIncomingCall(of: name)
-        self.start()
     }
     
     func finishCall() {
@@ -181,7 +183,6 @@ extension CallManager : CallCenterDelegate {
     func callCenter(_ callCenter: CallCenter, answerCall session: String) {
         self.callSignal?.accept()
         self.callEnggine?.configureAudioSession()
-        self.callEnggine?.start()
     }
     
     func callCenter(_ callCenter: CallCenter, declineCall session: String) {
@@ -218,12 +219,22 @@ extension CallManager : CallSignalDelegate {
     }
     
     func signalReceiveEvent(value: CallSignalEventRoom) {
-        //
+        switch value {
+        case .callAccept:
+            // call enggine create offer
+            self.callEnggine?.setOffer()
+            break
+        case .callReject:
+            self.finishCall()
+            break
+        default:
+            break
+        }
     }
     
     func signalReceiveEventData(TypeOffer value: String, SDP: String) {
         // set peerconnection offer
-        self.callEnggine?.setOffer(dataType: value, sdp: SDP)
+        self.callEnggine?.setAnswer(dataType: value, sdp: SDP)
     }
     
     func signalReceiveEventData(TypeAnswer value: String, SDP: String) {

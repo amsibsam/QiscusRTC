@@ -110,6 +110,16 @@ extension CallSignal {
         return self.toString(data: jsonDic)
     }
     
+    internal func payloadCallSync(id: String, target: String) -> String? {
+        let jsonDic = [
+            "request": "room_data",
+            "room": id,
+            "recipient": target,
+            "data": "{\"event\": \"call_sync\"}"
+            ] as [String : Any]
+        return self.toString(data: jsonDic)
+    }
+    
     internal func payloadRoomNotify(id: String, state: String, value: String) -> String? {
         let jsonDic = [
             "request": "room_notify",

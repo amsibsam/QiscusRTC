@@ -68,10 +68,10 @@ class CallCenter: NSObject {
     }
     
     func startOutgoingCall(of session: String) {
-        let handle = CXHandle(type: .phoneNumber, value: session)
+        let handle = CXHandle(type: .generic, value: session)
         let uuid = pairedUUID(of: session)
         let startCallAction = CXStartCallAction(call: uuid, handle: handle)
-        startCallAction.isVideo = true
+        startCallAction.isVideo = false
         
         let transaction = CXTransaction(action: startCallAction)
         controller.request(transaction) { (error) in

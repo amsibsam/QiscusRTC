@@ -176,7 +176,26 @@ class CallEnggine: NSObject {
         try? session.setPreferredIOBufferDuration(0.005)
     }
     
-    func setOffer(dataType: String, sdp: String) {
+    func setOffer() {
+        self.peerConnection.offer(for: self.mediaConstraints) { (description, err) in
+            if let e = err {
+                print("failed to create offer", e)
+            }
+            
+            if let d = description {
+                self.peerConnection.setLocalDescription(d, completionHandler: { (error) in
+                    // nothing todo
+                    if error != nil {
+                        print("error set local description \(String(describing: error?.localizedDescription))")
+                        return
+                    }
+                    self.delegate.callEnggine(createSession: .offer, description: d.sdp)
+                })
+            }
+        }
+    }
+    
+    func setAnswer(dataType: String, sdp: String) {
         let d = RTCSessionDescription(type: .offer, sdp: sdp)
         self.peerConnection.setRemoteDescription(d) { (err) in
             if let err = err {
@@ -200,21 +219,6 @@ class CallEnggine: NSObject {
                 })
             }
         }
-        
-        
-//        self.peerConnection.offer(for: self.mediaConstraints) { (sessionDescriptoin, error) in
-//            self.setSessionDescription(dataType: .offer, sdp: sdp)
-//        }
-    }
-    
-    func setAnswer(dataType: String, sdp: String) {
-//        self.setSessionDescription(dataType: .offer, sdp: sdp)
-        // MARK : TODO 2
-//        self.peerConnection.answer(for: self.mediaConstraints, completionHandler: { (sessionDescriptoin, error) in
-//            print("session desc \(String(describing: sessionDescriptoin))")
-//            print("error: \(String(describing: error?.localizedDescription))")
-//            
-//        })
     }
     
     func setCandidate(dataMid: String, dataIndex: Int, dataCandidate: String) {

@@ -174,17 +174,16 @@ class CallSignal {
         self.token  = json["token"].string ?? ""
         if success {
             if self.isIncoming {
-                // MARK: STEP 3 Caller
-                // Send Room Join
-                if let message = self.payloadCreateRoom(id: self.roomID) {
-                    print("join room\(message)")
+                // MARK: STEP 3 Callee
+                if let message = self.payloadJoinRoom(id: self.roomID) {
                     self.socket?.write(string: message)
                 }else {
                     // MARK: Error parsing payload
                 }
             }else {
-                // MARK: STEP 3 Callee
-                if let message = self.payloadJoinRoom(id: self.roomID) {
+                // MARK: STEP 3 Caller
+                // Send Room Join
+                if let message = self.payloadCreateRoom(id: self.roomID) {
                     self.socket?.write(string: message)
                 }else {
                     // MARK: Error parsing payload
@@ -206,6 +205,18 @@ class CallSignal {
         }
     }
     // MARK: WSS Event handler
+    internal func eventNewUser(data: String) {
+        let json = self.toJSON(data: data)
+        let sender = json["sender"].string ?? ""
+        if sender == self.targetUser {
+            if let message = self.payloadCallSync(id: self.roomID, target: self.targetUser){
+                print("[RTC-HUB] \(message)")
+                self.socket?.write(string: message)
+            }else {
+                // MARK: Error parsing payload
+            }
+        }
+    }
     
     internal func eventCallRoomPrivate(data: String) {
         let json = self.toJSON(data: data)
@@ -221,18 +232,19 @@ class CallSignal {
                 }else {
                     // MARK: Error parsing payload
                 }
+                self.delegate.signalReceiveEvent(value: .callSync)
             }else if event == CallSignalEventRoom.callAccept.rawValue {
                 // MARK: Todo Tell RTC to create offer
-                
+                self.delegate.signalReceiveEvent(value: .callAccept)
             }else if event == CallSignalEventRoom.callAck.rawValue {
                 // MARK: Todo Tell RTC to create offer
-                
+                self.delegate.signalReceiveEvent(value: .callAck)
             }else if event == CallSignalEventRoom.callCancel.rawValue {
                 // MARK: Todo Tell RTC to create offer
-                
+                self.delegate.signalReceiveEvent(value: .callCancel)
             }else if event == CallSignalEventRoom.callReject.rawValue {
                 // MARK: Todo Tell RTC to create offer
-                
+                self.delegate.signalReceiveEvent(value: .callReject)
             }
         }
         
@@ -309,7 +321,7 @@ extension CallSignal : WebSocketDelegate {
                 self.responseRegister(data: data)
             }
         }else if response == CallSignalResposne.roomCreate.rawValue {
-            
+            // call waiting
         }else if response == CallSignalResposne.roomJoin.rawValue {
             if !data.isEmpty {
                 self.eventCallRoomPrivate(data: data)
@@ -319,7 +331,9 @@ extension CallSignal : WebSocketDelegate {
         //MARK: Someone in the room write message and other got event
         let event = json["event"].string ?? ""
         if event == CallSignalEvent.userNew.rawValue {
-            
+            if !data.isEmpty {
+                self.eventNewUser(data: data)
+            }
         }else if event == CallSignalEvent.userLeave.rawValue {
             self.delegate.signalDisconnect(error: nil)
             self.leave()
