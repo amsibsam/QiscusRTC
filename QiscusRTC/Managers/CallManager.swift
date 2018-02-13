@@ -19,7 +19,11 @@ struct CallData {
     var isVideoCall: Bool = false
 }
 
-
+protocol CallDelegate {
+    func callChange(state: CallState)
+    func callConnect()
+    func callDisconnect(error: NSError?)
+}
 
 class CallManager {
     private lazy var callCenter = CallCenter(delegate: self)
@@ -30,6 +34,8 @@ class CallManager {
     var config       : CallConfig?   = nil
     var startTime   : Date? = nil
     var client      : QiscusCallClient?  = nil
+    var delegate    : CallDelegate? = nil
+    
     var isAudioMute : Bool {
         get {
             return (self.callEnggine?.isAudioMute)!
@@ -130,11 +136,21 @@ class CallManager {
             self.callEnggine?.end()
             self.callSignal?.leave()
             self.callCenter.endCall(of: data.name)
+            self.delegate?.callDisconnect(error: nil)
             self.callSession = nil
         }
     }
     
+    func callDelegate(_ del: CallDelegate) {
+        self.delegate = del
+    }
+    
     // Call Util
+    internal func updateState(value: CallState) {
+        self.callSession?.state = value
+        self.delegate?.callChange(state: value)
+    }
+    
     func startTimer() {
         self.startTime = Date()
     }
@@ -220,6 +236,9 @@ extension CallManager : CallSignalDelegate {
     
     func signalReceiveEvent(value: CallSignalEventRoom) {
         switch value {
+        case .callAck:
+            self.updateState(value: .ringing)
+            break
         case .callAccept:
             // call enggine create offer
             self.callEnggine?.setOffer()
@@ -249,10 +268,19 @@ extension CallManager : CallEnggineDelegate {
     }
     
     func callEnggine(connectionChanged newState: CallConnectionState) {
-        if newState == .connected {
+        switch newState {
+        case .new:
+            self.updateState(value: .connecting)
+            break
+        case .connected:
             // Call Signal send Connected
             self.callSignal?.sendConnect()
             self.startTimer()
+            self.delegate?.callConnect()
+            self.updateState(value: .conected)
+            break
+        default:
+            break
         }
     }
     

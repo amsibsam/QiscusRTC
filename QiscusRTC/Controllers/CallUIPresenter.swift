@@ -35,6 +35,7 @@ class CallUIPresenter {
     }
     
     init() {
+        manager.callDelegate(self)
     }
     
     func attachView(view : CallView){
@@ -60,5 +61,19 @@ class CallUIPresenter {
     
     func getDuration() -> Int? {
         return manager.getDuration()
+    }
+}
+
+extension CallUIPresenter : CallDelegate {
+    func callChange(state: CallState) {
+        //
+    }
+    
+    func callConnect() {
+        //
+    }
+    
+    func callDisconnect(error: NSError?) {
+        //
     }
 }
