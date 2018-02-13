@@ -9,8 +9,9 @@
 import Foundation
 
 protocol CallView {
-    func CallStatusChange(state: String)
+    func CallStatusChange(state: CallState)
     func Call(update Duration: Int)
+    func CallFinished()
 }
 
 class CallUIPresenter {
@@ -70,7 +71,7 @@ class CallUIPresenter {
 
 extension CallUIPresenter : CallDelegate {
     func callChange(state: CallState) {
-        //
+        self.viewPresenter?.CallStatusChange(state: state)
     }
     
     func callConnect() {
@@ -78,6 +79,6 @@ extension CallUIPresenter : CallDelegate {
     }
     
     func callDisconnect(error: NSError?) {
-        //
+        self.viewPresenter?.CallFinished()
     }
 }
