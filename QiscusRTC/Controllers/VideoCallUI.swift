@@ -9,23 +9,27 @@
 import UIKit
 import AlamofireImage
 
-class CallUI: UIViewController {
-
-    @IBOutlet weak var imageAvatar: UIImageView!
-    @IBOutlet weak var imageBgAvatar: UIImageView!
-    @IBOutlet weak var buttonSpeaker: UIButton!
+class VideoCallUI: UIViewController {
+    
+    @IBOutlet weak var localVideoView: UIView!
+    @IBOutlet weak var remoteVideoView: UIView!
+    @IBOutlet weak var bgCall: UIImageView!
+    
+    
+    @IBOutlet weak var buttonCamera: UIButton!
     @IBOutlet weak var buttonMuted: UIButton!
     @IBOutlet weak var buttonMessage: UIButton!
     @IBOutlet weak var buttonEndcall: UIButton!
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
-    @IBOutlet weak var labelInfo : UILabel!
+    
     var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
+    var panGesture       = UIPanGestureRecognizer()
     
     public init() {
-        super.init(nibName: "CallUI", bundle: QiscusRTC.bundle)
+        super.init(nibName: "VideoCallUI", bundle: QiscusRTC.bundle)
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -33,22 +37,18 @@ class CallUI: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.labelInfo.text = "Velox Audio Call"
         self.labelName.text = presenter.getCallName()
-        let placeholder = UIImage(named: "avatar")
-        self.imageAvatar.af_setImage(withURL: presenter.getCallAvatar(), placeholderImage: placeholder)
-        self.imageBgAvatar.af_setImage(withURL: presenter.getCallAvatar(), placeholderImage: placeholder)
         self.labelDuration.text = "00.00"
         self.presenter.attachView(view: self)
         self.setupUI()
         self.runTimer()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let duration = self.presenter.getDuration() {
@@ -78,19 +78,42 @@ class CallUI: UIViewController {
         buttonMuted.layer.borderColor     = borderColor
         buttonMessage.layer.borderWidth   = borderWidth
         buttonMessage.layer.borderColor   = borderColor
-        buttonSpeaker.layer.borderWidth   = borderWidth
-        buttonSpeaker.layer.borderColor   = borderColor
-        // set Circle
-        imageAvatar.layer.cornerRadius      = imageAvatar.frame.height/2
-        imageAvatar.clipsToBounds           = true
+        buttonCamera.layer.borderWidth   = borderWidth
+        buttonCamera.layer.borderColor   = borderColor
+        
         buttonEndcall.layer.cornerRadius    = buttonEndcall.frame.height/2
         buttonEndcall.clipsToBounds         = true
         buttonMuted.layer.cornerRadius      = buttonMuted.frame.height/2
         buttonMuted.clipsToBounds           = true
         buttonMessage.layer.cornerRadius    = buttonMessage.frame.height/2
         buttonMessage.clipsToBounds         = true
-        buttonSpeaker.layer.cornerRadius    = buttonSpeaker.frame.height/2
-        buttonSpeaker.clipsToBounds         = true
+        buttonCamera.layer.cornerRadius    = buttonCamera.frame.height/2
+        buttonCamera.clipsToBounds         = true
+        
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(VideoCallUI.draggedView(_:)))
+        localVideoView.isUserInteractionEnabled = true
+        localVideoView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func draggedView(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        var positionX = localVideoView.center.x + translation.x
+        var positionY = localVideoView.center.y + translation.y
+        
+        if (positionX + (localVideoView.frame.width/2)) > UIScreen.main.bounds.width {
+            positionX = UIScreen.main.bounds.width - (localVideoView.frame.width/2)
+        } else if (positionX - (localVideoView.frame.width/2)) < 0 {
+            positionX =  localVideoView.frame.width/2
+        }
+        
+        if (positionY + (localVideoView.frame.height/2)) > UIScreen.main.bounds.height {
+            positionY = UIScreen.main.bounds.height - (localVideoView.frame.height/2)
+        } else if (positionY - (localVideoView.frame.height/2)) < 0 {
+            positionY = localVideoView.frame.height/2
+        }
+        
+        localVideoView.center = CGPoint(x: positionX, y: positionY)
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
     func setupCallTime(currentDuration: Int) {
@@ -99,8 +122,8 @@ class CallUI: UIViewController {
     
     @IBAction func clickEndCall(_ sender: Any) {
         self.dismiss(animated: true) {
-             self.timer.invalidate()
-             self.presenter.finishCall()
+            self.timer.invalidate()
+            self.presenter.finishCall()
         }
     }
     
@@ -118,28 +141,24 @@ class CallUI: UIViewController {
         }
     }
     
-    @IBAction func clickSpeaker(_ sender: Any) {
-        if self.presenter.isLoadSpeaker {
-            self.presenter.isLoadSpeaker = false
-        }else {
-            self.presenter.isLoadSpeaker = true
-        }
+    @IBAction func clickCamera(_ sender: Any) {
+
     }
     
 }
 
-extension CallUI : CallView {
+extension VideoCallUI : CallView {
     func Call(update Duration: Int) {
         self.labelDuration.text = "00.\(Duration)"
     }
     
     func CallStatusChange(state: CallState) {
-        self.labelDuration.text = state.rawValue
+        //
     }
     
     func CallFinished() {
         self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
+

@@ -77,7 +77,6 @@ class CallManager {
     
     func call(withRoomId id: String, callType : CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
         let target = self.getCall()
-        completionHandler(target, nil)
         
         if callType == .incoming {
             self.start(room: id, isIncoming: true, targetUser: targetUsername)
@@ -92,6 +91,8 @@ class CallManager {
             self.callEnggine?.configureAudioSession()
             self.callEnggine?.start()
         }
+        
+        completionHandler(target, nil)
     }
     
     func start(room: String, isIncoming: Bool, targetUser: String) {
