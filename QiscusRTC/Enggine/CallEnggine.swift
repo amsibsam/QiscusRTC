@@ -105,15 +105,29 @@ class CallEnggine: NSObject {
     }
     
     func end() {
-        self.peerConnection.close()
-        self.localVideo             = nil
-        self.remoteVideo            = nil
-        self.localAudioTrack        = nil
-        self.remoteAudioTrack       = nil
-        self.remoteVideoTrack       = nil
-        self.localAudioTrack        = nil
-        self.peerConnection         = nil
-        self.mediaStream            = nil
+        if self.mediaStream != nil {
+            self.mediaStream.removeAudioTrack(self.localAudioTrack)
+            self.mediaStream = nil
+        }
+        self.remoteAudioTrack = nil
+        self.localAudioTrack = nil
+        if self.peerConnection != nil {
+            self.peerConnection.close()
+            self.peerConnection = nil
+        }
+        
+        
+//        if (self.localVideoTrack != nil) {
+//            self.localVideoTrack.remove(self.localVideo)
+//            self.localVideo.renderFrame(nil)
+//            self.localVideoTrack = nil
+//        }
+//        if (self.remoteVideoTrack != nil) {
+//            self.remoteVideoTrack?.remove(self.remoteVideo)
+//            self.remoteVideo.renderFrame(nil)
+//            self.remoteVideoTrack = nil
+//        }
+        
     }
     
     func setup() {
