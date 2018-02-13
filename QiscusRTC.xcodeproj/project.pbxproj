@@ -16,6 +16,10 @@
 		3D50DA86202AF36C00643BB1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D50DA85202AF36C00643BB1 /* README.md */; };
 		3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */; };
 		3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BC1FAACA25004EE86F /* Main.storyboard */; };
+		5D6CD44D2032BCF100797DF1 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CD44C2032BCF100797DF1 /* CallManager.swift */; };
+		5D760A6D20328FE90049706F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6B20328FE90049706F /* MainViewController.swift */; };
+		5D760A6E20328FE90049706F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D760A6C20328FE90049706F /* MainViewController.xib */; };
+		5D760A70203290500049706F /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6F203290500049706F /* MainApp.swift */; };
 		6B44CCBDBCE6E27237534CB9 /* Pods_QiscusRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,10 @@
 		3D50DA85202AF36C00643BB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D7199BC1FAACA25004EE86F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5D6CD44C2032BCF100797DF1 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		5D760A6B20328FE90049706F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5D760A6C20328FE90049706F /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		5D760A6F203290500049706F /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRTC/Pods-QiscusRTC.release.xcconfig"; sourceTree = "<group>"; };
 		C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiscusRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BBBCFD2CF360C3DBD8E6B2 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,12 +102,15 @@
 		0457BC4D1FA9DBAA008D3866 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				5D760A7220329D6E0049706F /* Chat */,
+				5D760A6A20328FD40049706F /* Controller */,
 				0457BC4E1FA9DBAA008D3866 /* AppDelegate.swift */,
 				0457BC501FA9DBAA008D3866 /* ViewController.swift */,
 				3D7199BC1FAACA25004EE86F /* Main.storyboard */,
 				0457BC551FA9DBAA008D3866 /* Assets.xcassets */,
 				0457BC5A1FA9DBAA008D3866 /* Info.plist */,
 				3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */,
+				5D760A6F203290500049706F /* MainApp.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -111,6 +122,23 @@
 				C59BB008B404CBF3CAEECA50 /* Pods_QiscusRTC.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D760A6A20328FD40049706F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5D760A6B20328FE90049706F /* MainViewController.swift */,
+				5D760A6C20328FE90049706F /* MainViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5D760A7220329D6E0049706F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5D6CD44C2032BCF100797DF1 /* CallManager.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		AA00650A30C4457AAAD9A673 /* Pods */ = {
@@ -234,6 +262,7 @@
 				3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */,
 				3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */,
 				0457BC561FA9DBAA008D3866 /* Assets.xcassets in Resources */,
+				5D760A6E20328FE90049706F /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,18 +329,32 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
+				"${BUILT_PRODUCTS_DIR}/Qiscus/Qiscus.framework",
 				"${BUILT_PRODUCTS_DIR}/QiscusRTC/QiscusRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${PODS_ROOT}/WebRTC/WebRTC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiscus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,7 +391,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D6CD44D2032BCF100797DF1 /* CallManager.swift in Sources */,
+				5D760A6D20328FE90049706F /* MainViewController.swift in Sources */,
 				0457BC511FA9DBAA008D3866 /* ViewController.swift in Sources */,
+				5D760A70203290500049706F /* MainApp.swift in Sources */,
 				0457BC4F1FA9DBAA008D3866 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23C3518DC2962611B1C6662C /* Pods-QiscusRTC.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -499,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76816A9CBAE575C37BC5C64C /* Pods-QiscusRTC.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
