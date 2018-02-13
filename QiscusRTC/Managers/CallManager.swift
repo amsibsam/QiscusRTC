@@ -228,6 +228,7 @@ extension CallManager : CallSignalDelegate {
     
     func signalConnect() {
         //
+        self.updateState(value: .calling)
     }
     
     func signalDisconnect(error: Error?) {
