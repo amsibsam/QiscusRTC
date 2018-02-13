@@ -203,6 +203,7 @@ extension CallManager : CallCenterDelegate {
     
     func callCenter(_ callCenter: CallCenter, declineCall session: String) {
         print("call declined")
+        self.updateState(value: .ended)
         self.callSignal?.leave()
     }
     
@@ -246,6 +247,9 @@ extension CallManager : CallSignalDelegate {
         case .callReject:
             self.finishCall()
             break
+        case .callCancel:
+            self.updateState(value: .ended)
+            break
         default:
             break
         }
@@ -278,6 +282,9 @@ extension CallManager : CallEnggineDelegate {
             self.startTimer()
             self.delegate?.callConnect()
             self.updateState(value: .conected)
+            break
+        case .failed:
+            self.updateState(value: .ended)
             break
         default:
             break
