@@ -132,6 +132,10 @@ class CallManager {
         return callScreen
     }
     
+    func getLocalVideo() -> UIView? {
+        return localVideo
+    }
+    
     func didReceiveIncomingCall(userInfo: [AnyHashable: Any]) {
         // MARK : before handle payload from pushkit
         // change handle callkit

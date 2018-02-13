@@ -12,6 +12,8 @@ protocol CallView {
     func CallStatusChange(state: CallState)
     func Call(update Duration: Int)
     func CallFinished()
+    func callReceive(Local video: UIView)
+    func callReceive(Remote video: UIView)
 }
 
 class CallUIPresenter {
@@ -64,12 +66,21 @@ class CallUIPresenter {
         return manager.getDuration()
     }
     
-    func getLocalVideo() -> UIView {
+    func getLocalVideo() -> UIView? {
         return manager.getLocalVideo()
     }
 }
 
 extension CallUIPresenter : CallDelegate {
+    func callReceive(Local video: UIView) {
+        self.viewPresenter?.callReceive(Local: video)
+        print("receive local video")
+    }
+    
+    func callReceive(Remote video: UIView) {
+        self.viewPresenter?.callReceive(Remote: video)
+    }
+    
     func callChange(state: CallState) {
         self.viewPresenter?.CallStatusChange(state: state)
     }
