@@ -72,7 +72,6 @@ class Call {
             self.connectedState = .pending
             
             DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-                self.state = .calling
                 self.connectedState = .complete
             }
         }
