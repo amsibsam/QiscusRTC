@@ -96,9 +96,23 @@ class VideoCallUI: UIViewController {
     }
     
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
-        self.view.bringSubview(toFront: localVideoView)
         let translation = sender.translation(in: self.view)
-        localVideoView.center = CGPoint(x: localVideoView.center.x + translation.x, y: localVideoView.center.y + translation.y)
+        var positionX = localVideoView.center.x + translation.x
+        var positionY = localVideoView.center.y + translation.y
+        
+        if (positionX + (localVideoView.frame.width/2)) > UIScreen.main.bounds.width {
+            positionX = UIScreen.main.bounds.width - (localVideoView.frame.width/2)
+        } else if (positionX - (localVideoView.frame.width/2)) < 0 {
+            positionX =  localVideoView.frame.width/2
+        }
+        
+        if (positionY + (localVideoView.frame.height/2)) > UIScreen.main.bounds.height {
+            positionY = UIScreen.main.bounds.height - (localVideoView.frame.height/2)
+        } else if (positionY - (localVideoView.frame.height/2)) < 0 {
+            positionY = localVideoView.frame.height/2
+        }
+        
+        localVideoView.center = CGPoint(x: positionX, y: positionY)
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
