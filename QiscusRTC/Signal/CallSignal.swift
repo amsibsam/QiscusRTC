@@ -309,6 +309,7 @@ extension CallSignal : WebSocketDelegate {
         self.delegate.signalDisconnect(error: error)
     }
     
+    
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("[Call Signal] Got some text: \(text)")
         let json = JSON(parseJSON: text)

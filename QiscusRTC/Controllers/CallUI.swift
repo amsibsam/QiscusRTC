@@ -59,7 +59,7 @@ class CallUI: UIViewController {
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
-    func updateTimer() {
+    @objc func updateTimer() {
         seconds += 1
         self.labelDuration.text = timeString(time: TimeInterval(seconds))
     }

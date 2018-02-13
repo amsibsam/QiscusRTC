@@ -130,9 +130,9 @@ class CallEnggine: NSObject {
     
     private func muted(value: Bool) {
         if value {
-            let localStream = self.peerConnection.localStreams[0] as! RTCMediaStream
+            let localStream = self.peerConnection.localStreams[0] 
             if !localStream.audioTracks.isEmpty {
-                let _localAudioTrack = localStream.audioTracks[0] as! RTCAudioTrack;
+                let _localAudioTrack = localStream.audioTracks[0] ;
                 localStream.removeAudioTrack(_localAudioTrack)
                 self.peerConnection.remove(localStream)
                 self.peerConnection.add(localStream)
@@ -140,7 +140,7 @@ class CallEnggine: NSObject {
             }
         } else {
             if !self.peerConnection.localStreams.isEmpty {
-                let localStream = self.peerConnection.localStreams[0] as! RTCMediaStream;
+                let localStream = self.peerConnection.localStreams[0] ;
                 localStream.addAudioTrack(self.localAudioTrack)
                 self.peerConnection.remove(localStream)
                 self.peerConnection.add(localStream)
@@ -257,9 +257,9 @@ class CallEnggine: NSObject {
     fileprivate func captureDevice() {
         var device: AVCaptureDevice! = nil
         
-        for captureDevice in AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) {
-            if ((captureDevice as AnyObject).position == AVCaptureDevicePosition.front) {
-                device = captureDevice as! AVCaptureDevice
+        for captureDevice in AVCaptureDevice.devices(for: AVMediaType.video) {
+            if ((captureDevice as AnyObject).position == AVCaptureDevice.Position.front) {
+                device = captureDevice 
             }
         }
         
@@ -359,7 +359,7 @@ extension CallEnggine: RTCPeerConnectionDelegate {
             return
         }
         if (stream.videoTracks.count == 1) {
-            remoteVideoTrack            = stream.videoTracks[0] as! RTCVideoTrack
+            remoteVideoTrack            = stream.videoTracks[0] 
             remoteVideoTrack.isEnabled  = true;
             remoteVideoTrack.add(self.remoteVideo)
         }

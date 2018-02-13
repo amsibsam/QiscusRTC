@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func login() {
+    @objc func login() {
         let alertController = UIAlertController(title: "Who are you?", message: "", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Login", style: .default, handler: {
@@ -86,12 +86,12 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func logout() {
+    @objc func logout() {
         QiscusRTC.logout()
         setupAuth()
     }
     
-    func startCall() {
+    @objc func startCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
         
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         
     }
     
-    func incomingCall() {
+    @objc func incomingCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
             QiscusRTC.incomingCall(withRoomId: roomName!, targetUsername: username!) { (target, error) in
