@@ -20,8 +20,7 @@ class CallConfig {
 
 enum CallState : String {
     case connecting = "Connecting"
-    case active     = "Active"
-    case held       = "Hold"
+    case conected   = "Conected"
     case ended      = "Hangup"
     case ringing    = "Ringing"
     case calling    = "Calling"
@@ -33,7 +32,6 @@ enum ConnectedState {
 }
 
 class Call {
-    
     let uuid        : UUID
     let outgoing    : Bool
     let name        : String
@@ -74,14 +72,14 @@ class Call {
             self.connectedState = .pending
             
             DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-                self.state = .active
+                self.state = .calling
                 self.connectedState = .complete
             }
         }
     }
     
     func answer() {
-        state = .active
+        state = .connecting
     }
     
     func end() {
