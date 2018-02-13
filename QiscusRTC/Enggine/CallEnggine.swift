@@ -272,13 +272,9 @@ class CallEnggine: NSObject {
             
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-            if self.localVideoTrack == nil {
-                self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
-                self.localVideoTrack.add(self.localVideo)
-            }
-            if self.localAudioTrack == nil {
-                self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
-            }
+            self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
+            self.localVideoTrack.add(self.localVideo)
+            self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
             self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
