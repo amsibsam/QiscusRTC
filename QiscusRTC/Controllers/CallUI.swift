@@ -42,6 +42,7 @@ class CallUI: UIViewController {
         self.presenter.attachView(view: self)
         self.setupUI()
         self.runTimer()
+        self.view.insertSubview(presenter.getLocalVideo(), at: 0)
     }
 
     override func didReceiveMemoryWarning() {

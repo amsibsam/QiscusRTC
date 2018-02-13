@@ -62,6 +62,10 @@ class CallUIPresenter {
     func getDuration() -> Int? {
         return manager.getDuration()
     }
+    
+    func getLocalVideo() -> UIView {
+        return manager.getLocalVideo()
+    }
 }
 
 extension CallUIPresenter : CallDelegate {

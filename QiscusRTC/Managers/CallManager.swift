@@ -23,6 +23,8 @@ protocol CallDelegate {
     func callChange(state: CallState)
     func callConnect()
     func callDisconnect(error: NSError?)
+    func callReceive(Local video: UIView)
+    func callReceive(Remote video: UIView)
 }
 
 class CallManager {
@@ -35,6 +37,9 @@ class CallManager {
     var startTime   : Date? = nil
     var client      : QiscusCallClient?  = nil
     var delegate    : CallDelegate? = nil
+    // Call Video component
+    var localVideo   : UIView?    = nil
+    var remoteVideo  : UIView?    = nil
     
     var isAudioMute : Bool {
         get {
@@ -120,6 +125,7 @@ class CallManager {
         }
     }
     
+    // Call Component
     func getCall() -> UIViewController {
         let callScreen = CallUI()
         return callScreen
@@ -268,7 +274,12 @@ extension CallManager : CallSignalDelegate {
 }
 
 extension CallManager : CallEnggineDelegate {
-    func didReceiveLocalVideo(view: UIView) {
+    func didReceive(Local video: UIView) {
+        self.localVideo = video
+        self.delegate?.callReceive(Local: video)
+    }
+    
+    func didReceive(Remote video: UIView) {
         //
     }
     

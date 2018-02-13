@@ -29,7 +29,8 @@ class CallEngineView : UIView {
 
 protocol CallEnggineDelegate {
     //
-    func didReceiveLocalVideo(view: UIView)
+    func didReceive(Local video: UIView)
+    func didReceive(Remote video: UIView)
     func callEnggine(connectionChanged newState: CallConnectionState)
     func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String)
     func callEnggine(createSession type: CallSDPType, description: String)
@@ -279,6 +280,7 @@ class CallEnggine: NSObject {
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
             
+            self.delegate.didReceive(Local: localVideo)
             //self.viewLocalVideo.insertSubview(self.localVideo, at: 0)
             // hide local video container when calling
             //self.viewLocalVideo.isHidden = true
