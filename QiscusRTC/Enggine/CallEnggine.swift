@@ -116,7 +116,7 @@ class CallEnggine: NSObject {
             self.peerConnection = nil
         }
         
-        
+//        prepare this release for video
 //        if (self.localVideoTrack != nil) {
 //            self.localVideoTrack.remove(self.localVideo)
 //            self.localVideo.renderFrame(nil)
