@@ -121,7 +121,7 @@ class CallManager {
     }
     
     func getCall() -> UIViewController {
-        let callScreen = VideoCallUI()
+        let callScreen = CallUI()
         return callScreen
     }
     
