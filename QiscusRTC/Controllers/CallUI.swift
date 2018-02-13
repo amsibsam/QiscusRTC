@@ -133,8 +133,8 @@ extension CallUI : CallView {
         self.labelDuration.text = "00.\(Duration)"
     }
     
-    func CallStatusChange(state: String) {
-        //
+    func CallStatusChange(state: CallState) {
+        self.labelDuration.text = state.rawValue
     }
     
     func CallFinished() {

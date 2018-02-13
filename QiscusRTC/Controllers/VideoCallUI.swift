@@ -152,7 +152,7 @@ extension VideoCallUI : CallView {
         self.labelDuration.text = "00.\(Duration)"
     }
     
-    func CallStatusChange(state: String) {
+    func CallStatusChange(state: CallState) {
         //
     }
     
