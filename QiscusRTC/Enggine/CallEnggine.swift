@@ -119,7 +119,7 @@ class CallEnggine: NSObject {
     
     func setup() {
         self.captureDevice()
-        self.preparePeerConnection()
+        
         // set default speaker
         self.activeSpeaker  = false
         self.isLoadSpeaker  = false
@@ -267,27 +267,39 @@ class CallEnggine: NSObject {
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         
         if (device != nil) {
+            let device = UIDevice.string(for: UIDevice.deviceType())
+
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
             self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
+            
+
             let videoSource  = peerConnectionFactory.videoSource()
+            let capturer = RTCCameraVideoCapturer.init(delegate: videoSource)
+            let capturerController = CallCaptureController.init(WithCapturer: capturer)
+            capturerController.startCapture()
             
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-            self.localVideoTrack = peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
+            
+            self.localVideoTrack = self.peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
             self.localVideoTrack.add(self.localVideo)
+            
             self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)
             self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
-            
+            self.localVideo.backgroundColor = UIColor.red
+            localVideo.renderFrame(nil)
             self.delegate.didReceive(Local: localVideo)
-            //self.viewLocalVideo.insertSubview(self.localVideo, at: 0)
-            // hide local video container when calling
-            //self.viewLocalVideo.isHidden = true
             
-            // add local video to remote video when calling
-            //self.viewRemoteVideo.insertSubview(self.localVideo, at: 0)
+            self.preparePeerConnection()
         }
+    }
+    
+    func createLocalVideoTrack() -> RTCVideoTrack {
+        let source : RTCVideoSource = self.peerConnectionFactory.videoSource()
+        //let capturer : RTCCameraVideoCapturer   = RTCCameraVideoCapturer.init(delegate: self)
+        return self.peerConnectionFactory.videoTrack(with: source, trackId: VIDEO_TRACK_ID)
     }
 }
 
@@ -376,20 +388,8 @@ extension CallEnggine: RTCPeerConnectionDelegate {
     }
 }
 
-//extension CallEnggine: RTCSessionDescriptionDelegate {
-//    func peerConnection(_ peerConnection: RTCPeerConnection!, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
-//        if (error == nil) {
-//            //self.player?.stop()
-//            peerConnection.setLocalDescriptionWith(self, sessionDescription: sdp)
-//            print("[RTC-HUB] Got local offer/answer")
-//            self.delegate.callEnggine(createSession: sdp.type, description: sdp.description)
-//
-//        } else {
-//            print("[RTC-HUB] SDP creation error: " + error.localizedDescription)
-//        }
-//    }
-//
-//    func peerConnection(_ peerConnection: RTCPeerConnection!, didSetSessionDescriptionWithError error: Error!) {
-//    }
-//}
-
+extension CallEnggine : RTCVideoCapturerDelegate {
+    func capturer(_ capturer: RTCVideoCapturer, didCapture frame: RTCVideoFrame) {
+        
+    }
+}

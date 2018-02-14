@@ -251,6 +251,7 @@ extension CallManager : CallSignalDelegate {
         switch value {
         case .callAck:
             self.updateState(value: .ringing)
+            self.localVideo?.backgroundColor    = UIColor.blue
             break
         case .callAccept:
             // call enggine create offer
