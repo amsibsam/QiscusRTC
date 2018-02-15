@@ -135,6 +135,10 @@ class CallManager {
         return localVideo
     }
     
+    func getRemoteVideo() -> UIView? {
+        return remoteVideo
+    }
+    
     func didReceiveIncomingCall(userInfo: [AnyHashable: Any]) {
         // MARK : before handle payload from pushkit
         // change handle callkit
@@ -286,6 +290,8 @@ extension CallManager : CallEnggineDelegate {
     
     func didReceive(Remote video: UIView) {
         //
+        self.remoteVideo = video
+        self.delegate?.callReceive(Remote: video)
     }
     
     func callEnggine(connectionChanged newState: CallConnectionState) {

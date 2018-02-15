@@ -43,7 +43,12 @@ class VideoCallUI: UIViewController {
         self.setupUI()
         self.runTimer()
         if let localvideo = presenter.getLocalVideo() {
-            self.remoteVideoView.insertSubview(localvideo, at: 0)
+            self.localVideoView.insertSubview(localvideo, at: 0)
+            self.localVideoView.clipsToBounds   = true
+        }
+        
+        if let remoteVideo = presenter.getRemoteVideo() {
+            self.remoteVideoView.insertSubview(remoteVideo, at: 0)
         }
     }
     
@@ -153,10 +158,12 @@ class VideoCallUI: UIViewController {
 extension VideoCallUI : CallView {
     func callReceive(Local video: UIView) {
         //
+        self.localVideoView.insertSubview(video, at: 0)
     }
     
     func callReceive(Remote video: UIView) {
-        //
+        self.remoteVideoView.insertSubview(video, at: 0)
+        self.remoteVideoView.clipsToBounds = true
     }
     
     func Call(update Duration: Int) {

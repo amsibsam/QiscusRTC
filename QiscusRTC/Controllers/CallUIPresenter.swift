@@ -69,16 +69,24 @@ class CallUIPresenter {
     func getLocalVideo() -> UIView? {
         return manager.getLocalVideo()
     }
+    
+    func getRemoteVideo() -> UIView? {
+        return manager.getRemoteVideo()
+    }
 }
 
 extension CallUIPresenter : CallDelegate {
     func callReceive(Local video: UIView) {
-        self.viewPresenter?.callReceive(Local: video)
+        DispatchQueue.main.async {
+            self.viewPresenter?.callReceive(Local: video)
+        }
         print("receive local video")
     }
     
     func callReceive(Remote video: UIView) {
-        self.viewPresenter?.callReceive(Remote: video)
+        DispatchQueue.main.async {
+            self.viewPresenter?.callReceive(Remote: video)
+        }
     }
     
     func callChange(state: CallState) {

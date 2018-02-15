@@ -356,6 +356,7 @@ extension CallEnggine: RTCPeerConnectionDelegate {
             remoteVideoTrack            = stream.videoTracks[0] 
             remoteVideoTrack.isEnabled  = true;
             remoteVideoTrack.add(self.remoteVideo)
+            self.delegate.didReceive(Remote: self.remoteVideo)
         }
     }
     
