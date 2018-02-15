@@ -151,7 +151,10 @@ class CallManager {
             self.callSignal?.leave()
             self.callCenter.endCall(of: data.name)
             self.delegate?.callDisconnect(error: nil)
-            self.callSession = nil
+            self.callSession    = nil
+            self.localVideo     = nil
+            self.remoteVideo    = nil
+            self.startTime      = nil
         }
     }
     
@@ -259,6 +262,7 @@ extension CallManager : CallSignalDelegate {
         case .callAccept:
             // call enggine create offer
             self.callEnggine?.setOffer()
+            self.updateState(value: .conected)
             break
         case .callReject:
             self.finishCall()

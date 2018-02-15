@@ -13,9 +13,7 @@ class VideoCallUI: UIViewController {
     
     @IBOutlet weak var localVideoView: UIView!
     @IBOutlet weak var remoteVideoView: UIView!
-    @IBOutlet weak var bgCall: UIImageView!
-    
-    
+
     @IBOutlet weak var buttonCamera: UIButton!
     @IBOutlet weak var buttonMuted: UIButton!
     @IBOutlet weak var buttonMessage: UIButton!
@@ -41,7 +39,7 @@ class VideoCallUI: UIViewController {
         self.labelDuration.text = "00.00"
         self.presenter.attachView(view: self)
         self.setupUI()
-        self.runTimer()
+        
         if let localvideo = presenter.getLocalVideo() {
             self.localVideoView.insertSubview(localvideo, at: 0)
             self.localVideoView.clipsToBounds   = true
@@ -50,6 +48,8 @@ class VideoCallUI: UIViewController {
         if let remoteVideo = presenter.getRemoteVideo() {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
         }
+        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
+        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -157,7 +157,6 @@ class VideoCallUI: UIViewController {
 
 extension VideoCallUI : CallView {
     func callReceive(Local video: UIView) {
-        //
         self.localVideoView.insertSubview(video, at: 0)
     }
     
@@ -171,12 +170,26 @@ extension VideoCallUI : CallView {
     }
     
     func CallStatusChange(state: CallState) {
-        //
+        switch state {
+        case .conected:
+            self.runTimer()
+            break
+        default:
+            self.labelDuration.text = state.rawValue
+            break
+        }
+        
     }
     
     func CallFinished() {
-        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.timer.invalidate()
+        self.labelDuration.text = "Hangup"
+        let deadlineTime = DispatchTime.now() + .seconds(3)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
+            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        })
+        
     }
 }
 

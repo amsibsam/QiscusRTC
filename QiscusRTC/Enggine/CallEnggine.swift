@@ -107,6 +107,7 @@ class CallEnggine: NSObject {
     
     func end() {
         self.peerConnection.close()
+        self.peerConnection         = nil
         self.localVideo             = nil
         self.remoteVideo            = nil
         self.localAudioTrack        = nil
