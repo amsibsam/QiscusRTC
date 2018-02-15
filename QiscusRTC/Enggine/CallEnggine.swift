@@ -256,22 +256,11 @@ class CallEnggine: NSObject {
     }
     
     fileprivate func captureDevice() {
-        var device: AVCaptureDevice! = nil
-        
-        for captureDevice in AVCaptureDevice.devices(for: AVMediaType.video) {
-            if ((captureDevice as AnyObject).position == AVCaptureDevice.Position.front) {
-                device = captureDevice 
-            }
-        }
-        
+        let device = UIDevice.string(for: UIDevice.deviceType())
         self.peerConnectionFactory = RTCPeerConnectionFactory()
-        
         if (device != nil) {
-            let device = UIDevice.string(for: UIDevice.deviceType())
-
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
             self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
-            
 
             let videoSource  = peerConnectionFactory.videoSource()
             let capturer = RTCCameraVideoCapturer.init(delegate: videoSource)
@@ -288,7 +277,7 @@ class CallEnggine: NSObject {
             self.mediaStream = peerConnectionFactory.mediaStream(withStreamId: LOCAL_MEDIA_STREAM_ID)
             self.mediaStream.addAudioTrack(self.localAudioTrack)
             self.mediaStream.addVideoTrack(self.localVideoTrack)
-            self.localVideo.backgroundColor = UIColor.red
+            self.localVideo.backgroundColor = UIColor.black
             localVideo.renderFrame(nil)
             self.delegate.didReceive(Local: localVideo)
             
@@ -296,11 +285,6 @@ class CallEnggine: NSObject {
         }
     }
     
-    func createLocalVideoTrack() -> RTCVideoTrack {
-        let source : RTCVideoSource = self.peerConnectionFactory.videoSource()
-        //let capturer : RTCCameraVideoCapturer   = RTCCameraVideoCapturer.init(delegate: self)
-        return self.peerConnectionFactory.videoTrack(with: source, trackId: VIDEO_TRACK_ID)
-    }
 }
 
 extension CallEnggine: RTCEAGLVideoViewDelegate {

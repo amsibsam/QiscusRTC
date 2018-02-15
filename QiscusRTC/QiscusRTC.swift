@@ -61,22 +61,22 @@ public class QiscusRTC: NSObject {
 //        }
 //    }
     
-    public class func startCall(withRoomId id: String = "", WithtargetUsername username: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+    public class func startCall(withRoomId id: String = "", isVideo : Bool, WithtargetUsername username: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
         if id.isEmpty {
             // Generate call room with target
             let roomID = shared.manager.createRoomID(length: 5)
-            shared.manager.call(withRoomId: roomID, callType: .outgoing, targetUsername: username, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
+            shared.manager.call(withRoomId: roomID, callType: .outgoing, isVideo: isVideo, targetUsername: username, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
                 completionHandler(target, error)
             }
         }else {
-            shared.manager.call(withRoomId: id, callType: .outgoing, targetUsername: username, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
+            shared.manager.call(withRoomId: id, callType: .outgoing, isVideo: isVideo, targetUsername: username, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
                 completionHandler(target, error)
             }
         }
     }
     
-    public class func incomingCall(withRoomId id: String, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
-        shared.manager.call(withRoomId: id, callType: .incoming, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
+    public class func incomingCall(withRoomId id: String, isVideo: Bool, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+        shared.manager.call(withRoomId: id, callType: .incoming, isVideo: isVideo, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
             completionHandler(target, error)
         }
     }

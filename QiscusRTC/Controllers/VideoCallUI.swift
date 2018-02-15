@@ -42,6 +42,9 @@ class VideoCallUI: UIViewController {
         self.presenter.attachView(view: self)
         self.setupUI()
         self.runTimer()
+        if let localvideo = presenter.getLocalVideo() {
+            self.remoteVideoView.insertSubview(localvideo, at: 0)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,6 +151,14 @@ class VideoCallUI: UIViewController {
 }
 
 extension VideoCallUI : CallView {
+    func callReceive(Local video: UIView) {
+        //
+    }
+    
+    func callReceive(Remote video: UIView) {
+        //
+    }
+    
     func Call(update Duration: Int) {
         self.labelDuration.text = "00.\(Duration)"
     }

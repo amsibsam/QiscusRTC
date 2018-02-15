@@ -95,7 +95,7 @@ class ViewController: UIViewController {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
         
-        QiscusRTC.startCall(withRoomId: roomName!, WithtargetUsername: username!) { (target, error) in
+        QiscusRTC.startCall(withRoomId: roomName!, isVideo: true, WithtargetUsername: username!) { (target, error) in
             if error != nil {
                 self.present(target, animated: true, completion: nil)
                 return
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
     @objc func incomingCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-            QiscusRTC.incomingCall(withRoomId: roomName!, targetUsername: username!) { (target, error) in
+        QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: true, targetUsername: username!) { (target, error) in
                 if error != nil {
                     self.present(target, animated: true, completion: nil)
                     return

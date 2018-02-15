@@ -80,17 +80,17 @@ class CallManager {
         self.config              = config
     }
     
-    func call(withRoomId id: String, callType : CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
-        let target = self.getCall()
+    func call(withRoomId id: String, callType : CallType, isVideo: Bool, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+        let target = self.getCall(isVideo: isVideo)
         
         if callType == .incoming {
             self.start(room: id, isIncoming: true, targetUser: targetUsername)
-            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: false, name: targetDisplayName, room: id, isAudio: true, callAvatar: URL(string: targetDisplayAvatar)!)
+            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: false, name: targetDisplayName, room: id, isAudio: !isVideo, callAvatar: URL(string: targetDisplayAvatar)!)
             // display incoming call UI when receiving incoming voip notification
             self.callCenter.showIncomingCall(of: targetDisplayName)
         }else {
             self.start(room: id, isIncoming: false, targetUser: targetUsername)
-            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: true, name: targetDisplayName, room: id, isAudio: true, callAvatar: URL(string: targetDisplayAvatar)!)
+            self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: true, name: targetDisplayName, room: id, isAudio: !isVideo, callAvatar: URL(string: targetDisplayAvatar)!)
             // display incoming call UI when receiving incoming voip notification
             self.callCenter.startOutgoingCall(of: targetDisplayName)
             self.callEnggine?.configureAudioSession()
@@ -127,9 +127,8 @@ class CallManager {
     }
     
     // Call Component
-    func getCall() -> UIViewController {
-        let callScreen = CallUI()
-        return callScreen
+    func getCall(isVideo video: Bool) -> UIViewController {
+        return video ? VideoCallUI() : CallUI()
     }
     
     func getLocalVideo() -> UIView? {
