@@ -94,13 +94,12 @@ class ViewController: UIViewController {
     @objc func startCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-        let alert = UIAlertController(title: "Call", message: "Please select Content", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Call", message: "Please select content", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
             // Start Call Audio
             QiscusRTC.startCall(withRoomId: roomName!, isVideo: false, WithtargetUsername: username!) { (target, error) in
-                if error != nil {
+                if error == nil {
                     self.present(target, animated: true, completion: nil)
-                    return
                 }
             }
         }))
@@ -108,9 +107,8 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
             // Start Call Video
             QiscusRTC.startCall(withRoomId: roomName!, isVideo: true, WithtargetUsername: username!) { (target, error) in
-                if error != nil {
+                if error == nil {
                     self.present(target, animated: true, completion: nil)
-                    return
                 }
             }
         }))
@@ -128,21 +126,19 @@ class ViewController: UIViewController {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
 
-        let alert = UIAlertController(title: "Qiscus Call", message: "Please select Content", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Qiscus Call", message: "Please select content", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
             QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: false, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
-                if error != nil {
+                if error == nil {
                     self.present(target, animated: true, completion: nil)
-                    return
                 }
             }
         }))
 
         alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
             QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: true, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
-                if error != nil {
+                if error == nil {
                     self.present(target, animated: true, completion: nil)
-                    return
                 }
             }
         }))
