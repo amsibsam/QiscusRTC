@@ -25,6 +25,8 @@ camera and microphone
 ## Callkit 
 
 add this in .plist
+
+```
 <key>UIBackgroundModes</key>
 <array>
 <string>fetch</string>
@@ -32,7 +34,7 @@ add this in .plist
 <string>audio</string>
 <string>voip</string>
 </array>
-
+```
 ## Authentication
 
 ### Init Qiscus
