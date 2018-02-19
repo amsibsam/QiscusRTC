@@ -260,11 +260,6 @@ class CallEnggine: NSObject {
         let device = UIDevice.string(for: UIDevice.deviceType())
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         if (device != nil) {
-//            let videoSource  = peerConnectionFactory.videoSource()
-//            let capturer = RTCCameraVideoCapturer.init(delegate: videoSource)
-//            let capturerController = CallCaptureController.init(WithCapturer: capturer)
-//            capturerController.startCapture()
-            
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             
