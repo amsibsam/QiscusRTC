@@ -16,7 +16,6 @@
 		3D50DA86202AF36C00643BB1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D50DA85202AF36C00643BB1 /* README.md */; };
 		3D7199BB1FAAC95F004EE86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */; };
 		3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BC1FAACA25004EE86F /* Main.storyboard */; };
-		5D6CD44D2032BCF100797DF1 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CD44C2032BCF100797DF1 /* CallManager.swift */; };
 		5D760A6D20328FE90049706F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6B20328FE90049706F /* MainViewController.swift */; };
 		5D760A6E20328FE90049706F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D760A6C20328FE90049706F /* MainViewController.xib */; };
 		5D760A70203290500049706F /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6F203290500049706F /* MainApp.swift */; };
@@ -38,7 +37,6 @@
 		3D50DA85202AF36C00643BB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D7199BA1FAAC95F004EE86F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D7199BC1FAACA25004EE86F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		5D6CD44C2032BCF100797DF1 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
 		5D760A6B20328FE90049706F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5D760A6C20328FE90049706F /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		5D760A6F203290500049706F /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 		5D760A7220329D6E0049706F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				5D6CD44C2032BCF100797DF1 /* CallManager.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -391,7 +388,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D6CD44D2032BCF100797DF1 /* CallManager.swift in Sources */,
 				5D760A6D20328FE90049706F /* MainViewController.swift in Sources */,
 				0457BC511FA9DBAA008D3866 /* ViewController.swift in Sources */,
 				5D760A70203290500049706F /* MainApp.swift in Sources */,

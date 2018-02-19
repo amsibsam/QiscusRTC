@@ -8,6 +8,8 @@
 
 import UIKit
 import Qiscus
+import QiscusRTC
+import SwiftyJSON
 
 class MainViewController: UIViewController {
 
@@ -16,8 +18,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var btnChatIntegration: UIButton!
     
     var id: Int = 0
+    var username :String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        QiscusCommentClient.sharedInstance.roomDelegate = self
+        //initcall
+        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
         btnChatIntegration.addTarget(self, action: #selector(MainViewController.showUser), for: .touchUpInside)
     }
     @objc func showUser(){
@@ -25,20 +31,21 @@ class MainViewController: UIViewController {
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let user1 = UIAlertAction(title: "User1", style: .default) { action -> Void in
-                print("user1")
-                self.initUser(id: 1)
+            self.id = 1
+            self.initUser(id: "sdksample",userEmail: "user1_sample_call@example.com",userKey: "123",userName: "User 1 Sample Call",avatar: "")
         }
         actionSheetController.addAction(user1)
         
         let user2 = UIAlertAction(title: "User2", style: .default) { action -> Void in
-                print("user2")
-                self.initUser(id: 2)
+            self.id = 2
+            self.initUser(id: "sdksample",userEmail: "user2_sample_call@example.com",userKey: "123",userName: "User 2 Sample Call",avatar: "")
         }
         actionSheetController.addAction(user2)
         
         let cancelActionButton = UIAlertAction(title: "Logout", style: .cancel) { action -> Void in
             if(Qiscus.isLoggedIn){
                 Qiscus.clear()
+                QiscusRTC.logout()
             }
         }
         actionSheetController.addAction(cancelActionButton)
@@ -46,42 +53,34 @@ class MainViewController: UIViewController {
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
-    func initUser(id: Int){
-        self.id = id
-        if(Qiscus.isLoggedIn==false){
-        if id == 1 {
-            Qiscus.setup( withAppId: "DragonGo",
-                      userEmail: "userdemo1@qiscus.com",
-                      userKey: "userdemo1",
-                      username: "userdemo1",
-                      avatarURL: "",
+    func initUser(id: String, userEmail: String,userKey: String, userName: String, avatar: String){
+            //login sdk
+            Qiscus.setup( withAppId: id,
+                      userEmail: userEmail,
+                      userKey: userKey,
+                      username: userName,
+                      avatarURL: avatar,
                       delegate: self
             )
-        }else if id == 2 {
-            Qiscus.setup( withAppId: "DragonGo",
-                          userEmail: "userdemo2@qiscus.com",
-                          userKey: "userdemo2",
-                          username: "userdemo2",
-                          avatarURL: "",
-                          delegate: self
-                )
-            }
-        }
+            //login rtc
+             QiscusRTC.register(username: userEmail, displayName: userEmail)
+            self.username = userName
     }
 }
 extension MainViewController : QiscusConfigDelegate{
     func qiscusConnected() {
         if id == 1 {
-            let email = "userdemo2@qiscus.com"
+            let email = "user2_sample_call@example.com"
             let view = Qiscus.chatView(withUsers: [email])
             view.delegate = self
             self.navigationController?.pushViewController(view, animated: true)
         }else if id == 2{
-            let email = "userdemo1@qiscus.com"
+            let email = "user1_sample_call@example.com"
             let view = Qiscus.chatView(withUsers: [email])
             view.delegate = self
             self.navigationController?.pushViewController(view, animated: true)
         }
+     
     }
     
     func qiscusFailToConnect(_ withMessage: String) {
@@ -103,15 +102,9 @@ extension MainViewController : QiscusChatVCDelegate{
     }
     
     public func chatVC(titleAction viewController: QiscusChatVC, room: QRoom?, data: Any?) {
-            print("click \(room)")
+        
     }
     public func chatVC(viewController: QiscusChatVC, willAppear animated: Bool) {
-        var roomId = viewController.chatRoomId
-        if let room = viewController.chatRoom {
-            roomId = room.id
-            print("willapp \(roomId)")
-        }
-        
         let btnVoice = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         let icVoice = UIImage(named: "ic_voice_call_small", in: MainViewController.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         btnVoice.setBackgroundImage(icVoice, for: .normal)
@@ -123,10 +116,67 @@ extension MainViewController : QiscusChatVCDelegate{
 }
 
 
-extension MainViewController {
+extension MainViewController : QiscusRoomDelegate {
+    @objc func startCall(user : String, room : String) {
+        QiscusRTC.startCall(withRoomId: room, WithtargetUsername: user) { (target, error) in
+            if error != nil {
+                self.present(target, animated: true, completion: nil)
+                return
+            }
+            self.present(target, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func gotNewComment(_ comments: QComment) {
+        if comments.senderName == "System" && !comments.data.isEmpty{
+            let dataJson = JSON(parseJSON: comments.data)
+            print("json data \(dataJson)")
+            let type = dataJson["payload"]["type"].stringValue
+            print("type comment \(type)")
+         
+            if type == "call"{
+                let callEvent = dataJson["payload"]["call_event"].stringValue
+                let username = dataJson["payload"]["call_callee"]["username"].stringValue
+                let roomname = dataJson["payload"]["room_name"].stringValue
+                
+                if  callEvent == "incoming" {
+                    startCall(user: username,room: roomname)
+                }
+            }
+        }
+    }
+    
+    func didFinishLoadRoom(onRoom room: QRoom) {
+        
+    }
+    
+    func didFailLoadRoom(withError error: String) {
+        
+    }
+    
+    func didFinishUpdateRoom(onRoom room: QRoom) {
+        
+    }
+    
+    func didFailUpdateRoom(withError error: String) {
+        
+    }
+    
     
     @objc func onVoiceCallDidTap() {
-        print("call")
+      
+        callIncoming()
+    }
+    
+    func callIncoming(){
+        QiscusRTC.startCall(withRoomId: "QWERTY123", WithtargetUsername: self.username) { (target, error) in
+            if error != nil {
+                self.present(target, animated: true, completion: nil)
+                return
+            }
+            self.present(target, animated: true, completion: nil)
+        }
     }
     
     class var bundle:Bundle{
