@@ -27,7 +27,7 @@ class CallCenter: NSObject {
     private let provider = CXProvider(configuration: CallCenter.providerConfiguration)
     
     private static var providerConfiguration: CXProviderConfiguration {
-        let appName = "Qiscus Call"
+        let appName = "QiscusCall"
         let providerConfiguration = CXProviderConfiguration(localizedName: appName)
         providerConfiguration.supportsVideo = false
         providerConfiguration.maximumCallsPerCallGroup = 1
@@ -49,11 +49,11 @@ class CallCenter: NSObject {
         provider.invalidate()
     }
     
-    func showIncomingCall(of session: String) {
+    func showIncomingCall(of session: String, isVideo: Bool) {
         let callUpdate = CXCallUpdate()
         callUpdate.remoteHandle = CXHandle(type: .generic, value: session)
         callUpdate.localizedCallerName = session
-        callUpdate.hasVideo = false
+        callUpdate.hasVideo = isVideo
         callUpdate.supportsDTMF = false
         callUpdate.supportsHolding  = false
         callUpdate.supportsGrouping = false
@@ -67,11 +67,11 @@ class CallCenter: NSObject {
         })
     }
     
-    func startOutgoingCall(of session: String) {
+    func startOutgoingCall(of session: String, isVideo: Bool) {
         let handle = CXHandle(type: .generic, value: session)
         let uuid = pairedUUID(of: session)
         let startCallAction = CXStartCallAction(call: uuid, handle: handle)
-        startCallAction.isVideo = false
+        startCallAction.isVideo = isVideo
         
         let transaction = CXTransaction(action: startCallAction)
         controller.request(transaction) { (error) in

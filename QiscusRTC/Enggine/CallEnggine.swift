@@ -260,20 +260,17 @@ class CallEnggine: NSObject {
         let device = UIDevice.string(for: UIDevice.deviceType())
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         if (device != nil) {
-            
-
-            let videoSource  = peerConnectionFactory.videoSource()
-            let capturer = RTCCameraVideoCapturer.init(delegate: videoSource)
-            let capturerController = CallCaptureController.init(WithCapturer: capturer)
-            capturerController.startCapture()
+//            let videoSource  = peerConnectionFactory.videoSource()
+//            let capturer = RTCCameraVideoCapturer.init(delegate: videoSource)
+//            let capturerController = CallCaptureController.init(WithCapturer: capturer)
+//            capturerController.startCapture()
             
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
-            
-            let videoSourceWithConstrains = self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
-            self.localVideoTrack = self.peerConnectionFactory.videoTrack(with: videoSourceWithConstrains, trackId: VIDEO_TRACK_ID)
+            let videoSource = self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
+            self.localVideoTrack = self.peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
             self.localVideoTrack.add(self.localVideo)
             
             self.localAudioTrack = peerConnectionFactory.audioTrack(withTrackId: AUDIO_TRACK_ID)

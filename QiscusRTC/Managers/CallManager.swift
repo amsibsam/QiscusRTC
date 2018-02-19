@@ -87,12 +87,12 @@ class CallManager {
             self.start(room: id, isIncoming: true, targetUser: targetUsername)
             self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: false, name: targetDisplayName, room: id, isAudio: !isVideo, callAvatar: URL(string: targetDisplayAvatar)!)
             // display incoming call UI when receiving incoming voip notification
-            self.callCenter.showIncomingCall(of: targetDisplayName)
+            self.callCenter.showIncomingCall(of: targetDisplayName, isVideo: isVideo)
         }else {
             self.start(room: id, isIncoming: false, targetUser: targetUsername)
             self.callSession = Call(uuid: self.callCenter.pairedUUID(of: targetDisplayName), outgoing: true, name: targetDisplayName, room: id, isAudio: !isVideo, callAvatar: URL(string: targetDisplayAvatar)!)
             // display incoming call UI when receiving incoming voip notification
-            self.callCenter.startOutgoingCall(of: targetDisplayName)
+            self.callCenter.startOutgoingCall(of: targetDisplayName, isVideo: isVideo)
             self.callEnggine?.configureAudioSession()
             self.callEnggine?.start()
         }
@@ -209,8 +209,7 @@ class CallManager {
 
 extension CallManager : CallCenterDelegate {
     func callCenter(_ callCenter: CallCenter, startCall session: String) {
-//        enableMedia(false)
-//        startSession(session)
+
     }
     
     func callCenter(_ callCenter: CallCenter, answerCall session: String) {
@@ -233,7 +232,6 @@ extension CallManager : CallCenterDelegate {
     }
     
     func callCenterDidActiveAudioSession(_ callCenter: CallCenter) {
-//        enableMedia(true)
         self.callEnggine?.configureAudioSession()
     }
 }

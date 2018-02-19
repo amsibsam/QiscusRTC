@@ -94,27 +94,66 @@ class ViewController: UIViewController {
     @objc func startCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-        
-        QiscusRTC.startCall(withRoomId: roomName!, isVideo: true, WithtargetUsername: username!) { (target, error) in
-            if error != nil {
-                self.present(target, animated: true, completion: nil)
-                return
+        let alert = UIAlertController(title: "Call", message: "Please select Content", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
+            // Start Call Audio
+            QiscusRTC.startCall(withRoomId: roomName!, isVideo: false, WithtargetUsername: username!) { (target, error) in
+                if error != nil {
+                    self.present(target, animated: true, completion: nil)
+                    return
+                }
             }
-            self.present(target, animated: true, completion: nil)
-        }
+        }))
         
+        alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
+            // Start Call Video
+            QiscusRTC.startCall(withRoomId: roomName!, isVideo: true, WithtargetUsername: username!) { (target, error) in
+                if error != nil {
+                    self.present(target, animated: true, completion: nil)
+                    return
+                }
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
     
     @objc func incomingCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-        QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: true, targetUsername: username!) { (target, error) in
+
+        let alert = UIAlertController(title: "Qiscus Call", message: "Please select Content", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
+            QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: false, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
                 if error != nil {
                     self.present(target, animated: true, completion: nil)
                     return
                 }
-                self.present(target, animated: true, completion: nil)
             }
+        }))
+
+        alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
+            QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: true, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
+                if error != nil {
+                    self.present(target, animated: true, completion: nil)
+                    return
+                }
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
     
 }

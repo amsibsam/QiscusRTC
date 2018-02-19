@@ -51,15 +51,9 @@ public class QiscusRTC: NSObject {
         return shared.manager.whoami()
     }
     
-    public class func register(username: String, displayName: String, avatarUrl: String = "http://") {
+    public class func register(username: String!, displayName: String!, avatarUrl: String = "http://") {
         shared.manager.client   = QiscusCallClient(username: username, displayName: displayName, avatarUrl: avatarUrl)
     }
-    
-//    public class func call(withRoomId id: String, callType type: CallType, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
-//        shared.manager.call(withRoomId: id, callType: type, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
-//            completionHandler(target, error)
-//        }
-//    }
     
     public class func startCall(withRoomId id: String = "", isVideo : Bool, WithtargetUsername username: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
         if id.isEmpty {
