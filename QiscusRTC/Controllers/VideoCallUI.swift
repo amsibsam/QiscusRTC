@@ -41,8 +41,10 @@ class VideoCallUI: UIViewController {
         self.setupUI()
         
         if let localvideo = presenter.getLocalVideo() {
-            self.localVideoView.insertSubview(localvideo, at: 0)
-            self.localVideoView.clipsToBounds   = true
+            DispatchQueue.main.async {
+                self.localVideoView.insertSubview(localvideo, at: 0)
+                self.localVideoView.clipsToBounds   = true
+            }
         }
         
         if let remoteVideo = presenter.getRemoteVideo() {

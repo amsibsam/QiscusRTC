@@ -24,7 +24,7 @@ class CallUIPresenter {
         get {
             return manager.isAudioMute
         }
-        set{
+        set {
             self.manager.isAudioMute = newValue
         }
     }
@@ -32,8 +32,13 @@ class CallUIPresenter {
         get {
             return self.manager.isLoadSpeaker
         }
-        set{
+        set {
             self.manager.isLoadSpeaker = newValue
+        }
+    }
+    var isReceiving : Bool {
+        get {
+            return self.manager.isReceiving
         }
     }
     
@@ -58,6 +63,9 @@ class CallUIPresenter {
     }
     
     func getCallAvatar() -> URL {
+        if let avatarUrl = manager.callSession?.callAvatar {
+            return avatarUrl
+        }
         
         return URL(string: "http://")!
     }
