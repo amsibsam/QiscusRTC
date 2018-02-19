@@ -117,15 +117,21 @@ extension MainViewController : QiscusChatVCDelegate{
 
 
 extension MainViewController : QiscusRoomDelegate {
-    @objc func startCall(user : String, room : String) {
-        QiscusRTC.startCall(withRoomId: room, WithtargetUsername: user) { (target, error) in
-            if error != nil {
+    @objc func startCall(user : String, room : String, video : Bool) {
+        // Start Call
+        QiscusRTC.startCall(withRoomId: room, isVideo: video, WithtargetUsername: user) { (target, error) in
+            if error == nil {
                 self.present(target, animated: true, completion: nil)
-                return
             }
-            self.present(target, animated: true, completion: nil)
         }
-        
+    }
+    
+    func incomingCall(roomName : String, video : Bool, username: String, displayName: String, displayAvatar : String){
+        QiscusRTC.incomingCall(withRoomId: roomName, isVideo: video, targetUsername: username, targetDisplayName: username, targetDisplayAvatar: displayAvatar) { (target, error) in
+            if error == nil {
+                self.present(target, animated: true, completion: nil)
+            }
+        }
     }
     
     func gotNewComment(_ comments: QComment) {
@@ -137,11 +143,13 @@ extension MainViewController : QiscusRoomDelegate {
          
             if type == "call"{
                 let callEvent = dataJson["payload"]["call_event"].stringValue
-                let username = dataJson["payload"]["call_callee"]["username"].stringValue
-                let roomname = dataJson["payload"]["room_name"].stringValue
-                
+                let username = dataJson["payload"]["call_caller"]["username"].stringValue
+                let displayName = dataJson["payload"]["call_caller"]["name"].stringValue
+                let avatarUrl = dataJson["payload"]["call_caller"]["avatar"].stringValue
+                let roomname = dataJson["payload"]["call_room_id"].stringValue
+                let video = dataJson["payload"]["call_is_video"].boolValue
                 if  callEvent == "incoming" {
-                    startCall(user: username,room: roomname)
+                    incomingCall(roomName: roomname,video: video,username: username,displayName: displayName,displayAvatar: avatarUrl)
                 }
             }
         }
@@ -170,13 +178,13 @@ extension MainViewController : QiscusRoomDelegate {
     }
     
     func callIncoming(){
-        QiscusRTC.startCall(withRoomId: "QWERTY123", WithtargetUsername: self.username) { (target, error) in
-            if error != nil {
-                self.present(target, animated: true, completion: nil)
-                return
-            }
-            self.present(target, animated: true, completion: nil)
-        }
+//        QiscusRTC.startCall(withRoomId: "QWERTY123", WithtargetUsername: self.username) { (target, error) in
+//            if error != nil {
+//                self.present(target, animated: true, completion: nil)
+//                return
+//            }
+//            self.present(target, animated: true, completion: nil)
+//        }
     }
     
     class var bundle:Bundle{
