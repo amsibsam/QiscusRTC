@@ -283,10 +283,10 @@ class CallEnggine: NSObject {
 }
 
 extension CallEnggine: RTCEAGLVideoViewDelegate {
-    func videoView(_ videoView: RTCEAGLVideoView!, didChangeVideoSize size: CGSize) {
+    func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
         print("did change video size : \(size), TAG : \(videoView.tag)")
         if(videoView.tag == self.localVideoTAG){
-            var targetSize = self.viewLocalVideo?.frame.size
+            _ = self.viewLocalVideo?.frame.size
 //            if(!self.viewVideoMask.isHidden){
 //                targetSize = self.viewRemoteVideo.frame.size
 //            }
@@ -334,15 +334,10 @@ extension CallEnggine: RTCPeerConnectionDelegate {
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
-        if (candidate != nil) {
-            self.delegate.callEnggine(gotCandidate: candidate.sdpMid!, dataIndex: Int(candidate.sdpMLineIndex), dataSdp: candidate.sdp)
-        }
+        self.delegate.callEnggine(gotCandidate: candidate.sdpMid!, dataIndex: Int(candidate.sdpMLineIndex), dataSdp: candidate.sdp)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
-        if (peerConnection == nil) {
-            return
-        }
         if (stream.audioTracks.count > 1 || stream.videoTracks.count > 1) {
             print("[RTC-HUB] Weird-looking stream: " + stream.description)
             return

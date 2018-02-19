@@ -286,6 +286,25 @@ extension CallManager : CallSignalDelegate {
 }
 
 extension CallManager : CallEnggineDelegate {
+    func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String) {
+        // Call signal send candidate
+        self.callSignal?.sendCandidat(dataMid: dataMid, dataIndex: dataIndex, dataSdp: dataSdp)
+    }
+    
+    func callEnggine(createSession type: CallSDPType, description: String) {
+        var value : String = ""
+        if (type == .offer) {
+            // Tell Call Signal to Send offer and notify local Offer
+            self.callSignal?.sendOffer(sdp: description)
+            value = "LOCAL_OFFER"
+        }else if (type == .answer) {
+            // Send Signal answer and notify local answer
+            self.callSignal?.sendAnswer(sdp: description)
+            value = "LOCAL_ANSWER"
+        }
+        self.callSignal?.sendNotify(state: type.rawValue, value: value)
+    }
+    
     func didReceive(Local video: UIView) {
         self.localVideo = video
         self.delegate?.callReceive(Local: video)
@@ -312,27 +331,6 @@ extension CallManager : CallEnggineDelegate {
         case .failed:
             self.updateState(value: .ended)
             break
-        default:
-            break
         }
-    }
-    
-    func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String) {
-        // Call signal send candidate
-        self.callSignal?.sendCandidat(dataMid: dataMid, dataIndex: dataIndex, dataSdp: dataSdp)
-    }
-    
-    func callEnggine(createSession type: CallSDPType, description: String) {
-        var value : String = ""
-        if (type == .offer) {
-            // Tell Call Signal to Send offer and notify local Offer
-            self.callSignal?.sendOffer(sdp: description)
-            value = "LOCAL_OFFER"
-        }else if (type == .answer) {
-            // Send Signal answer and notify local answer
-            self.callSignal?.sendAnswer(sdp: description)
-            value = "LOCAL_ANSWER"
-        }
-        self.callSignal?.sendNotify(state: type.rawValue, value: value)
     }
 }
