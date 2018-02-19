@@ -37,6 +37,7 @@ class CallManager {
     var startTime   : Date? = nil
     var client      : QiscusCallClient?  = nil
     var delegate    : CallDelegate? = nil
+    var isReceiving : Bool = false
     // Call Video component
     var localVideo   : UIView?    = nil
     var remoteVideo  : UIView?    = nil

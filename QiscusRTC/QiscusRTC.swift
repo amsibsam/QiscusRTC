@@ -56,6 +56,7 @@ public class QiscusRTC: NSObject {
     }
     
     public class func startCall(withRoomId id: String = "", isVideo : Bool, WithtargetUsername username: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+        shared.manager.isReceiving = false
         if id.isEmpty {
             // Generate call room with target
             let roomID = shared.manager.createRoomID(length: 5)
@@ -70,6 +71,7 @@ public class QiscusRTC: NSObject {
     }
     
     public class func incomingCall(withRoomId id: String, isVideo: Bool, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: String = "http://", completionHandler: @escaping (UIViewController, NSError?) -> Void) {
+        shared.manager.isReceiving = true
         shared.manager.call(withRoomId: id, callType: .incoming, isVideo: isVideo, targetUsername: targetUsername, targetDisplayName: targetDisplayName, targetDisplayAvatar: targetDisplayAvatar) { (target , error) in
             completionHandler(target, error)
         }

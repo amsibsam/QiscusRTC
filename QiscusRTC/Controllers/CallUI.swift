@@ -41,7 +41,9 @@ class CallUI: UIViewController {
         self.labelDuration.text = "00.00"
         self.presenter.attachView(view: self)
         self.setupUI()
-        self.runTimer()
+        if presenter.isReceiving {
+            self.runTimer()
+        }
         if let localvideo = presenter.getLocalVideo() {
              self.view.insertSubview(localvideo, at: 0)
         }
@@ -133,10 +135,7 @@ class CallUI: UIViewController {
 
 extension CallUI : CallView {
     func callReceive(Local video: UIView) {
-//        self.view.insertSubview(video, at: 0)
-        self.imageAvatar.insertSubview(video, at: 0)
-        self.imageAvatar.clipsToBounds  = true
-        print("UI receive local video")
+
     }
     
     func callReceive(Remote video: UIView) {
@@ -148,7 +147,11 @@ extension CallUI : CallView {
     }
     
     func CallStatusChange(state: CallState) {
-        self.labelDuration.text = state.rawValue
+        if state == .conected {
+            self.runTimer()
+        } else {
+            self.labelDuration.text = state.rawValue
+        }
     }
     
     func CallFinished() {
