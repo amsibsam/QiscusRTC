@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         QiscusCommentClient.sharedInstance.roomDelegate = self
         //initcall
-        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
+        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN")
         btnChatIntegration.addTarget(self, action: #selector(MainViewController.showUser), for: .touchUpInside)
     }
     
@@ -125,7 +125,7 @@ extension MainViewController : QiscusChatVCDelegate{
 extension MainViewController : QiscusRoomDelegate {
     @objc func startCall(user : String, room : String, video : Bool) {
         // Start Call
-        QiscusRTC.startCall(withRoomId: room, isVideo: video, WithtargetUsername: user) { (target, error) in
+        QiscusRTC.startCall(roomId: room, isVideo: video, calleeUsername: user) { (target, error) in
             if error == nil {
                 self.present(target, animated: true, completion: nil)
             }
@@ -133,7 +133,7 @@ extension MainViewController : QiscusRoomDelegate {
     }
     
     func incomingCall(roomName : String, video : Bool, username: String, displayName: String, displayAvatar : String){
-        QiscusRTC.incomingCall(withRoomId: roomName, isVideo: video, targetUsername: username, targetDisplayName: username, targetDisplayAvatar: displayAvatar) { (target, error) in
+        QiscusRTC.incomingCall(roomId: roomName, isVideo: video, calleerUsername: username, calleerDisplayName: displayName, calleerDisplayAvatar: URL(string: displayAvatar)!) { (target, error) in
             if error == nil {
                 self.present(target, animated: true, completion: nil)
             }

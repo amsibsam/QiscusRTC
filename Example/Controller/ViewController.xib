@@ -56,10 +56,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njN-4A-1Rr">
-                    <rect key="frame" x="50" y="269" width="100" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="20" y="269" width="130" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="NZ9-fo-4np"/>
+                        <constraint firstAttribute="width" constant="130" id="NZ9-fo-4np"/>
                     </constraints>
                     <state key="normal" title="Start Call">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,7 +70,7 @@
                     <state key="normal" title="re-Login"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJs-Jp-4zZ">
-                    <rect key="frame" x="170" y="269" width="100" height="30"/>
+                    <rect key="frame" x="170" y="269" width="130" height="30"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Incoming Call">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

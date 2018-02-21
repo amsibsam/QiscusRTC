@@ -17,6 +17,9 @@ Add to your project podfile
 pod 'QiscusRTC'
 ```
 
+```swift
+import QiscusRTC
+```
 ### Permission
 
 Add to your project info.plist
@@ -42,18 +45,11 @@ add this in .plist
 Init Qiscus at your application
 
 Parameters:
-* context: context
 * app_id: String
 * app_secret: String
 
 ```swift
-public class SampleApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        QiscusRTC.init(this, app_id, app_secret);
-    }
-}
+    QiscusRTC.setup(appId: [Your_AppID], appSecret: [Your_Secret_Key])
 ```
 To get your `app_id` and `app_secret`, please [contact us](https://www.qiscus.com/contactus).
 
@@ -62,19 +58,12 @@ To get your `app_id` and `app_secret`, please [contact us](https://www.qiscus.co
 Qiscus also provides on-premise package, so you can host signaling server on your own network. Please [contact us](https://www.qiscus.com/contactus) to get further information.
 
 Parameters:
-* context: context
 * app_id: String
 * app_secret: String
 * host: String
 
 ```swift
-public class SampleApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        QiscusRTC.init(this, app_id, app_secret, host);
-    }
-}
+    QiscusRTC.setup(appId: [Your_AppID], appSecret: [Your_Secret_Key], host: [Your_server])
 ```
 
 ## Method
@@ -86,60 +75,49 @@ Before user can start call each other, they must register the user to our server
 Parameters:
 * username: String
 * displayName: String
-* avatarUrl: String
 
 ```swift
-QiscusRTC.register(username, displayName, avatarUrl);
+QiscusRTC.register(username: "juang@qiscus.co", displayName: "juang")
 ```
 
-Start call object:
-* roomId: String
-* callAs: Enum QiscusRTC.CallAs.CALLER / QiscusRTC.CallAs.CALLEE
-* callType: Enum QiscusRTC.CallType.VOICE / QiscusRTC.CallType.VIDEO
-* callerUsername: String
-* calleeUsername: String
-* callerDisplayName: String
-* calleeAvatarUrl: String
 
 ### Start Call
 
-#### Start voice call
+Start Call, as callee you can call anyone with username. You can define roomId or leave it and we can generate random room id.
+
+Start call object:
+* roomId: String
+* calleeUsername: String
+* calleeDisplayName: String
+* isVideo: Bool
+* calleeDisplayAvatar: URL
+
 
 ```swift
-QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
-                            .setCallAs(QiscusRTC.CallAs.CALLER)
-                            .setCallType(QiscusRTC.CallType.VOICE)
-                            .setCallerUsername(QiscusRTC.getUser())
-                            .setCalleeUsername(calleeUsername)
-                            .setCalleeDisplayName(calleeDisplayName)
-                            .setCalleeDisplayAvatar(calleeAvatarUrl)
-                            .show(this);
+QiscusRTC.startCall(roomId: "unique_room_id", isVideo: true/true, calleeUsername: "e@qiscus.co", calleeDisplayName: "Evan P", calleeDisplayAvatar: URL(string: "http://...") { (target, error) in
+    if error == nil {
+        self.present(target, animated: true, completion: nil)
+    }
+}
 ```
-#### Start video call
+### Incoming Call
+
+When you receive a signal, message or event incoming call. You must set roomID and caller username to autenticate call.
+
+Start call object:
+* roomId: String
+* calleerUsername: String
+* calleerDisplayName: String
+* isVideo: Bool
+* calleerDisplayAvatar: URL
 
 ```swift
-QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
-                            .setCallAs(QiscusRTC.CallAs.CALLER)
-                            .setCallType(QiscusRTC.CallType.VIDEO)
-                            .setCallerUsername(QiscusRTC.getUser())
-                            .setCalleeUsername(calleeUsername)
-                            .setCalleeDisplayName(calleeDisplayName)
-                            .setCalleeDisplayAvatar(calleeAvatarUrl)
-                            .show(this);
+QiscusRTC.incomingCall(roomId: "receive_room_id", isVideo: false/true, calleerUsername: "juang@qiscus.co", calleerDisplayName: "juang", calleerDisplayAvatar: URL(string: "http://...") { (target, error) in
+    if error == nil {
+        self.present(target, animated: true, completion: nil)
+    }
+}
 ```
-
-### Custom your call
-
-You can custom your call notification, icon and callback button action with ```QiscusRTC.Call.getCallConfig()```
-
-```swift
-QiscusRTC.Call.getCallConfig()
-                .setBackgroundDrawble(R.drawable.bg_call)
-                .setOngoingNotificationEnable(true)
-                .setLargeOngoingNotifIcon(R.drawable.ic_call_white_24dp);
-```
-
-That's it! You just need 3 steps to build voice call in your apps.
 
 ### Example
 
