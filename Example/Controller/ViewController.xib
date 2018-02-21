@@ -35,7 +35,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Call with Room ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-kb-aZ8">
-                    <rect key="frame" x="61" y="225" width="207" height="30"/>
+                    <rect key="frame" x="61" y="203" width="207" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -46,17 +46,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5S-BK-6MY">
-                    <rect key="frame" x="139" y="196" width="42" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="42" id="duJ-ay-mep"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njN-4A-1Rr">
-                    <rect key="frame" x="20" y="269" width="130" height="30"/>
+                    <rect key="frame" x="20" y="247" width="130" height="30"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="NZ9-fo-4np"/>
@@ -70,7 +61,7 @@
                     <state key="normal" title="re-Login"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJs-Jp-4zZ">
-                    <rect key="frame" x="170" y="269" width="130" height="30"/>
+                    <rect key="frame" x="170" y="247" width="130" height="30"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Incoming Call">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,7 +75,6 @@
                 <constraint firstItem="ST0-5z-cKM" firstAttribute="top" secondItem="9f9-YD-Mx2" secondAttribute="top" constant="5" id="4MZ-Nz-ULX"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="width" secondItem="njN-4A-1Rr" secondAttribute="width" id="4t6-o6-etf"/>
                 <constraint firstItem="ST0-5z-cKM" firstAttribute="leading" secondItem="DtD-RJ-mS1" secondAttribute="leadingMargin" id="6Nv-C5-BwK"/>
-                <constraint firstItem="IsQ-kb-aZ8" firstAttribute="top" secondItem="A5S-BK-6MY" secondAttribute="bottom" constant="8" symbolic="YES" id="6pj-l4-Lao"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="top" secondItem="njN-4A-1Rr" secondAttribute="top" id="EsU-7J-LUn"/>
                 <constraint firstItem="njN-4A-1Rr" firstAttribute="trailing" secondItem="DtD-RJ-mS1" secondAttribute="centerX" constant="-10" id="Ia9-w3-YN4"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="leading" secondItem="DtD-RJ-mS1" secondAttribute="centerX" constant="10" id="KpQ-wX-dpi"/>
@@ -92,13 +82,12 @@
                 <constraint firstItem="KVL-Zz-evR" firstAttribute="leading" secondItem="DtD-RJ-mS1" secondAttribute="leadingMargin" constant="45" id="RqO-uN-wUk"/>
                 <constraint firstItem="njN-4A-1Rr" firstAttribute="top" secondItem="IsQ-kb-aZ8" secondAttribute="bottom" constant="14" id="Ru5-zL-UWi"/>
                 <constraint firstItem="yaz-Dc-04B" firstAttribute="leading" secondItem="DtD-RJ-mS1" secondAttribute="leadingMargin" constant="78" id="VHX-IT-M8s"/>
-                <constraint firstItem="A5S-BK-6MY" firstAttribute="top" secondItem="KVL-Zz-evR" secondAttribute="bottom" constant="8" symbolic="YES" id="WE1-9g-qj4"/>
                 <constraint firstAttribute="trailingMargin" secondItem="KVL-Zz-evR" secondAttribute="trailing" constant="36" id="Wsr-ph-lbs"/>
                 <constraint firstItem="KVL-Zz-evR" firstAttribute="trailing" secondItem="IsQ-kb-aZ8" secondAttribute="trailing" id="cDg-wS-7o5"/>
                 <constraint firstItem="ST0-5z-cKM" firstAttribute="centerX" secondItem="yaz-Dc-04B" secondAttribute="centerX" id="cui-fE-Kmf"/>
                 <constraint firstItem="yaz-Dc-04B" firstAttribute="top" secondItem="ST0-5z-cKM" secondAttribute="bottom" constant="8" symbolic="YES" id="mUS-rV-sJ0"/>
-                <constraint firstItem="yaz-Dc-04B" firstAttribute="centerX" secondItem="A5S-BK-6MY" secondAttribute="centerX" id="mf8-GZ-bfG"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="bottom" secondItem="njN-4A-1Rr" secondAttribute="bottom" id="mof-Eh-LAh"/>
+                <constraint firstItem="IsQ-kb-aZ8" firstAttribute="top" secondItem="KVL-Zz-evR" secondAttribute="bottom" constant="15" id="z1W-Lo-BPY"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="9f9-YD-Mx2"/>
