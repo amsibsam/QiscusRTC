@@ -2,15 +2,16 @@
 //  ViewController.swift
 //  Example
 //
-//  Created by asharijuang on 11/1/17.
-//  Copyright © 2017 qiscus. All rights reserved.
+//  Created by Qiscus on 21/02/18.
+//  Copyright © 2018 qiscus. All rights reserved.
 //
 
 import UIKit
+
 import QiscusRTC
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var fieldUsername: UITextField!
@@ -21,18 +22,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Sample Call"
         self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
         self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
         QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
         QiscusRTC.register(username: "juang", displayName: "juang")
         setupAuth()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func setupAuth() {
         if QiscusRTC.isRegister() {
             buttonLogin.setTitle("Logout", for: UIControlState.normal)
@@ -94,6 +96,11 @@ class ViewController: UIViewController {
     @objc func startCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
+        
+        if (username?.isEmpty)! || (roomName?.isEmpty)! {
+            return
+        }
+        
         let alert = UIAlertController(title: "Call", message: "Please select content", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
             // Start Call Audio
@@ -125,7 +132,9 @@ class ViewController: UIViewController {
     @objc func incomingCall() {
         let username = fieldUsername.text
         let roomName = fieldRoomID.text
-
+        if (username?.isEmpty)! || (roomName?.isEmpty)! {
+            return
+        }
         let alert = UIAlertController(title: "Qiscus Call", message: "Please select content", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
             QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: false, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
@@ -134,7 +143,7 @@ class ViewController: UIViewController {
                 }
             }
         }))
-
+        
         alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
             QiscusRTC.incomingCall(withRoomId: roomName!, isVideo: true, targetUsername: username!, targetDisplayName: username!, targetDisplayAvatar: "http://") { (target, error) in
                 if error == nil {
@@ -151,6 +160,4 @@ class ViewController: UIViewController {
             print("completion block")
         })
     }
-    
 }
-

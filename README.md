@@ -1,7 +1,7 @@
 # QiscusRTC
 
 Qiscus RTC SDK is a product that makes adding voice calling to mobile apps easy. It handles all the complexity of signaling and audio management while providing you the freedom to create a stunning user interface.
-On this example we use our simple websocket push notification for handle call notification. We highly recommend that you implement a better push notification for increasing call realiability, for example APNs, Pushkit, MQTT, or other standard messaging protocol.
+We highly recommend that you implement a better push notification for increasing call realiability, for example APNs, Pushkit, MQTT, or other standard messaging protocol.
 
 Callkit support
 
@@ -46,7 +46,7 @@ Parameters:
 * app_id: String
 * app_secret: String
 
-```java
+```swift
 public class SampleApplication extends Application {
     @Override
     public void onCreate() {
@@ -67,7 +67,7 @@ Parameters:
 * app_secret: String
 * host: String
 
-```java
+```swift
 public class SampleApplication extends Application {
     @Override
     public void onCreate() {
@@ -88,7 +88,7 @@ Parameters:
 * displayName: String
 * avatarUrl: String
 
-```java
+```swift
 QiscusRTC.register(username, displayName, avatarUrl);
 ```
 
@@ -105,7 +105,7 @@ Start call object:
 
 #### Start voice call
 
-```java
+```swift
 QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
                             .setCallAs(QiscusRTC.CallAs.CALLER)
                             .setCallType(QiscusRTC.CallType.VOICE)
@@ -117,7 +117,7 @@ QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
 ```
 #### Start video call
 
-```java
+```swift
 QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
                             .setCallAs(QiscusRTC.CallAs.CALLER)
                             .setCallType(QiscusRTC.CallType.VIDEO)
@@ -132,7 +132,7 @@ QiscusRTC.CallActivityBuilder.buildCallWith(roomId)
 
 You can custom your call notification, icon and callback button action with ```QiscusRTC.Call.getCallConfig()```
 
-```java
+```swift
 QiscusRTC.Call.getCallConfig()
                 .setBackgroundDrawble(R.drawable.bg_call)
                 .setOngoingNotificationEnable(true)

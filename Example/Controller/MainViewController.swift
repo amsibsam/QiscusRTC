@@ -26,6 +26,12 @@ class MainViewController: UIViewController {
         QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", signalUrl: URL(string: "wss://rtc.qiscus.com/signal")!)
         btnChatIntegration.addTarget(self, action: #selector(MainViewController.showUser), for: .touchUpInside)
     }
+    
+    @IBAction func goSimpleCall(_ sender: Any) {
+        self.navigationController?.pushViewController(ViewController(), animated: true)
+    }
+    
+    
     @objc func showUser(){
         print("show Menu")
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
