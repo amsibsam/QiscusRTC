@@ -19,7 +19,7 @@ protocol CallView {
 class CallUIPresenter {
     private let manager = QiscusRTC.shared.manager
     private var viewPresenter   : CallView?
-    
+
     var isAudioMute : Bool {
         get {
             return manager.isAudioMute
@@ -80,6 +80,14 @@ class CallUIPresenter {
     
     func getRemoteVideo() -> UIView? {
         return manager.getRemoteVideo()
+    }
+    
+    func switchCameraBack(){
+        manager.switchCameraBack()
+    }
+    
+    func switchCameraFront(){
+        manager.switchCameraFront()
     }
 }
 

@@ -127,6 +127,14 @@ class CallManager {
         }
     }
     
+    func switchCameraBack() {
+        self.callEnggine?.switchCameraBack()
+    }
+    
+    func switchCameraFront() {
+        self.callEnggine?.switchCameraFront()
+    }
+    
     // Call Component
     func getCall(isVideo video: Bool) -> UIViewController {
         return video ? VideoCallUI() : CallUI()

@@ -32,6 +32,13 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Dl-rE-ZZ0">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAT-SN-ZhK">
+                            <rect key="frame" x="206" y="28" width="106" height="133"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3N-RL-RAm">
@@ -92,7 +99,7 @@
                         <constraint firstAttribute="width" constant="75" id="rX4-pT-Vwq"/>
                         <constraint firstAttribute="height" constant="75" id="zM0-nj-AtI"/>
                     </constraints>
-                    <state key="normal" image="call_speaker">
+                    <state key="normal" image="call_camera">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -108,7 +115,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZj-Np-k5n">
-                    <rect key="frame" x="22" y="25" width="157" height="28"/>
+                    <rect key="frame" x="22" y="40" width="157" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="VPU-uq-M3h"/>
                         <constraint firstAttribute="width" constant="157" id="Xln-Wk-1Fa"/>
@@ -118,7 +125,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="00.59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcJ-Ze-EJn">
-                    <rect key="frame" x="22" y="60" width="45" height="21"/>
+                    <rect key="frame" x="22" y="75" width="45" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="vvl-81-GUA"/>
                     </constraints>
@@ -144,11 +151,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAT-SN-ZhK">
-                    <rect key="frame" x="204" y="25" width="106" height="133"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -167,7 +169,7 @@
                 <constraint firstItem="R0W-Z1-Q8M" firstAttribute="leading" secondItem="NAb-va-MEb" secondAttribute="leading" id="RmO-hB-xaE"/>
                 <constraint firstItem="S3N-RL-RAm" firstAttribute="centerX" secondItem="NAb-va-MEb" secondAttribute="centerX" id="UOk-qw-dYH"/>
                 <constraint firstItem="gcJ-Ze-EJn" firstAttribute="top" secondItem="UZj-Np-k5n" secondAttribute="bottom" constant="7" id="VLd-7Y-5ce"/>
-                <constraint firstItem="UZj-Np-k5n" firstAttribute="top" secondItem="aM7-xQ-Qwb" secondAttribute="top" constant="5" id="XtM-7x-Vvs"/>
+                <constraint firstItem="UZj-Np-k5n" firstAttribute="top" secondItem="aM7-xQ-Qwb" secondAttribute="top" constant="20" id="XtM-7x-Vvs"/>
                 <constraint firstItem="kUa-cu-cKl" firstAttribute="centerY" secondItem="NAb-va-MEb" secondAttribute="centerY" id="ZYC-6f-K4T"/>
                 <constraint firstItem="ZAg-ue-guq" firstAttribute="trailing" secondItem="kUa-cu-cKl" secondAttribute="trailing" id="Zf2-pL-sZM"/>
                 <constraint firstItem="ZAg-ue-guq" firstAttribute="top" secondItem="R0W-Z1-Q8M" secondAttribute="top" id="aR9-K4-mUW"/>
@@ -185,9 +187,9 @@
         </view>
     </objects>
     <resources>
+        <image name="call_camera" width="29" height="22"/>
         <image name="call_chat" width="29" height="27"/>
         <image name="call_close" width="58" height="58"/>
         <image name="call_mute" width="21" height="35"/>
-        <image name="call_speaker" width="38" height="34"/>
     </resources>
 </document>

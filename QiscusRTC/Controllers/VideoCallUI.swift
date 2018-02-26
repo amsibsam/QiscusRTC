@@ -20,7 +20,7 @@ class VideoCallUI: UIViewController {
     @IBOutlet weak var buttonEndcall: UIButton!
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
-    
+    var isFront : Bool = true
     var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
@@ -42,6 +42,8 @@ class VideoCallUI: UIViewController {
         
         if let localvideo = presenter.getLocalVideo() {
             DispatchQueue.main.async {
+                localvideo.frame.size   = self.localVideoView.frame.size
+                localvideo.contentMode  = .scaleAspectFill
                 self.localVideoView.insertSubview(localvideo, at: 0)
                 self.localVideoView.clipsToBounds   = true
             }
@@ -152,7 +154,12 @@ class VideoCallUI: UIViewController {
     }
     
     @IBAction func clickCamera(_ sender: Any) {
-
+        if isFront {
+            self.presenter.switchCameraBack()
+        }else {
+            self.presenter.switchCameraFront()
+        }
+        isFront = false
     }
     
 }
@@ -160,6 +167,7 @@ class VideoCallUI: UIViewController {
 extension VideoCallUI : CallView {
     func callReceive(Local video: UIView) {
         self.localVideoView.insertSubview(video, at: 0)
+        self.localVideoView.clipsToBounds   = true
     }
     
     func callReceive(Remote video: UIView) {

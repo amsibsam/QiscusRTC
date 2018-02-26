@@ -31,6 +31,11 @@ enum ConnectedState {
     case complete
 }
 
+enum CameraPosition {
+    case front
+    case back
+}
+
 class Call {
     let uuid        : UUID
     let outgoing    : Bool

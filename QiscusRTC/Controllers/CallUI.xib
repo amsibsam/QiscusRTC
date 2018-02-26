@@ -111,7 +111,7 @@
                         <action selector="clickSpeaker:" destination="-1" eventType="touchUpInside" id="Ysb-03-NuI"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Velox Audio Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U08-6B-awv">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U08-6B-awv">
                     <rect key="frame" x="39.333333333333343" y="30" width="335.66666666666663" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="oE7-Eo-18B"/>

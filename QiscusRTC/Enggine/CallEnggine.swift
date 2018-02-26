@@ -63,13 +63,15 @@ class CallEnggine: NSObject {
     var localAudioTrack         : RTCAudioTrack!    = nil
     var remoteVideoTrack        : RTCVideoTrack!    = nil
     var remoteAudioTrack        : RTCAudioTrack!    = nil
+    var videoSource             : RTCAVFoundationVideoSource! = nil
     var mediaConstraints = RTCMediaConstraints(mandatoryConstraints: [
         "OfferToReceiveAudio" : "true", "OfferToReceiveVideo" : "true"
         ], optionalConstraints: nil)
     
     internal var delegate : CallEnggineDelegate
-    private var isMuted : Bool  = false
-    private var activeSpeaker : Bool = false
+    private var isMuted         : Bool = false
+    private var activeSpeaker   : Bool = false
+    
     // Call Action
     var isAudioMute : Bool  {
         get {
@@ -107,6 +109,7 @@ class CallEnggine: NSObject {
     
     func end() {
         self.peerConnection.close()
+        self.videoSource            = nil
         self.peerConnection         = nil
         self.localVideo             = nil
         self.remoteVideo            = nil
@@ -251,8 +254,8 @@ class CallEnggine: NSObject {
             , optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
         let config = RTCConfiguration()
         config.iceServers = icsServers
-        self.peerConnection = self.peerConnectionFactory.peerConnection(with: config, constraints: pcConstraints, delegate: self)
         
+        self.peerConnection = self.peerConnectionFactory.peerConnection(with: config, constraints: pcConstraints, delegate: self)
         self.peerConnection.add(self.mediaStream)
     }
     
@@ -264,7 +267,8 @@ class CallEnggine: NSObject {
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
             
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
-            let videoSource = self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
+            videoSource = self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
+            videoSource.useBackCamera = false
             self.localVideoTrack = self.peerConnectionFactory.videoTrack(with: videoSource, trackId: VIDEO_TRACK_ID)
             self.localVideoTrack.add(self.localVideo)
             
@@ -276,10 +280,26 @@ class CallEnggine: NSObject {
             localVideo.renderFrame(nil)
             self.delegate.didReceive(Local: localVideo)
             
-            self.preparePeerConnection()
+            if self.peerConnection == nil {
+                self.preparePeerConnection()
+            }
         }
     }
     
+    func switchCameraBack() {
+        videoSource.useBackCamera   = true
+        let localStream = self.peerConnection.localStreams[0]
+        self.peerConnection.remove(localStream)
+        self.peerConnection.add(localStream)
+    }
+    
+    func switchCameraFront() {
+        videoSource.useBackCamera   = false
+        let localStream = self.peerConnection.localStreams[0]
+        self.peerConnection.remove(localStream)
+        self.peerConnection.add(localStream)
+    }
+
 }
 
 extension CallEnggine: RTCEAGLVideoViewDelegate {
@@ -287,20 +307,9 @@ extension CallEnggine: RTCEAGLVideoViewDelegate {
         print("did change video size : \(size), TAG : \(videoView.tag)")
         if(videoView.tag == self.localVideoTAG){
             _ = self.viewLocalVideo?.frame.size
-//            if(!self.viewVideoMask.isHidden){
-//                targetSize = self.viewRemoteVideo.frame.size
-//            }
-            
-//            let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
-//
-//            self.localVideo.frame = rect
-            
+ 
         }else{
-//            var targetSize = self.viewRemoteVideo.frame.size
-//
-//            let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
-//
-//            self.remoteVideo.frame = rect
+
         }
         
     }
