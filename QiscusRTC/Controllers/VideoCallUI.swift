@@ -21,11 +21,11 @@ class VideoCallUI: UIViewController {
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
     var isFront : Bool = true
-    var presenter : CallUIPresenter  = CallUIPresenter()
+    private var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
     var panGesture       = UIPanGestureRecognizer()
-    
+ 
     public init() {
         super.init(nibName: "VideoCallUI", bundle: QiscusRTC.bundle)
     }
@@ -42,10 +42,11 @@ class VideoCallUI: UIViewController {
         
         if let localvideo = presenter.getLocalVideo() {
             DispatchQueue.main.async {
-                localvideo.frame.size   = self.localVideoView.frame.size
-                localvideo.contentMode  = .scaleAspectFill
-                self.localVideoView.insertSubview(localvideo, at: 0)
-                self.localVideoView.clipsToBounds   = true
+                self.localVideoView.isHidden    = true
+                localvideo.frame.size           = self.remoteVideoView.frame.size
+                localvideo.contentMode          = .scaleAspectFill
+                self.remoteVideoView.insertSubview(localvideo, at: 0)
+                self.remoteVideoView.clipsToBounds   = true
             }
         }
         
@@ -171,8 +172,20 @@ extension VideoCallUI : CallView {
     }
     
     func callReceive(Remote video: UIView) {
+        video.frame.size    = self.remoteVideoView.frame.size
+        video.contentMode   = .scaleAspectFill
         self.remoteVideoView.insertSubview(video, at: 0)
         self.remoteVideoView.clipsToBounds = true
+        
+        // setup small video
+        if let smallVideo = self.presenter.getLocalVideo() {
+            self.localVideoView.isHidden    = false
+            smallVideo.frame.size   = self.localVideoView.frame.size
+            smallVideo.contentMode  = .scaleAspectFill
+            self.localVideoView.insertSubview(smallVideo, at: 0)
+            self.localVideoView.clipsToBounds   = true
+        }
+        
     }
     
     func Call(update Duration: Int) {
