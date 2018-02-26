@@ -21,7 +21,7 @@ class VideoCallUI: UIViewController {
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
     var isFront : Bool = true
-    private var presenter : CallUIPresenter  = CallUIPresenter()
+    var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
     var panGesture       = UIPanGestureRecognizer()

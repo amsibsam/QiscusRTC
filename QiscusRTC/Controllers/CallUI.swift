@@ -20,7 +20,7 @@ class CallUI: UIViewController {
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
     @IBOutlet weak var labelInfo : UILabel!
-    private var presenter : CallUIPresenter  = CallUIPresenter()
+    var presenter : CallUIPresenter  = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
     
