@@ -18,7 +18,7 @@ protocol CallView {
 
 class CallUIPresenter {
     private let manager = QiscusRTC.shared.manager
-    internal var viewPresenter   : CallView?
+    var viewPresenter   : CallView?
 
     var isAudioMute : Bool {
         get {
