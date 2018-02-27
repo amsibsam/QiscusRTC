@@ -1,8 +1,8 @@
 # QiscusRTC
 
-[![Platform](https://img.shields.io/cocoapods/p/QiscusStreaming.svg?style=flat)](http://cocoapods.org/pods/QiscusRTC)
+[![Platform](https://img.shields.io/cocoapods/p/QiscusRTC.svg?style=flat)](http://cocoapods.org/pods/QiscusRTC)
 ![Language](https://img.shields.io/badge/language-Swift%203.2-orange.svg)
-[![CocoaPods](https://img.shields.io/cocoapods/v/QiscusStreaming.svg?style=flat)](http://cocoapods.org/pods/QiscusRTC)
+[![CocoaPods](https://img.shields.io/cocoapods/v/QiscusRTC.svg?style=flat)](http://cocoapods.org/pods/QiscusRTC)
 
 Qiscus RTC SDK is a product that makes adding voice calling to mobile apps easy. It handles all the complexity of signaling and audio management while providing you the freedom to create a stunning user interface.
 We highly recommend that you implement a better push notification for increasing call realiability, for example APNs, Pushkit, MQTT, or other standard messaging protocol.
