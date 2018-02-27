@@ -9,6 +9,9 @@ We highly recommend that you implement a better push notification for increasing
 
 Callkit support
 
+![CallKit: Callkit support](/images/1.PNG)
+![Video Call: Qiscus Video Call](/images/2.PNG)
+
 ## Quick Start
 
 Below is a step-by-step guide on setting up the Qiscus RTC SDK for the first time

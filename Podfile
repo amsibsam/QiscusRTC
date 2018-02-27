@@ -5,7 +5,7 @@ target 'Example' do
   pod 'Qiscus','2.7.5'
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'QiscusRTC', :path => '.'
+  pod 'QiscusRTC'
  
   # Pods for Example
 
