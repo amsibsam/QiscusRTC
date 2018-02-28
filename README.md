@@ -10,8 +10,7 @@ We highly recommend that you implement a better push notification for increasing
 
 Callkit support
 
-![CallKit: Callkit support](/images/1.PNG)
-![Video Call: Qiscus Video Call](/images/2.PNG)
+<p><img src="https://github.com/qiscus/QiscusRTC/blob/master/Image/1.PNG" width="30%" /> <img src="https://github.com/qiscus/QiscusRTC/blob/master/Image/2.PNG" width="30%" /></p>
 
 ## Quick Start
 
