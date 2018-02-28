@@ -4,7 +4,7 @@ s.name         = 'QiscusRTC'
 s.version      = '0.1.2'
 s.summary      = 'Qiscus RTC is call mudule base on WebRTC.'
 s.homepage     = 'https://qiscus.com'
-s.screenshots  = 'https://github.com/qiscus/QiscusRTC/blob/master/Image/1.PNG', 'https://github.com/qiscus/QiscusRTC/blob/master/Image/2.PNG'
+s.screenshots  = 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/callkit.png', 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/videocall.png'
 s.license      = { :type => 'BSD'}
 s.author       = { 'juang@qiscus.co' => 'juang@qiscus.co' }
 s.platform     = :ios, '10.0'
