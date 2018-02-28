@@ -47,6 +47,14 @@ public class QiscusRTC: NSObject {
         return shared.manager.isRegister()
     }
     
+    public class func isCallActive() -> Bool {
+        return shared.manager.isCallActive()
+    }
+    
+    public class func getCallUI() -> UIViewController? {
+        return shared.manager.continueCallScreen()
+    }
+    
     public class func logout() {
         shared.manager.clearClient()
     }

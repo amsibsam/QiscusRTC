@@ -136,6 +136,14 @@ class CallManager {
     }
     
     // Call Component
+    func continueCallScreen() -> UIViewController? {
+        if let session = callSession {
+            return getCall(isVideo: !session.isAudio)
+        }else {
+            return nil
+        }
+    }
+    
     func getCall(isVideo video: Bool) -> UIViewController {
         return video ? VideoCallUI() : CallUI()
     }

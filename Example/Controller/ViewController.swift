@@ -36,6 +36,10 @@ class ViewController: UIViewController {
     }
     
     func setupAuth() {
+        if QiscusRTC.isCallActive {
+            getCallUI()
+        }
+        
         if QiscusRTC.isRegister() {
             buttonLogin.setTitle("Logout", for: UIControlState.normal)
             buttonLogin.addTarget(self, action: #selector(self.logout), for: UIControlEvents.touchUpInside)
