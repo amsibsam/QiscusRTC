@@ -237,8 +237,7 @@ extension CallManager : CallCenterDelegate {
     
     func callCenter(_ callCenter: CallCenter, declineCall session: String) {
         print("call declined")
-        self.updateState(value: .ended)
-        self.callSignal?.leave()
+        self.finishCall()
     }
     
     func callCenter(_ callCenter: CallCenter, muteCall muted: Bool, session: String) {

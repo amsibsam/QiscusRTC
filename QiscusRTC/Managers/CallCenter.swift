@@ -30,7 +30,6 @@ class CallCenter: NSObject {
     init(delegate: CallCenterDelegate) {
         super.init()
         self.delegate = delegate
-        provider?.setDelegate(self, queue: nil)
     }
     
     deinit {
@@ -44,6 +43,7 @@ class CallCenter: NSObject {
         providerConfiguration.maximumCallGroups = 1
         providerConfiguration.supportedHandleTypes = [.generic]
         self.provider = CXProvider(configuration: providerConfiguration)
+        provider?.setDelegate(self, queue: nil)
     }
     
     func showIncomingCall(of session: String, isVideo: Bool) {

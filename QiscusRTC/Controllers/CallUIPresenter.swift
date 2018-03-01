@@ -46,6 +46,12 @@ class CallUIPresenter {
         }
     }
     
+    var isCallActive : Bool {
+        get {
+            return self.manager.isCallActive()
+        }
+    }
+    
     init() {
         manager.callDelegate(self)
     }

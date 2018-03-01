@@ -56,11 +56,17 @@ class CallUI: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("call active \(presenter.isCallActive)")
+        if !presenter.isCallActive {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         if let duration = self.presenter.getDuration() {
             self.setupCallTime(currentDuration: duration)
             self.seconds    = duration
         }
     }
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
