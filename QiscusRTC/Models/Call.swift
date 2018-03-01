@@ -10,11 +10,13 @@ class CallConfig {
     var signalUrl   : URL
     var appID       : String
     var secretKey   : String
+    var appName     : String
     
-    init(signalUrl : URL, appID: String, secretKey: String) {
+    init(signalUrl : URL, appID: String, secretKey: String, appName: String) {
         self.signalUrl  = signalUrl
         self.appID      = appID
         self.secretKey  = secretKey
+        self.appName    = appName
     }
 }
 

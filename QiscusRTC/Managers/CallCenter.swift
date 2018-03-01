@@ -24,29 +24,26 @@ class CallCenter: NSObject {
     var delegate: CallCenterDelegate?
     
     fileprivate let controller = CXCallController()
-    private let provider = CXProvider(configuration: CallCenter.providerConfiguration)
-    
-    private static var providerConfiguration: CXProviderConfiguration {
-        let appName = "QiscusCall"
-        let providerConfiguration = CXProviderConfiguration(localizedName: appName)
-        providerConfiguration.supportsVideo = false
-        providerConfiguration.maximumCallsPerCallGroup = 1
-        providerConfiguration.maximumCallGroups = 1
-        providerConfiguration.supportedHandleTypes = [.generic]
-        
-        return providerConfiguration
-    }
-    
+    private var provider : CXProvider?
     fileprivate var sessionPool = [UUID: String]()
     
     init(delegate: CallCenterDelegate) {
         super.init()
         self.delegate = delegate
-        provider.setDelegate(self, queue: nil)
+        provider?.setDelegate(self, queue: nil)
     }
     
     deinit {
-        provider.invalidate()
+        provider?.invalidate()
+    }
+    
+    func setup(appName: String) {
+        var providerConfiguration = CXProviderConfiguration(localizedName: appName)
+        providerConfiguration.supportsVideo = false
+        providerConfiguration.maximumCallsPerCallGroup = 1
+        providerConfiguration.maximumCallGroups = 1
+        providerConfiguration.supportedHandleTypes = [.generic]
+        self.provider = CXProvider(configuration: providerConfiguration)
     }
     
     func showIncomingCall(of session: String, isVideo: Bool) {
@@ -60,7 +57,7 @@ class CallCenter: NSObject {
         
         let uuid = pairedUUID(of: session)
         
-        provider.reportNewIncomingCall(with: uuid, update: callUpdate, completion: { error in
+        provider?.reportNewIncomingCall(with: uuid, update: callUpdate, completion: { error in
             if let error = error {
                 print("reportNewIncomingCall error: \(error.localizedDescription)")
             }
@@ -84,7 +81,7 @@ class CallCenter: NSObject {
     func setCallConnected(of session: String) {
         let uuid = pairedUUID(of: session)
         if let call = currentCall(of: uuid), call.isOutgoing, !call.hasConnected, !call.hasEnded {
-            provider.reportOutgoingCall(with: uuid, connectedAt: nil)
+            provider?.reportOutgoingCall(with: uuid, connectedAt: nil)
         }
     }
     

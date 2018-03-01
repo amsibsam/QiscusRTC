@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         QiscusCommentClient.sharedInstance.roomDelegate = self
         //initcall
-        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN")
+        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", appName: "AppName")
         btnChatIntegration.addTarget(self, action: #selector(MainViewController.showUser), for: .touchUpInside)
     }
     

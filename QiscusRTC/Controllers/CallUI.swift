@@ -33,7 +33,7 @@ class CallUI: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.labelInfo.text = "Velox Audio Call"
+        self.labelInfo.text = "\(presenter.appName) Audio Call"
         self.labelName.text = presenter.getCallName()
         let placeholder = UIImage(named: "avatar")
         self.imageAvatar.af_setImage(withURL: presenter.getCallAvatar(), placeholderImage: placeholder)

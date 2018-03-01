@@ -19,8 +19,9 @@ s.requires_arc = false
 s.libraries    = 'c++', 'z'
 s.requires_arc = true
 s.swift_version = '4.0'
+s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
 s.dependency 'Alamofire'
-s.dependency 'WebRTC'
+s.dependency 'WebRTC', '63.11.20455'
 s.dependency 'Starscream'
 s.dependency 'AlamofireImage'
 s.dependency 'SwiftyJSON'

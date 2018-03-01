@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         self.title = "Sample Call"
         self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
         self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
-        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN")
+        QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", appName: "Qiscus")
         QiscusRTC.register(username: "juang", displayName: "juang")
         setupAuth()
     }
@@ -36,10 +36,6 @@ class ViewController: UIViewController {
     }
     
     func setupAuth() {
-        if QiscusRTC.isCallActive {
-            getCallUI()
-        }
-        
         if QiscusRTC.isRegister() {
             buttonLogin.setTitle("Logout", for: UIControlState.normal)
             buttonLogin.addTarget(self, action: #selector(self.logout), for: UIControlEvents.touchUpInside)
