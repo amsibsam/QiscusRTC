@@ -39,7 +39,9 @@ class VideoCallUI: UIViewController {
         self.labelDuration.text = "00.00"
         self.presenter.attachView(view: self)
         self.setupUI()
-        
+        if presenter.isReceiving {
+            self.runTimer()
+        }
         if let localvideo = presenter.getLocalVideo() {
             DispatchQueue.main.async {
                 self.localVideoView.isHidden    = true

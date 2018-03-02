@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         self.buttonStartCall.addTarget(self, action: #selector(self.startCall), for: .touchUpInside)
         self.buttonIncomingCall.addTarget(self, action: #selector(self.incomingCall), for: .touchUpInside)
         QiscusRTC.setup(appId: "sample-application-C2", appSecret: "KpPiqKGpoN", appName: "Qiscus")
-        QiscusRTC.register(username: "juang", displayName: "juang")
+        QiscusRTC.register(username: "qiscus", displayName: "qiscus")
         setupAuth()
     }
     
@@ -76,10 +76,10 @@ class ViewController: UIViewController {
         })
         
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter First Name"
+            textField.placeholder = "UserName"
         }
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Second Name"
+            textField.placeholder = "Display Name"
         }
         
         alertController.addAction(saveAction)

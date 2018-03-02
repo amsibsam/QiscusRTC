@@ -207,7 +207,7 @@ class CallSignal {
     // MARK: WSS Event handler
     internal func eventNewUser(data: String) {
         let json = self.toJSON(data: data)
-        let sender = json["sender"].string ?? ""
+        let sender = json["user"].string ?? ""
         if sender == self.targetUser {
             if let message = self.payloadCallSync(id: self.roomID, target: self.targetUser){
                 print("[RTC-HUB] \(message)")
