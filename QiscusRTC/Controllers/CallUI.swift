@@ -92,7 +92,7 @@ class CallUI: UIViewController {
         buttonSpeaker.layer.borderWidth   = borderWidth
         buttonSpeaker.layer.borderColor   = borderColor
         // set Circle
-        imageAvatar.layer.cornerRadius      = imageAvatar.frame.height/3.5
+        imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height / 2
         imageAvatar.clipsToBounds           = true
         buttonEndcall.layer.cornerRadius    = buttonEndcall.frame.height/2
         buttonEndcall.clipsToBounds         = true

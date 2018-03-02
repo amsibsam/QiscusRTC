@@ -133,7 +133,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="0l1-di-0ja">
-                    <rect key="frame" x="98.666666666666686" y="131.66666666666663" width="217" height="216.33333333333337"/>
+                    <rect key="frame" x="98.666666666666657" y="131.66666666666666" width="217" height="217"/>
                     <constraints>
                         <constraint firstAttribute="height" secondItem="0l1-di-0ja" secondAttribute="width" multiplier="1:1" id="ehe-wJ-e39"/>
                     </constraints>
