@@ -67,6 +67,10 @@ class CallUI: UIViewController {
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height/2
+    }
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
@@ -92,7 +96,7 @@ class CallUI: UIViewController {
         buttonSpeaker.layer.borderWidth   = borderWidth
         buttonSpeaker.layer.borderColor   = borderColor
         // set Circle
-        imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height / 2
+        imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height/2
         imageAvatar.clipsToBounds           = true
         buttonEndcall.layer.cornerRadius    = buttonEndcall.frame.height/2
         buttonEndcall.clipsToBounds         = true
