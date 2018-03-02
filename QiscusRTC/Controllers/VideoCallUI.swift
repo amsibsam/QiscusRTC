@@ -55,8 +55,8 @@ class VideoCallUI: UIViewController {
         if let remoteVideo = presenter.getRemoteVideo() {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
         }
-        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
-        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
+//        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
+//        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
     }
     
     override func didReceiveMemoryWarning() {

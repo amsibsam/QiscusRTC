@@ -106,6 +106,14 @@ class CallUI: UIViewController {
         buttonMessage.clipsToBounds         = true
         buttonSpeaker.layer.cornerRadius    = buttonSpeaker.frame.height/2
         buttonSpeaker.clipsToBounds         = true
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.8
+        blurEffectView.frame = self.imageBgAvatar.frame
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.imageBgAvatar.addSubview(blurEffectView)
     }
     
     func setupCallTime(currentDuration: Int) {
