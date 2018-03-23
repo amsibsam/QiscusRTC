@@ -17,6 +17,9 @@
 		3D7199BD1FAACA25004EE86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7199BC1FAACA25004EE86F /* Main.storyboard */; };
 		3D97F90B203D1D0E00F2635A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97F909203D1D0E00F2635A /* ViewController.swift */; };
 		3D97F90C203D1D0E00F2635A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D97F90A203D1D0E00F2635A /* ViewController.xib */; };
+		3DAF8BD82064DBDF003F53C8 /* dialing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF8BD52064DBDF003F53C8 /* dialing.mp3 */; };
+		3DAF8BD92064DBDF003F53C8 /* incoming.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF8BD62064DBDF003F53C8 /* incoming.mp3 */; };
+		3DAF8BDA2064DBDF003F53C8 /* reconnecting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF8BD72064DBDF003F53C8 /* reconnecting.mp3 */; };
 		5D760A6D20328FE90049706F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6B20328FE90049706F /* MainViewController.swift */; };
 		5D760A6E20328FE90049706F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D760A6C20328FE90049706F /* MainViewController.xib */; };
 		5D760A70203290500049706F /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D760A6F203290500049706F /* MainApp.swift */; };
@@ -39,6 +42,9 @@
 		3D7199BC1FAACA25004EE86F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D97F909203D1D0E00F2635A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D97F90A203D1D0E00F2635A /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		3DAF8BD52064DBDF003F53C8 /* dialing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dialing.mp3; sourceTree = "<group>"; };
+		3DAF8BD62064DBDF003F53C8 /* incoming.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incoming.mp3; sourceTree = "<group>"; };
+		3DAF8BD72064DBDF003F53C8 /* reconnecting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reconnecting.mp3; sourceTree = "<group>"; };
 		5D760A6B20328FE90049706F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5D760A6C20328FE90049706F /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		5D760A6F203290500049706F /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		0457BC3F1FA9DB95008D3866 /* QiscusRTC */ = {
 			isa = PBXGroup;
 			children = (
+				3DAF8BD42064DBDF003F53C8 /* Tone */,
 				0457BC401FA9DB95008D3866 /* QiscusRTC.h */,
 				0457BC411FA9DB95008D3866 /* Info.plist */,
 			);
@@ -112,6 +119,16 @@
 				5D760A6F203290500049706F /* MainApp.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		3DAF8BD42064DBDF003F53C8 /* Tone */ = {
+			isa = PBXGroup;
+			children = (
+				3DAF8BD52064DBDF003F53C8 /* dialing.mp3 */,
+				3DAF8BD62064DBDF003F53C8 /* incoming.mp3 */,
+				3DAF8BD72064DBDF003F53C8 /* reconnecting.mp3 */,
+			);
+			path = Tone;
 			sourceTree = "<group>";
 		};
 		50F8B1B483E7F20F2EB00081 /* Frameworks */ = {
@@ -251,7 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D50DA86202AF36C00643BB1 /* README.md in Resources */,
+				3DAF8BD92064DBDF003F53C8 /* incoming.mp3 in Resources */,
 				0457BC5F1FA9E18C008D3866 /* QiscusRTC.podspec in Resources */,
+				3DAF8BDA2064DBDF003F53C8 /* reconnecting.mp3 in Resources */,
+				3DAF8BD82064DBDF003F53C8 /* dialing.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = 'QiscusRTC'
-s.version      = '0.1.5'
+s.version      = '0.1.6'
 s.summary      = 'Qiscus RTC is call mudule base on WebRTC.'
 s.homepage     = 'https://qiscus.com'
 s.screenshots  = 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/callkit.png', 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/videocall.png'

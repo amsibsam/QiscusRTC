@@ -29,25 +29,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="juang" borderStyle="roundedRect" placeholder="Call with username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVL-Zz-evR">
-                    <rect key="frame" x="61" y="184" width="207" height="30"/>
+                    <rect key="frame" x="61" y="139" width="207" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Call with Room ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-kb-aZ8">
-                    <rect key="frame" x="61" y="229" width="207" height="30"/>
+                    <rect key="frame" x="61" y="184" width="207" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, [Your Name]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST0-5z-cKM">
-                    <rect key="frame" x="16" y="95" width="288" height="21"/>
+                    <rect key="frame" x="16" y="50" width="288" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njN-4A-1Rr">
-                    <rect key="frame" x="20" y="273" width="130" height="30"/>
+                    <rect key="frame" x="20" y="228" width="130" height="30"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="NZ9-fo-4np"/>
@@ -57,11 +57,11 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-Dc-04B">
-                    <rect key="frame" x="94" y="124" width="132" height="30"/>
+                    <rect key="frame" x="94" y="79" width="132" height="30"/>
                     <state key="normal" title="re-Login"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJs-Jp-4zZ">
-                    <rect key="frame" x="170" y="273" width="130" height="30"/>
+                    <rect key="frame" x="170" y="228" width="130" height="30"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Incoming Call">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +72,7 @@
             <constraints>
                 <constraint firstItem="KVL-Zz-evR" firstAttribute="leading" secondItem="IsQ-kb-aZ8" secondAttribute="leading" id="1dI-qb-vMp"/>
                 <constraint firstItem="ST0-5z-cKM" firstAttribute="trailing" secondItem="DtD-RJ-mS1" secondAttribute="trailingMargin" id="2cf-nJ-MPx"/>
-                <constraint firstItem="ST0-5z-cKM" firstAttribute="top" secondItem="9f9-YD-Mx2" secondAttribute="top" constant="75" id="4MZ-Nz-ULX"/>
+                <constraint firstItem="ST0-5z-cKM" firstAttribute="top" secondItem="9f9-YD-Mx2" secondAttribute="top" constant="30" id="4MZ-Nz-ULX"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="width" secondItem="njN-4A-1Rr" secondAttribute="width" id="4t6-o6-etf"/>
                 <constraint firstItem="ST0-5z-cKM" firstAttribute="leading" secondItem="DtD-RJ-mS1" secondAttribute="leadingMargin" id="6Nv-C5-BwK"/>
                 <constraint firstItem="WJs-Jp-4zZ" firstAttribute="top" secondItem="njN-4A-1Rr" secondAttribute="top" id="EsU-7J-LUn"/>

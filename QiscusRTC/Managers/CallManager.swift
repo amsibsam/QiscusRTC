@@ -29,6 +29,7 @@ protocol CallDelegate {
 
 class CallManager {
     private lazy var callCenter = CallCenter(delegate: self)
+    private let tone = SoundManager.shared
     var callsChangedHandler: (() -> Void)?
     var callSession : Call? // handle only single call
     var callEnggine : CallEnggine?
@@ -184,6 +185,19 @@ class CallManager {
     internal func updateState(value: CallState) {
         self.callSession?.state = value
         self.delegate?.callChange(state: value)
+        switch value {
+        case .calling:
+            tone.dialingTone()
+            break
+        case .conected:
+            tone.stop()
+            break
+        case .ended:
+            tone.stop()
+            break
+        default:
+            break
+        }
     }
     
     func startTimer() {

@@ -39,7 +39,7 @@ public class QiscusRTC: NSObject {
         if let signal = host {
             url = signal
         }
-        let config              = CallConfig(signalUrl: url!, appID: appId, secretKey: appSecret, appName: appName)
+        let config = CallConfig(signalUrl: url!, appID: appId, secretKey: appSecret, appName: appName)
         shared.manager.setup(withConfig: config)
     }
     
