@@ -55,6 +55,8 @@ class VideoCallUI: UIViewController {
         if let remoteVideo = presenter.getRemoteVideo() {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
         }
+        // Video Call default speakerloud
+        self.presenter.isLoadSpeaker = true
 //        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
 //        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
     }
