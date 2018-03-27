@@ -104,11 +104,11 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Call", message: "Please select content", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Audio", style: .default , handler:{ (UIAlertAction)in
             // Start Call Audio
-            QiscusRTC.startCall(roomId: roomName!, isVideo: false, calleeUsername: username!) { (target, error) in
-                if error == nil {
-                    self.present(target, animated: true, completion: nil)
-                }
-            }
+            QiscusRTC.startCall(roomId: roomName!, isVideo: false, calleeUsername: username!, calleeDisplayName: username!, calleeDisplayAvatar: URL(string: "https://file.velox.id/velox-coba/uploads/velox-mes-essretzw4wm/image/upload/nzBf8GLPfO/1516685666-dota-2-wallpaper-free-download.jpg")!, completionHandler: { (target, error) in
+                    if error == nil {
+                        self.present(target, animated: true, completion: nil)
+                    }
+            })
         }))
         
         alert.addAction(UIAlertAction(title: "Video", style: .destructive , handler:{ (UIAlertAction)in
