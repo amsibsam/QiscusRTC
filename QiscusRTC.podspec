@@ -18,7 +18,7 @@ s.framework    = 'UIKit', 'AVFoundation', 'CoreMotion', 'CoreTelephony', 'AudioT
 s.requires_arc = false
 s.libraries    = 'c++', 'z'
 s.requires_arc = true
-s.swift_version = '4.0'
+#s.swift_version = '4.0'
 s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
 s.dependency 'Alamofire'
 s.dependency 'WebRTC', '63.11.20455'
