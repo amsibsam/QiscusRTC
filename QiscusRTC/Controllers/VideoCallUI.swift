@@ -55,8 +55,6 @@ class VideoCallUI: UIViewController {
         if let remoteVideo = presenter.getRemoteVideo() {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
         }
-        // Video Call default speakerloud
-        self.presenter.isLoadSpeaker = true
 //        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
 //        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
     }
@@ -154,16 +152,20 @@ class VideoCallUI: UIViewController {
     @IBAction func clickMute(_ sender: Any) {
         if self.presenter.isAudioMute {
             self.presenter.isAudioMute = false
+            self.buttonMuted.backgroundColor = UIColor.clear
         }else {
             self.presenter.isAudioMute = true
+            self.buttonMuted.backgroundColor = UIColor.lightGray
         }
     }
     
     @IBAction func clickCamera(_ sender: Any) {
         if isFront {
             self.presenter.switchCameraBack()
+            self.buttonCamera.backgroundColor = UIColor.clear
         }else {
             self.presenter.switchCameraFront()
+            self.buttonCamera.backgroundColor = UIColor.lightGray
         }
         isFront = false
     }
@@ -201,6 +203,9 @@ extension VideoCallUI : CallView {
         switch state {
         case .conected:
             self.runTimer()
+            
+            // Video Call default speakerloud
+            self.presenter.isLoadSpeaker = true
             break
         default:
             self.labelDuration.text = state.rawValue
