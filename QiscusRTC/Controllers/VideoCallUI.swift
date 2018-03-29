@@ -39,9 +39,7 @@ class VideoCallUI: UIViewController {
         self.labelDuration.text = "00.00"
         self.presenter.attachView(view: self)
         self.setupUI()
-        if presenter.isReceiving {
-            self.runTimer()
-        }
+
         if let localvideo = presenter.getLocalVideo() {
             DispatchQueue.main.async {
                 self.localVideoView.isHidden    = true
@@ -162,12 +160,13 @@ class VideoCallUI: UIViewController {
     @IBAction func clickCamera(_ sender: Any) {
         if isFront {
             self.presenter.switchCameraBack()
-            self.buttonCamera.backgroundColor = UIColor.clear
+            self.buttonCamera.backgroundColor = UIColor.lightGray
         }else {
             self.presenter.switchCameraFront()
-            self.buttonCamera.backgroundColor = UIColor.lightGray
+            self.buttonCamera.backgroundColor = UIColor.clear
         }
-        isFront = false
+        isFront = !isFront
+        
     }
     
 }
@@ -193,6 +192,7 @@ extension VideoCallUI : CallView {
             self.localVideoView.clipsToBounds   = true
         }
         
+        self.runTimer()
     }
     
     func Call(update Duration: Int) {
@@ -202,8 +202,6 @@ extension VideoCallUI : CallView {
     func CallStatusChange(state: CallState) {
         switch state {
         case .conected:
-            self.runTimer()
-            
             // Video Call default speakerloud
             self.presenter.isLoadSpeaker = true
             break
