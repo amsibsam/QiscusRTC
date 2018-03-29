@@ -136,16 +136,20 @@ class CallUI: UIViewController {
     @IBAction func clickMute(_ sender: Any) {
         if self.presenter.isAudioMute {
             self.presenter.isAudioMute = false
+            self.buttonMuted.backgroundColor = UIColor.clear
         }else {
             self.presenter.isAudioMute = true
+            self.buttonMuted.backgroundColor = UIColor.lightGray
         }
     }
     
     @IBAction func clickSpeaker(_ sender: Any) {
         if self.presenter.isLoadSpeaker {
             self.presenter.isLoadSpeaker = false
+            self.buttonSpeaker.backgroundColor = UIColor.clear
         }else {
             self.presenter.isLoadSpeaker = true
+            self.buttonSpeaker.backgroundColor = UIColor.lightGray
         }
     }
     
