@@ -45,10 +45,8 @@ class CallCenter: NSObject {
         
         if let icon = appIcon {
             providerConfiguration.iconTemplateImageData = UIImagePNGRepresentation(icon)
-        } else {
-            guard let defaultIcon = UIImage(named: "call_chat", in: QiscusRTC.bundle, compatibleWith: nil) else {return}
-            providerConfiguration.iconTemplateImageData = UIImagePNGRepresentation(defaultIcon)
         }
+        
         self.provider = CXProvider(configuration: providerConfiguration)
         provider?.setDelegate(self, queue: nil)
     }

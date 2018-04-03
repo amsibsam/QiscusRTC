@@ -11,14 +11,13 @@ class CallConfig {
     var appID       : String
     var secretKey   : String
     var appName     : String
-    var appIcon     : UIImage?
+    var appIcon     : UIImage? = UIImage(named: "call_chat", in: QiscusRTC.bundle, compatibleWith: nil)
     
-    init(signalUrl : URL, appID: String, secretKey: String, appName: String, appIcon: UIImage?) {
+    init(signalUrl : URL, appID: String, secretKey: String, appName: String) {
         self.signalUrl  = signalUrl
         self.appID      = appID
         self.secretKey  = secretKey
         self.appName    = appName
-        self.appIcon    = appIcon
     }
 }
 
