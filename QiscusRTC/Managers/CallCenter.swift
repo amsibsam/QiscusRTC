@@ -36,12 +36,17 @@ class CallCenter: NSObject {
         provider?.invalidate()
     }
     
-    func setup(appName: String) {
-        var providerConfiguration = CXProviderConfiguration(localizedName: appName)
+    func setup(appName: String, appIcon: UIImage?) {
+        let providerConfiguration = CXProviderConfiguration(localizedName: appName)
         providerConfiguration.supportsVideo = false
         providerConfiguration.maximumCallsPerCallGroup = 1
         providerConfiguration.maximumCallGroups = 1
         providerConfiguration.supportedHandleTypes = [.generic]
+        
+        if let icon = appIcon {
+            providerConfiguration.iconTemplateImageData = UIImagePNGRepresentation(icon)
+        }
+        
         self.provider = CXProvider(configuration: providerConfiguration)
         provider?.setDelegate(self, queue: nil)
     }

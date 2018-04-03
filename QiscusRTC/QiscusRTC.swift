@@ -34,12 +34,17 @@ public class QiscusRTC: NSObject {
     }
     
     // initiate
-    public class func setup(appId: String, appSecret : String, appName: String, host: URL? = nil, delegate: QiscusCallDelegate? = nil) {
+    public class func setup(appId: String, appSecret : String, appName: String, appIcon: UIImage? = nil, host: URL? = nil, delegate: QiscusCallDelegate? = nil) {
         var url = URL(string: "wss://rtc.qiscus.com/signal")
         if let signal = host {
             url = signal
         }
+        
         let config = CallConfig(signalUrl: url!, appID: appId, secretKey: appSecret, appName: appName)
+        if let icon = appIcon {
+            config.appIcon = icon
+        }
+        
         shared.manager.setup(withConfig: config)
     }
     
