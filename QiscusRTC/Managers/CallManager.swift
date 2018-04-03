@@ -80,7 +80,7 @@ class CallManager {
     
     func setup(withConfig config: CallConfig) {
         self.config              = config
-        self.callCenter.setup(appName: config.appName)
+        self.callCenter.setup(appName: config.appName, appIcon: config.appIcon)
     }
     
     func call(withRoomId id: String, callType : CallType, isVideo: Bool, targetUsername: String, targetDisplayName: String = "Person", targetDisplayAvatar: URL, completionHandler: @escaping (UIViewController, NSError?) -> Void) {
