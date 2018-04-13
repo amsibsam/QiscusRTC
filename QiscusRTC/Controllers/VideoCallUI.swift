@@ -40,19 +40,6 @@ class VideoCallUI: UIViewController {
         self.presenter.attachView(view: self)
         self.setupUI()
 
-        if let localvideo = presenter.getLocalVideo() {
-            DispatchQueue.main.async {
-                self.localVideoView.isHidden    = true
-                localvideo.frame.size           = self.remoteVideoView.frame.size
-                localvideo.contentMode          = .scaleAspectFill
-                self.remoteVideoView.insertSubview(localvideo, at: 0)
-                self.remoteVideoView.clipsToBounds   = true
-            }
-        }
-        
-        if let remoteVideo = presenter.getRemoteVideo() {
-            self.remoteVideoView.insertSubview(remoteVideo, at: 0)
-        }
 //        let background = UIImage(named: "bg_call", in: QiscusRTC.bundle, compatibleWith: nil)
 //        self.remoteVideoView.backgroundColor = UIColor(patternImage: background!)
     }
@@ -107,6 +94,24 @@ class VideoCallUI: UIViewController {
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(VideoCallUI.draggedView(_:)))
         localVideoView.isUserInteractionEnabled = true
         localVideoView.addGestureRecognizer(panGesture)
+        
+        localVideoView.clipsToBounds = true
+        remoteVideoView.clipsToBounds = true
+        
+        if let localvideo = presenter.getLocalVideo() {
+            DispatchQueue.main.async {
+                self.localVideoView.isHidden    = true
+                localvideo.frame.size           = self.remoteVideoView.frame.size
+                localvideo.contentMode          = .scaleAspectFill
+                localvideo.transform = CGAffineTransform(scaleX: -1, y: 1)
+                self.remoteVideoView.insertSubview(localvideo, at: 0)
+                self.remoteVideoView.clipsToBounds = true
+            }
+        }
+        
+        if let remoteVideo = presenter.getRemoteVideo() {
+            self.remoteVideoView.insertSubview(remoteVideo, at: 0)
+        }
     }
     
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
@@ -174,6 +179,7 @@ class VideoCallUI: UIViewController {
 extension VideoCallUI : CallView {
     func callReceive(Local video: UIView) {
         self.localVideoView.insertSubview(video, at: 0)
+        video.transform = CGAffineTransform(scaleX: -1, y: 1)
         self.localVideoView.clipsToBounds   = true
     }
     
