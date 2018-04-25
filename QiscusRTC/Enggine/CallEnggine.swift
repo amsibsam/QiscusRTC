@@ -30,7 +30,8 @@ class CallEngineView : UIView {
 protocol CallEnggineDelegate {
     //
     func didReceive(Local video: UIView)
-    func didReceive(Remote video: UIView)
+    func didReceive(Remote video: UIView, local: UIView)
+    func didChangedVideoSize(videoView: UIView, size: CGSize, local: UIView, remote: UIView)
     func callEnggine(connectionChanged newState: CallConnectionState)
     func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String)
     func callEnggine(createSession type: CallSDPType, description: String)
@@ -46,8 +47,6 @@ let WSServer    = "wss://rtc.qiscus.com/signal"
 
 class CallEnggine: NSObject {
     // public
-    var viewLocalVideo          : UIView?
-    var viewRemoteVideo         : UIView?
     var state                   : String    = ""
     
     // webrtc
@@ -264,7 +263,11 @@ class CallEnggine: NSObject {
         self.peerConnectionFactory = RTCPeerConnectionFactory()
         if (device != nil) {
             self.localVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+            self.localVideo.tag = self.localVideoTAG
+            self.localVideo.delegate = self
             self.remoteVideo = RTCEAGLVideoView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+            self.remoteVideo.tag = self.remoteVideoTAG
+            self.remoteVideo.delegate = self
             
             let videoConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
             videoSource = self.peerConnectionFactory.avFoundationVideoSource(with: videoConstraints)
@@ -299,19 +302,14 @@ class CallEnggine: NSObject {
         self.peerConnection.remove(localStream)
         self.peerConnection.add(localStream)
     }
-
 }
 
 extension CallEnggine: RTCEAGLVideoViewDelegate {
     func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
         print("did change video size : \(size), TAG : \(videoView.tag)")
-        if(videoView.tag == self.localVideoTAG){
-            _ = self.viewLocalVideo?.frame.size
- 
-        }else{
-
+        if self.localVideo != nil && self.remoteVideo != nil {
+            self.delegate.didChangedVideoSize(videoView: videoView, size: size, local: self.localVideo, remote: self.remoteVideo)
         }
-        
     }
 }
 
@@ -355,7 +353,8 @@ extension CallEnggine: RTCPeerConnectionDelegate {
             remoteVideoTrack            = stream.videoTracks[0] 
             remoteVideoTrack.isEnabled  = true;
             remoteVideoTrack.add(self.remoteVideo)
-            self.delegate.didReceive(Remote: self.remoteVideo)
+            
+            self.delegate.didReceive(Remote: self.remoteVideo, local: self.localVideo)
         }
     }
     

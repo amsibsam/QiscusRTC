@@ -24,7 +24,8 @@ protocol CallDelegate {
     func callConnect()
     func callDisconnect(error: NSError?)
     func callReceive(Local video: UIView)
-    func callReceive(Remote video: UIView)
+    func callReceive(Remote video: UIView, local: UIView)
+    func callVideoSizeChange(videoView: UIView, size: CGSize, local: UIView, remote: UIView)
 }
 
 class CallManager {
@@ -316,6 +317,10 @@ extension CallManager : CallSignalDelegate {
 }
 
 extension CallManager : CallEnggineDelegate {
+    func didChangedVideoSize(videoView: UIView, size: CGSize, local: UIView, remote: UIView) {
+        self.delegate?.callVideoSizeChange(videoView: videoView, size: size, local: local, remote: remote)
+    }
+        
     func callEnggine(gotCandidate dataMid: String, dataIndex: Int, dataSdp: String) {
         // Call signal send candidate
         self.callSignal?.sendCandidat(dataMid: dataMid, dataIndex: dataIndex, dataSdp: dataSdp)
@@ -340,10 +345,10 @@ extension CallManager : CallEnggineDelegate {
         self.delegate?.callReceive(Local: video)
     }
     
-    func didReceive(Remote video: UIView) {
+    func didReceive(Remote video: UIView, local: UIView) {
         //
         self.remoteVideo = video
-        self.delegate?.callReceive(Remote: video)
+        self.delegate?.callReceive(Remote: video, local: local)
     }
     
     func callEnggine(connectionChanged newState: CallConnectionState) {

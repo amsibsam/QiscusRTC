@@ -156,11 +156,15 @@ class CallUI: UIViewController {
 }
 
 extension CallUI : CallView {
-    func callReceive(Local video: UIView) {
-
+    func callVideoSizeChanged(videoView: UIView, size: CGSize, local: UIView?, remote: UIView?) {
+        // no need to configure since it voice call
     }
     
-    func callReceive(Remote video: UIView) {
+    func callReceive(Local video: UIView) {
+        // no need to configure since it voice call
+    }
+    
+    func callReceive(Remote video: UIView, local: UIView) {
         self.view.insertSubview(video, at: 0)
     }
     

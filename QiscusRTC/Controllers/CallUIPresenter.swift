@@ -13,7 +13,8 @@ protocol CallView {
     func Call(update Duration: Int)
     func CallFinished()
     func callReceive(Local video: UIView)
-    func callReceive(Remote video: UIView)
+    func callReceive(Remote video: UIView, local: UIView)
+    func callVideoSizeChanged(videoView: UIView, size: CGSize, local: UIView?, remote: UIView?)
 }
 
 class CallUIPresenter {
@@ -104,6 +105,10 @@ class CallUIPresenter {
 }
 
 extension CallUIPresenter : CallDelegate {
+    func callVideoSizeChange(videoView: UIView, size: CGSize, local: UIView, remote: UIView) {
+        self.viewPresenter?.callVideoSizeChanged(videoView: videoView, size: size, local: local, remote: remote)
+    }
+    
     func callReceive(Local video: UIView) {
         DispatchQueue.main.async {
             self.viewPresenter?.callReceive(Local: video)
@@ -111,9 +116,9 @@ extension CallUIPresenter : CallDelegate {
         print("receive local video")
     }
     
-    func callReceive(Remote video: UIView) {
+    func callReceive(Remote video: UIView, local: UIView) {
         DispatchQueue.main.async {
-            self.viewPresenter?.callReceive(Remote: video)
+            self.viewPresenter?.callReceive(Remote: video, local: local)
         }
     }
     
