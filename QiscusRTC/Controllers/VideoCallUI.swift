@@ -21,7 +21,7 @@ class VideoCallUI: UIViewController {
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
     var isFront : Bool = true
-    var presenter : CallUIPresenter  = CallUIPresenter()
+    var presenter = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
     var panGesture       = UIPanGestureRecognizer()
@@ -71,6 +71,27 @@ class VideoCallUI: UIViewController {
         return String.init(format:"%02i:%02i", minutes, seconds)
     }
     
+    func scaleVideo(videoSize: CGSize, targetFrameSize: CGSize)->CGRect{
+        let widthRatio  = targetFrameSize.width  / videoSize.width
+        let heightRatio = targetFrameSize.height / videoSize.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newRect: CGRect
+        if(widthRatio < heightRatio) {
+            let scaledWidth = videoSize.width * heightRatio
+            let scaledHeight = videoSize.height * heightRatio
+            let y = (targetFrameSize.height - scaledHeight) / 2
+            newRect = CGRect(x: 0, y: y, width: scaledWidth, height:scaledHeight)
+        } else {
+            let scaledWitdh = videoSize.width * widthRatio
+            let scaledHeight = videoSize.height * widthRatio
+            let x = (targetFrameSize.width - scaledWitdh) / 2
+            newRect = CGRect(x: x, y: 0, width: scaledWitdh,  height: scaledHeight)
+        }
+        
+        return newRect
+    }
+    
     func setupUI() {
         let borderWidth : CGFloat   = 2
         let borderColor             = UIColor.init(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
@@ -95,9 +116,6 @@ class VideoCallUI: UIViewController {
         localVideoView.isUserInteractionEnabled = true
         localVideoView.addGestureRecognizer(panGesture)
         
-        localVideoView.clipsToBounds = true
-        remoteVideoView.clipsToBounds = true
-        
         if let localvideo = presenter.getLocalVideo() {
             DispatchQueue.main.async {
                 self.localVideoView.isHidden    = true
@@ -111,6 +129,7 @@ class VideoCallUI: UIViewController {
         
         if let remoteVideo = presenter.getRemoteVideo() {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
+            self.remoteVideoView.clipsToBounds = true
         }
     }
     
@@ -177,15 +196,31 @@ class VideoCallUI: UIViewController {
 }
 
 extension VideoCallUI : CallView {
-    func callReceive(Local video: UIView) {
-        self.localVideoView.insertSubview(video, at: 0)
-        video.transform = CGAffineTransform(scaleX: -1, y: 1)
-        self.localVideoView.clipsToBounds   = true
+    func callVideoSizeChanged(videoView: UIView, size: CGSize, local: UIView?, remote: UIView?) {
+        if(videoView.tag == 1){
+            let targetSize = remoteVideoView.frame.size
+            
+            let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
+            if local != nil {
+                local?.frame = rect
+            }
+            
+        }else{
+            let targetSize = remoteVideoView.frame.size
+            let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
+            remote?.frame = rect
+        }
     }
     
-    func callReceive(Remote video: UIView) {
+    func callReceive(Local video: UIView) {
+        self.localVideoView.insertSubview(video, at: 0)
+        self.localVideoView.clipsToBounds = true
+        video.transform = CGAffineTransform(scaleX: -1, y: 1)
+    }
+    
+    func callReceive(Remote video: UIView, local: UIView) {
         video.frame.size    = self.remoteVideoView.frame.size
-        video.contentMode   = .scaleAspectFill
+        video.contentMode   = .scaleToFill
         self.remoteVideoView.insertSubview(video, at: 0)
         self.remoteVideoView.clipsToBounds = true
         
@@ -193,10 +228,19 @@ extension VideoCallUI : CallView {
         if let smallVideo = self.presenter.getLocalVideo() {
             self.localVideoView.isHidden    = false
             smallVideo.frame.size   = self.localVideoView.frame.size
-            smallVideo.contentMode  = .scaleAspectFill
+            smallVideo.contentMode  = .scaleToFill
             self.localVideoView.insertSubview(smallVideo, at: 0)
             self.localVideoView.clipsToBounds   = true
         }
+        
+//        DispatchQueue.main.async {
+//            self.remoteVideoView.insertSubview(video, at: 0)
+//        
+//            let rect = self.scaleVideo(videoSize: local.frame.size, targetFrameSize: self.localVideoView.frame.size)
+//            local.frame = rect
+//        
+//            self.localVideoView.insertSubview(local, at: 0)
+//        }
         
         self.runTimer()
     }
