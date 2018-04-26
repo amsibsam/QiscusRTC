@@ -86,8 +86,8 @@ class CallUI: UIViewController {
     }
     
     func setupUI() {
-        buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         // set Circle
         imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height/2
         imageAvatar.clipsToBounds           = true
@@ -129,7 +129,7 @@ class CallUI: UIViewController {
     @IBAction func clickMute(_ sender: Any) {
         if self.presenter.isAudioMute {
             self.presenter.isAudioMute = false
-            self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         }else {
             self.presenter.isAudioMute = true
             self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
@@ -139,7 +139,7 @@ class CallUI: UIViewController {
     @IBAction func clickSpeaker(_ sender: Any) {
         if self.presenter.isLoadSpeaker {
             self.presenter.isLoadSpeaker = false
-            self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         }else {
             self.presenter.isLoadSpeaker = true
             self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)

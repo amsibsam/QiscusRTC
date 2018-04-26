@@ -104,9 +104,9 @@ class VideoCallUI: UIViewController {
         buttonCamera.layer.cornerRadius    = buttonCamera.frame.height/2
         buttonCamera.clipsToBounds         = true
         
-        buttonCamera.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        buttonCamera.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(VideoCallUI.draggedView(_:)))
         localVideoView.isUserInteractionEnabled = true
@@ -173,7 +173,7 @@ class VideoCallUI: UIViewController {
                 }
             } else {
                 self.presenter.videoStream(enable: !isVideoStreamEnable)
-                self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
                 self.localVideoView.backgroundColor = UIColor.clear
                 
                 if let localVideo = self.presenter.getLocalVideo() {
@@ -189,7 +189,7 @@ class VideoCallUI: UIViewController {
         if self.isConnected {
             if self.presenter.isAudioMute {
                 self.presenter.isAudioMute = false
-                self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
             }else {
                 self.presenter.isAudioMute = true
                 self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
