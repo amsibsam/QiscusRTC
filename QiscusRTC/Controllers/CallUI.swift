@@ -86,15 +86,8 @@ class CallUI: UIViewController {
     }
     
     func setupUI() {
-        let borderWidth : CGFloat   = 2
-        let borderColor             = UIColor.init(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
-        // set Border
-        buttonMuted.layer.borderWidth     = borderWidth
-        buttonMuted.layer.borderColor     = borderColor
-        buttonMessage.layer.borderWidth   = borderWidth
-        buttonMessage.layer.borderColor   = borderColor
-        buttonSpeaker.layer.borderWidth   = borderWidth
-        buttonSpeaker.layer.borderColor   = borderColor
+        buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         // set Circle
         imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height/2
         imageAvatar.clipsToBounds           = true
@@ -136,20 +129,20 @@ class CallUI: UIViewController {
     @IBAction func clickMute(_ sender: Any) {
         if self.presenter.isAudioMute {
             self.presenter.isAudioMute = false
-            self.buttonMuted.backgroundColor = UIColor.clear
+            self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         }else {
             self.presenter.isAudioMute = true
-            self.buttonMuted.backgroundColor = UIColor.lightGray
+            self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
         }
     }
     
     @IBAction func clickSpeaker(_ sender: Any) {
         if self.presenter.isLoadSpeaker {
             self.presenter.isLoadSpeaker = false
-            self.buttonSpeaker.backgroundColor = UIColor.clear
+            self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         }else {
             self.presenter.isLoadSpeaker = true
-            self.buttonSpeaker.backgroundColor = UIColor.lightGray
+            self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
         }
     }
     

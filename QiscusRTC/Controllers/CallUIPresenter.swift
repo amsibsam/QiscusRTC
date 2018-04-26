@@ -102,6 +102,10 @@ class CallUIPresenter {
     func switchCameraFront(){
         manager.switchCameraFront()
     }
+    
+    func videoStream(enable: Bool) {
+        manager.videoStream(enable: enable)
+    }
 }
 
 extension CallUIPresenter : CallDelegate {

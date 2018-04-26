@@ -16,15 +16,17 @@ class VideoCallUI: UIViewController {
 
     @IBOutlet weak var buttonCamera: UIButton!
     @IBOutlet weak var buttonMuted: UIButton!
-    @IBOutlet weak var buttonMessage: UIButton!
+    @IBOutlet weak var butonVideo: UIButton!
     @IBOutlet weak var buttonEndcall: UIButton!
     @IBOutlet weak var labelDuration : UILabel!
     @IBOutlet weak var labelName : UILabel!
     var isFront : Bool = true
+    var isVideoStreamEnable: Bool = true
     var presenter = CallUIPresenter()
     var seconds = 0
     var timer = Timer()
-    var panGesture       = UIPanGestureRecognizer()
+    var panGesture = UIPanGestureRecognizer()
+    var isConnected: Bool = false
  
     public init() {
         super.init(nibName: "VideoCallUI", bundle: QiscusRTC.bundle)
@@ -93,24 +95,18 @@ class VideoCallUI: UIViewController {
     }
     
     func setupUI() {
-        let borderWidth : CGFloat   = 2
-        let borderColor             = UIColor.init(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
-        // set Border
-        buttonMuted.layer.borderWidth     = borderWidth
-        buttonMuted.layer.borderColor     = borderColor
-        buttonMessage.layer.borderWidth   = borderWidth
-        buttonMessage.layer.borderColor   = borderColor
-        buttonCamera.layer.borderWidth   = borderWidth
-        buttonCamera.layer.borderColor   = borderColor
-        
         buttonEndcall.layer.cornerRadius    = buttonEndcall.frame.height/2
         buttonEndcall.clipsToBounds         = true
         buttonMuted.layer.cornerRadius      = buttonMuted.frame.height/2
         buttonMuted.clipsToBounds           = true
-        buttonMessage.layer.cornerRadius    = buttonMessage.frame.height/2
-        buttonMessage.clipsToBounds         = true
+        butonVideo.layer.cornerRadius    = butonVideo.frame.height/2
+        butonVideo.clipsToBounds         = true
         buttonCamera.layer.cornerRadius    = buttonCamera.frame.height/2
         buttonCamera.clipsToBounds         = true
+        
+        buttonCamera.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(VideoCallUI.draggedView(_:)))
         localVideoView.isUserInteractionEnabled = true
@@ -165,29 +161,63 @@ class VideoCallUI: UIViewController {
         }
     }
     
-    @IBAction func clickMessage(_ sender: Any) {
-        self.dismiss(animated: true) {
-            //
+    @IBAction func clickVideo(_ sender: Any) {
+        if self.isConnected {
+            if isVideoStreamEnable {
+                self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+                self.presenter.videoStream(enable: !isVideoStreamEnable)
+                
+                if self.localVideoView.subviews.count > 0 {
+                    self.localVideoView.subviews[0].removeFromSuperview()
+                    self.localVideoView.backgroundColor = UIColor.black
+                }
+            } else {
+                self.presenter.videoStream(enable: !isVideoStreamEnable)
+                self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                self.localVideoView.backgroundColor = UIColor.clear
+                
+                if let localVideo = self.presenter.getLocalVideo() {
+                    self.localVideoView.insertSubview(localVideo, at: 0)
+                }
+            }
+            
+            isVideoStreamEnable = !isVideoStreamEnable
         }
     }
     
     @IBAction func clickMute(_ sender: Any) {
-        if self.presenter.isAudioMute {
-            self.presenter.isAudioMute = false
-            self.buttonMuted.backgroundColor = UIColor.clear
-        }else {
-            self.presenter.isAudioMute = true
-            self.buttonMuted.backgroundColor = UIColor.lightGray
+        if self.isConnected {
+            if self.presenter.isAudioMute {
+                self.presenter.isAudioMute = false
+                self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            }else {
+                self.presenter.isAudioMute = true
+                self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+            }
         }
     }
     
     @IBAction func clickCamera(_ sender: Any) {
         if isFront {
             self.presenter.switchCameraBack()
-            self.buttonCamera.backgroundColor = UIColor.lightGray
+            if isConnected {
+                let local = self.localVideoView.subviews[0]
+                local.transform = CGAffineTransform(scaleX: 1, y: 1)
+                let rect = scaleVideo(videoSize: local.frame.size, targetFrameSize: self.localVideoView.frame.size)
+                local.frame = rect
+            } else {
+                self.remoteVideoView.subviews[0].transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
         }else {
             self.presenter.switchCameraFront()
-            self.buttonCamera.backgroundColor = UIColor.clear
+            if isConnected {
+                let local = self.localVideoView.subviews[0]
+                local.transform = CGAffineTransform(scaleX: -1, y: 1)
+                let rect = scaleVideo(videoSize: local.frame.size, targetFrameSize: self.localVideoView.frame.size)
+                local.frame = rect
+            } else {
+                self.remoteVideoView.subviews[0].transform = CGAffineTransform(scaleX: -1, y: 1)
+            }
         }
         isFront = !isFront
         
@@ -233,15 +263,7 @@ extension VideoCallUI : CallView {
             self.localVideoView.clipsToBounds   = true
         }
         
-//        DispatchQueue.main.async {
-//            self.remoteVideoView.insertSubview(video, at: 0)
-//        
-//            let rect = self.scaleVideo(videoSize: local.frame.size, targetFrameSize: self.localVideoView.frame.size)
-//            local.frame = rect
-//        
-//            self.localVideoView.insertSubview(local, at: 0)
-//        }
-        
+        self.isConnected = true
         self.runTimer()
     }
     

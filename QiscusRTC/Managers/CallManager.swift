@@ -138,6 +138,10 @@ class CallManager {
         self.callEnggine?.switchCameraFront()
     }
     
+    func videoStream(enable: Bool) {
+        self.callEnggine?.videoStream(enable: enable)
+    }
+    
     // Call Component
     func continueCallScreen() -> UIViewController? {
         if let session = callSession {
