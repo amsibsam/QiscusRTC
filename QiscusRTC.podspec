@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
 s.name         = 'QiscusRTC'
-s.version      = '0.1.7'
+s.version      = '0.1.8'
 s.summary      = 'Qiscus RTC is call mudule base on WebRTC.'
 s.homepage     = 'https://qiscus.com'
-s.screenshots  = 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/callkit.png', 'https://raw.githubusercontent.com/qiscus/QiscusRTC/master/Image/videocall.png'
+s.screenshots  = 'https://raw.githubusercontent.com/qiscus/qiscus-call-sdk-ios/master/Image/callkit.png', 'https://raw.githubusercontent.com/qiscus/qiscus-call-sdk-ios/master/Image/videocall.png'
 s.license      = { :type => 'BSD'}
 s.author       = { 'juang@qiscus.co' => 'juang@qiscus.co' }
 s.platform     = :ios, '10.0'
-s.source       = { :git => 'https://github.com/qiscus/QiscusRTC.git', :tag => s.version.to_s }
+s.source       = { :git => 'https://github.com/qiscus/qiscus-call-sdk-ios.git', :tag => s.version.to_s }
 s.source_files  = 'QiscusRTC', 'QiscusRTC/**/*.{h,m,swift,xib}'
 s.resources = 'QiscusRTC/**/*.xcassets'
 s.resource_bundles = {
