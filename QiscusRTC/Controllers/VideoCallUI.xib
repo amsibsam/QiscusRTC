@@ -14,9 +14,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoCallUI" customModule="QiscusRTC" customModuleProvider="target">
             <connections>
+                <outlet property="butonVideo" destination="NAb-va-MEb" id="prV-K1-L1b"/>
                 <outlet property="buttonCamera" destination="T5W-c2-B0S" id="m7s-Tw-mIm"/>
                 <outlet property="buttonEndcall" destination="S3N-RL-RAm" id="CoL-Dr-Cr4"/>
-                <outlet property="buttonMessage" destination="NAb-va-MEb" id="CbZ-uv-IYm"/>
                 <outlet property="buttonMuted" destination="kUa-cu-cKl" id="0kB-aD-8Ma"/>
                 <outlet property="labelDuration" destination="gcJ-Ze-EJn" id="8Sr-ye-wCP"/>
                 <outlet property="labelName" destination="UZj-Np-k5n" id="Vxb-Tg-wqg"/>
@@ -42,7 +42,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3N-RL-RAm">
-                    <rect key="frame" x="150" y="525.5" width="75" height="75"/>
+                    <rect key="frame" x="149.5" y="525.5" width="75" height="75"/>
                     <color key="backgroundColor" red="0.92692214250000005" green="0.21890419720000001" blue="0.19287320969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="Cet-Bh-srB"/>
@@ -56,12 +56,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAb-va-MEb" userLabel="Message">
-                    <rect key="frame" x="187.5" y="358.5" width="0.0" height="75"/>
+                    <rect key="frame" x="150" y="358.5" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="width" id="tHs-8X-8Vs"/>
+                        <constraint firstAttribute="width" constant="75" id="tHs-8X-8Vs"/>
                         <constraint firstAttribute="height" constant="75" id="vHO-zl-lEZ"/>
                     </constraints>
-                    <state key="normal" image="call_chat">
+                    <state key="normal" image="ic_video_off">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -69,15 +69,19 @@
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidths">
-                            <real key="value" value="2"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="clickMessage:" destination="-1" eventType="touchUpInside" id="jVJ-LK-mqZ"/>
+                        <action selector="clickVideo:" destination="-1" eventType="touchUpInside" id="UHE-d8-IQA"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUa-cu-cKl" userLabel="Mute">
-                    <rect key="frame" x="96.5" y="358.5" width="75" height="75"/>
+                    <rect key="frame" x="60.5" y="358" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="L0H-6N-rFf"/>
+                        <constraint firstAttribute="height" constant="75" id="h9b-QU-vRs"/>
+                    </constraints>
                     <state key="normal" image="call_mute">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -86,7 +90,7 @@
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidths">
-                            <real key="value" value="2"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -94,7 +98,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5W-c2-B0S" userLabel="Speaker">
-                    <rect key="frame" x="225" y="359" width="75" height="75"/>
+                    <rect key="frame" x="240.5" y="358.5" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="rX4-pT-Vwq"/>
                         <constraint firstAttribute="height" constant="75" id="zM0-nj-AtI"/>
@@ -104,7 +108,7 @@
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidths">
-                            <real key="value" value="2"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,19 +138,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAg-ue-guq">
-                    <rect key="frame" x="96.5" y="441.5" width="75" height="18"/>
+                    <rect key="frame" x="60.5" y="441.5" width="75" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-Z1-Q8M">
-                    <rect key="frame" x="187.5" y="441.5" width="0.0" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-Z1-Q8M">
+                    <rect key="frame" x="150" y="441.5" width="75" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="694-a2-RT3">
-                    <rect key="frame" x="225" y="442" width="75" height="18"/>
+                    <rect key="frame" x="240.5" y="441.5" width="75" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -158,10 +162,11 @@
                 <constraint firstItem="7Dl-rE-ZZ0" firstAttribute="leading" secondItem="aM7-xQ-Qwb" secondAttribute="leading" id="52U-Pb-NaU"/>
                 <constraint firstItem="7Dl-rE-ZZ0" firstAttribute="trailing" secondItem="aM7-xQ-Qwb" secondAttribute="trailing" id="70j-60-She"/>
                 <constraint firstItem="NAb-va-MEb" firstAttribute="top" secondItem="1kj-08-o0h" secondAttribute="centerY" constant="25" id="AVI-YW-jFO"/>
-                <constraint firstAttribute="centerX" secondItem="T5W-c2-B0S" secondAttribute="centerX" multiplier="1:1.4" id="DYD-ol-fTa"/>
                 <constraint firstItem="kUa-cu-cKl" firstAttribute="height" secondItem="S3N-RL-RAm" secondAttribute="height" id="Dos-7B-qbp"/>
                 <constraint firstItem="7Dl-rE-ZZ0" firstAttribute="bottom" secondItem="aM7-xQ-Qwb" secondAttribute="bottom" id="ERT-LF-ekJ"/>
                 <constraint firstItem="694-a2-RT3" firstAttribute="top" secondItem="T5W-c2-B0S" secondAttribute="bottom" constant="8" id="ETf-kW-AM4"/>
+                <constraint firstItem="ZAg-ue-guq" firstAttribute="centerX" secondItem="kUa-cu-cKl" secondAttribute="centerX" id="FQ5-2n-dnl"/>
+                <constraint firstItem="694-a2-RT3" firstAttribute="centerX" secondItem="T5W-c2-B0S" secondAttribute="centerX" id="IaG-YH-Qy4"/>
                 <constraint firstItem="R0W-Z1-Q8M" firstAttribute="trailing" secondItem="NAb-va-MEb" secondAttribute="trailing" id="J88-JX-gHa"/>
                 <constraint firstItem="NAb-va-MEb" firstAttribute="centerX" secondItem="1kj-08-o0h" secondAttribute="centerX" id="KHl-yt-rQE"/>
                 <constraint firstItem="694-a2-RT3" firstAttribute="trailing" secondItem="T5W-c2-B0S" secondAttribute="trailing" id="NMK-Ms-zpU"/>
@@ -169,13 +174,15 @@
                 <constraint firstItem="R0W-Z1-Q8M" firstAttribute="leading" secondItem="NAb-va-MEb" secondAttribute="leading" id="RmO-hB-xaE"/>
                 <constraint firstItem="S3N-RL-RAm" firstAttribute="centerX" secondItem="NAb-va-MEb" secondAttribute="centerX" id="UOk-qw-dYH"/>
                 <constraint firstItem="gcJ-Ze-EJn" firstAttribute="top" secondItem="UZj-Np-k5n" secondAttribute="bottom" constant="7" id="VLd-7Y-5ce"/>
+                <constraint firstItem="R0W-Z1-Q8M" firstAttribute="centerX" secondItem="NAb-va-MEb" secondAttribute="centerX" id="WFJ-5m-N3k"/>
                 <constraint firstItem="UZj-Np-k5n" firstAttribute="top" secondItem="aM7-xQ-Qwb" secondAttribute="top" constant="20" id="XtM-7x-Vvs"/>
+                <constraint firstItem="T5W-c2-B0S" firstAttribute="centerX" secondItem="7Dl-rE-ZZ0" secondAttribute="centerX" constant="90" id="ZNv-2r-59J"/>
                 <constraint firstItem="kUa-cu-cKl" firstAttribute="centerY" secondItem="NAb-va-MEb" secondAttribute="centerY" id="ZYC-6f-K4T"/>
                 <constraint firstItem="ZAg-ue-guq" firstAttribute="trailing" secondItem="kUa-cu-cKl" secondAttribute="trailing" id="Zf2-pL-sZM"/>
                 <constraint firstItem="ZAg-ue-guq" firstAttribute="top" secondItem="R0W-Z1-Q8M" secondAttribute="top" id="aR9-K4-mUW"/>
+                <constraint firstItem="kUa-cu-cKl" firstAttribute="centerX" secondItem="7Dl-rE-ZZ0" secondAttribute="centerX" constant="-90" id="ccj-qM-sDw"/>
                 <constraint firstItem="7Dl-rE-ZZ0" firstAttribute="top" secondItem="1kj-08-o0h" secondAttribute="top" id="eWO-Bb-tI5"/>
                 <constraint firstItem="694-a2-RT3" firstAttribute="leading" secondItem="T5W-c2-B0S" secondAttribute="leading" id="fau-Rb-4K7"/>
-                <constraint firstItem="kUa-cu-cKl" firstAttribute="centerX" secondItem="1kj-08-o0h" secondAttribute="centerX" multiplier="1:1.4" id="gEP-Ub-lkG"/>
                 <constraint firstAttribute="centerY" secondItem="S3N-RL-RAm" secondAttribute="bottom" multiplier="1:1.8" id="gHX-ED-yvt"/>
                 <constraint firstItem="ZAg-ue-guq" firstAttribute="leading" secondItem="kUa-cu-cKl" secondAttribute="leading" id="gZI-Zs-DeD"/>
                 <constraint firstItem="UZj-Np-k5n" firstAttribute="leading" secondItem="aM7-xQ-Qwb" secondAttribute="leading" constant="22" id="leB-Wf-maD"/>
@@ -188,8 +195,8 @@
     </objects>
     <resources>
         <image name="call_camera" width="29" height="22"/>
-        <image name="call_chat" width="29" height="27"/>
         <image name="call_close" width="58" height="58"/>
         <image name="call_mute" width="21" height="35"/>
+        <image name="ic_video_off" width="96" height="96"/>
     </resources>
 </document>

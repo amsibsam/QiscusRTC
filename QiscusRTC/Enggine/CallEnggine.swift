@@ -302,6 +302,20 @@ class CallEnggine: NSObject {
         self.peerConnection.remove(localStream)
         self.peerConnection.add(localStream)
     }
+    
+    func videoStream(enable: Bool) {
+        let localStream = self.peerConnection.localStreams[0]
+        //set button image state
+        if enable {
+            localStream.addVideoTrack(self.localVideoTrack)
+        } else {
+            let _localVideoTrack = localStream.videoTracks[0]
+            localStream.removeVideoTrack(_localVideoTrack)
+        }
+        
+        self.peerConnection.remove(localStream)
+        self.peerConnection.add(localStream)
+    }
 }
 
 extension CallEnggine: RTCEAGLVideoViewDelegate {
