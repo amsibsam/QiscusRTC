@@ -104,9 +104,21 @@ class VideoCallUI: UIViewController {
         buttonCamera.layer.cornerRadius    = buttonCamera.frame.height/2
         buttonCamera.clipsToBounds         = true
         
+        let cameraIcon = UIImage(named: "call_camera", in: QiscusRTC.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        let muteIcon = UIImage(named: "call_mute", in: QiscusRTC.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        let videoIcon = UIImage(named: "ic_video_off", in: QiscusRTC.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        
         buttonCamera.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonCamera.setImage(cameraIcon, for: .normal)
+        buttonCamera.tintColor = .white
         buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonMuted.setImage(muteIcon, for: .normal)
+        buttonMuted.tintColor = .gray
+        buttonMuted.isEnabled = false
         butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        butonVideo.setImage(videoIcon, for: .normal)
+        butonVideo.tintColor = .gray
+        butonVideo.isEnabled = false
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(VideoCallUI.draggedView(_:)))
         localVideoView.isUserInteractionEnabled = true
@@ -127,6 +139,13 @@ class VideoCallUI: UIViewController {
             self.remoteVideoView.insertSubview(remoteVideo, at: 0)
             self.remoteVideoView.clipsToBounds = true
         }
+    }
+    
+    func activateButton() {
+        buttonMuted.tintColor = .white
+        buttonMuted.isEnabled = true
+        butonVideo.tintColor = .white
+        butonVideo.isEnabled = true
     }
     
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
@@ -164,7 +183,8 @@ class VideoCallUI: UIViewController {
     @IBAction func clickVideo(_ sender: Any) {
         if self.isConnected {
             if isVideoStreamEnable {
-                self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+                self.butonVideo.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+                self.butonVideo.tintColor = .black
                 self.presenter.videoStream(enable: !isVideoStreamEnable)
                 
                 if self.localVideoView.subviews.count > 0 {
@@ -174,6 +194,7 @@ class VideoCallUI: UIViewController {
             } else {
                 self.presenter.videoStream(enable: !isVideoStreamEnable)
                 self.butonVideo.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+                self.butonVideo.tintColor = .white
                 self.localVideoView.backgroundColor = UIColor.clear
                 
                 if let localVideo = self.presenter.getLocalVideo() {
@@ -190,9 +211,11 @@ class VideoCallUI: UIViewController {
             if self.presenter.isAudioMute {
                 self.presenter.isAudioMute = false
                 self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+                self.buttonMuted.tintColor = .white
             }else {
                 self.presenter.isAudioMute = true
-                self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+                self.buttonMuted.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+                self.buttonMuted.tintColor = .black
             }
         }
     }
@@ -263,6 +286,7 @@ extension VideoCallUI : CallView {
             self.localVideoView.clipsToBounds   = true
         }
         
+        self.activateButton()
         self.isConnected = true
         self.runTimer()
     }
