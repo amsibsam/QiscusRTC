@@ -86,8 +86,15 @@ class CallUI: UIViewController {
     }
     
     func setupUI() {
+        let speakerIcon = UIImage(named: "call_speaker", in: QiscusRTC.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        let muteIcon = UIImage(named: "call_mute", in: QiscusRTC.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        
         buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonSpeaker.setImage(speakerIcon, for: .normal)
+        buttonSpeaker.tintColor = .white
         buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+        buttonMuted.setImage(muteIcon, for: .normal)
+        buttonMuted.tintColor = .white
         // set Circle
         imageAvatar.layer.cornerRadius      = imageAvatar.frame.size.height/2
         imageAvatar.clipsToBounds           = true
@@ -130,9 +137,11 @@ class CallUI: UIViewController {
         if self.presenter.isAudioMute {
             self.presenter.isAudioMute = false
             self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
-        }else {
+            self.buttonMuted.tintColor = .white
+        } else {
             self.presenter.isAudioMute = true
-            self.buttonMuted.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+            self.buttonMuted.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+            self.buttonMuted.tintColor = .black
         }
     }
     
@@ -140,9 +149,11 @@ class CallUI: UIViewController {
         if self.presenter.isLoadSpeaker {
             self.presenter.isLoadSpeaker = false
             self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
+            self.buttonSpeaker.tintColor = .white
         }else {
             self.presenter.isLoadSpeaker = true
-            self.buttonSpeaker.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+            self.buttonSpeaker.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+            self.buttonSpeaker.tintColor = .black
         }
     }
     
