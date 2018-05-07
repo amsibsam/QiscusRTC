@@ -10,7 +10,7 @@ We highly recommend that you implement a better push notification for increasing
 
 Callkit support
 
-<p><img src="https://github.com/qiscus/QiscusRTC/blob/master/Image/1.PNG" width="30%" /> <img src="https://github.com/qiscus/QiscusRTC/blob/master/Image/2.PNG" width="30%" /></p>
+<p><img src="https://d1edrlpyc25xu0.cloudfront.net/kiwari-prod/image/upload/QG2MphljcI/callkit.png" width="30%" /></p>
 
 ## Quick Start
 
@@ -21,6 +21,8 @@ Below is a step-by-step guide on setting up the Qiscus RTC SDK for the first tim
 Add to your project podfile
 
 ```
+platform :ios, '10.0'
+
 pod 'QiscusRTC'
 ```
 
