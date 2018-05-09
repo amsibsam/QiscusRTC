@@ -47,6 +47,12 @@ public class QiscusRTC: NSObject {
         
         shared.manager.setup(withConfig: config)
     }
+    // RN support
+    public class func config(appId: String, appSecret : String, appName: String) {
+        let url = URL(string: "wss://rtc.qiscus.com/signal")
+        let config = CallConfig(signalUrl: url!, appID: appId, secretKey: appSecret, appName: appName)
+        shared.manager.setup(withConfig: config)
+    }
     
     public class func isRegister() -> Bool {
         return shared.manager.isRegister()
