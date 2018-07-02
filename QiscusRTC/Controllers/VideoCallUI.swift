@@ -251,12 +251,15 @@ class VideoCallUI: UIViewController {
 extension VideoCallUI : CallView {
     func callVideoSizeChanged(videoView: UIView, size: CGSize, local: UIView?, remote: UIView?) {
         if(videoView.tag == 1){
-            let targetSize = remoteVideoView.frame.size
-            
-            let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
-            if local != nil {
-                local?.frame = rect
+            if !isConnected {
+                let targetSize = remoteVideoView.frame.size
+                
+                let rect = scaleVideo(videoSize: size, targetFrameSize: targetSize)
+                if local != nil {
+                    local?.frame = rect
+                }
             }
+            
             
         }else{
             let targetSize = remoteVideoView.frame.size
